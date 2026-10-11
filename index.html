@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>IntelDeck</title>
+<title>Ian&#39;s Website</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='2' y='2' width='60' height='60' rx='12' fill='%23061226' stroke='%2300e5ff' stroke-width='4'/%3E%3Cpath d='M18 20h28M18 32h20M18 44h28' stroke='%2300e5ff' stroke-width='6' stroke-linecap='round'/%3E%3Ccircle cx='46' cy='32' r='5' fill='%23ffb300'/%3E%3C/svg%3E">
 <style>
 :root{
   --bg:#02050d;
@@ -33,6 +34,8 @@ button{font:inherit;color:inherit;cursor:pointer}
 .btn:hover,.btn:focus-visible{background:linear-gradient(180deg,rgba(var(--cyan-rgb),.35),rgba(var(--blue-rgb),.45));color:#fff;box-shadow:var(--glow);outline:none}
 .btn:active{transform:translateY(1px)}
 .btn.amber{border-color:var(--amber);color:var(--amber)}
+.btn.red{border-color:var(--red);color:var(--red)}
+.btn.red:hover,.btn.red:focus-visible{background:rgba(255,77,94,.3);color:#fff}
 .btn.amber:hover,.btn.amber:focus-visible{background:rgba(255,179,71,.3);color:#fff;box-shadow:0 0 12px rgba(255,179,71,.5)}
 #title{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:24px;background:radial-gradient(ellipse at center,rgba(2,10,24,.35),rgba(2,5,13,.85));transition:opacity .8s ease,visibility .8s}
 #title.gone{opacity:0;visibility:hidden;pointer-events:none}
@@ -66,7 +69,7 @@ main{flex:1;overflow:auto;padding:18px;border-top:1px solid var(--cyan);margin-t
 @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .ic{font-style:normal;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
 .tick{overflow:hidden;white-space:nowrap}
-.trk{display:flex;width:max-content;animation:tkx var(--dur,20s) linear infinite}
+.trk{display:flex;width:max-content}.tick.run .trk{animation:tkx var(--dur,20s) linear infinite}
 .tick:hover .trk,.vscroll:hover .vtrk{animation-play-state:paused}
 .trkset{display:flex;gap:30px;padding-right:30px}
 .tk{font-family:Consolas,"Courier New",monospace;font-size:.9rem;color:var(--text)}
@@ -114,8 +117,41 @@ main{flex:1;overflow:auto;padding:18px;border-top:1px solid var(--cyan);margin-t
 .updchk{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
 .updchk span{color:var(--dim);font-size:.8rem}
 .modal header{display:flex;align-items:center;padding:14px 22px;border-bottom:1px solid var(--blue);gap:12px}
+.sqlbox{margin-top:12px}
+.netchip{margin-right:10px;padding:3px 8px;border:1px solid var(--amber);color:var(--amber);font-family:Consolas,"Courier New",monospace;font-size:.68rem;letter-spacing:.16em}
+.nwpanel{min-width:min(100%,360px)}
+.nwchips{margin-bottom:6px}
+.nwbox{position:relative;margin-top:6px}
+.nwsvg{display:block;width:100%;height:auto;touch-action:pan-y}
+.nwg{stroke:rgba(var(--blue-rgb),.18);stroke-width:1}
+.nwz{stroke:var(--dim);stroke-width:1;stroke-dasharray:3 3}
+.nwt{fill:var(--dim);font-size:10px;font-family:Consolas,"Courier New",monospace}
+.nwl{fill:none;stroke:var(--cyan);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.nwd{fill:var(--cyan);stroke:var(--panel2);stroke-width:2}
+.nwx{stroke:var(--dim);stroke-width:1}
+.nwh{fill:var(--cyan);stroke:var(--panel2);stroke-width:2}
+.nwtip{position:absolute;top:-6px;width:170px;padding:6px 8px;background:var(--panel2);border:1px solid var(--cyan);font-size:.74rem;line-height:1.4;color:var(--text);pointer-events:none}
+.nwtip b{display:block;color:var(--cyan);font-weight:normal}
+.nwtab summary{cursor:pointer;color:var(--dim);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;margin-top:8px}
+.nwtab table{width:100%;border-collapse:collapse;font-size:.76rem;margin-top:6px}
+.nwtab th,.nwtab td{text-align:right;padding:3px 4px;border-bottom:1px solid rgba(var(--blue-rgb),.2)}
+.nwtab th:first-child,.nwtab td:first-child{text-align:left}
+.nwtab th{color:var(--dim);font-weight:normal}
+.gsbtn{margin-right:10px}
+.gsres{margin-top:10px}
+.gsres .pvh span{color:var(--dim)}
+.gsr{display:block;width:100%;text-align:left;padding:7px 10px;margin-bottom:4px;background:rgba(2,10,24,.6);border:0;border-left:3px solid var(--deep);color:var(--text);font:inherit;cursor:pointer}
+.gsr:hover,.gsr:focus-visible{border-left-color:var(--cyan);background:rgba(var(--cyan-rgb),.1);outline:none}
+.gsr .t{display:block;font-size:.9rem;word-break:break-word}
+.gsr .s{display:block;font-size:.74rem;color:var(--dim);word-break:break-word}
+.sqlbox summary{cursor:pointer;color:var(--cyan);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}
+.sqlbox pre{margin:8px 0;padding:10px;max-height:220px;overflow:auto;background:rgba(2,10,24,.8);border:1px solid var(--deep);font-size:.72rem;line-height:1.45;white-space:pre-wrap;word-break:break-word;color:var(--text)}
+.xbtn{flex:none;width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;padding:0;background:none;border:1px solid transparent;color:var(--dim);font-size:1.25rem;line-height:1;cursor:pointer;transition:color .15s,border-color .15s,background .15s}
+.xbtn:hover,.xbtn:focus-visible{color:var(--cyan);border-color:var(--cyan);background:rgba(var(--cyan-rgb),.12);outline:none}
 .modal header h2{margin:0;flex:1;font-size:1rem;letter-spacing:.28em;text-transform:uppercase;color:var(--cyan)}
 .modal .body{overflow:auto;padding:18px 24px 24px;line-height:1.6;font-size:.92rem}
+.modal .body form>.row:last-child{position:sticky;bottom:-24px;z-index:3;margin:0 -24px -24px;padding:10px 24px 14px;background:var(--panel2);border-top:1px solid rgba(var(--blue-rgb),.3)}
+.needmsg{color:var(--red);font-size:.8rem;margin-top:4px}
 .modal h3{margin:20px 0 8px;font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber)}
 .modal h3:first-child{margin-top:0}
 .modal ul{margin:0 0 8px;padding-left:20px}
@@ -261,6 +297,11 @@ textarea:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 8px rgba(var
 #calKinds{margin-top:8px;align-items:center}
 #calKinds .spacer{flex:1}
 .dot.h{background:#c58bff;border-radius:2px}
+.dot.l{background:#ff8a5c;border-radius:0;transform:rotate(45deg) scale(.85)}
+.evrow.bill{border-left-color:#ff8a5c}
+.evrow.bill .tm{color:#ff8a5c}
+.evrow.bill small{color:var(--dim)}
+.up.l{border-left-color:#ff8a5c}
 .evrow.hol{border-left-color:#c58bff}
 .evrow.hol .tm{color:#c58bff}
 .up.h{border-left-color:#c58bff}
@@ -314,6 +355,10 @@ textarea:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 8px rgba(var
 .asl{margin:0;padding-left:18px;font-size:.78rem;color:var(--dim)}
 .asl li{margin:2px 0}
 .slot .dt{font-size:.78rem;color:var(--dim);word-break:break-word}
+.lots summary{cursor:pointer;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.lots .lot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px;padding:6px 0;border-top:1px dashed rgba(var(--blue-rgb),.25);font-size:.78rem}
+.lots .lot .acts{display:flex;gap:6px}
+.lots .gain{color:var(--green)}.lots .loss{color:var(--red)}
 .slot .nt{font-size:.8rem;color:var(--text);opacity:.85;word-break:break-word;border-top:1px dashed rgba(var(--blue-rgb),.25);padding-top:6px}
 .slot .up2{font-family:Consolas,"Courier New",monospace;font-size:.64rem;color:var(--dim)}
 .slot .acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
@@ -407,7 +452,11 @@ main{padding-bottom:100px}
 .field.bd{flex:0 1 330px;min-width:240px}
 .field.fit{flex:0 1 160px;min-width:140px}
 .field.s1{flex:0 1 120px;min-width:90px}
-.pitem{cursor:default}
+.pitem{cursor:pointer}
+.pitem:hover{background:rgba(var(--blue-rgb),.12)}
+.pview .stat span:last-child{text-align:right;word-break:break-word}
+.pview a{color:var(--cyan)}
+.pvh{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin:14px 0 6px;font-weight:normal}
 .cols{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start}
 .cols>.panel{flex:0 1 auto;width:fit-content;min-width:min(280px,100%);max-width:min(560px,100%);margin:0}
 .cols>.panel:first-child{max-width:min(460px,100%)}
@@ -445,46 +494,45 @@ input[type=checkbox]:disabled{opacity:.45;cursor:not-allowed}
 .wr-tools{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:0 0 12px}
 .wr-tools span{color:var(--dim);font-size:.78rem}
 .wr-scroll{overflow:auto;padding:2px}
-.wr{width:7.7in;max-width:none;margin:0 auto;background:#fff;color:#12233d;font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:9.5pt;line-height:1.35;box-shadow:0 0 0 1px #c9d6e8,0 10px 30px rgba(0,0,0,.45);zoom:var(--wrz,1)}
+.wr{width:8.5in;height:11in;max-width:none;margin:0 auto;padding:.45in .5in .4in;display:flex;flex-direction:column;overflow:hidden;background:#fff;color:#000;font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:9.5pt;line-height:1.35;box-shadow:0 0 0 1px #bbb,0 10px 30px rgba(0,0,0,.45)}
 .wr *{box-sizing:border-box}
-.wr-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding:16px 20px 14px;background:linear-gradient(120deg,#06214a,#0b4aa8 70%,#1a8fd8);color:#fff;border-bottom:4px solid #4df2ff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.wr-brand{font-size:8pt;letter-spacing:.35em;text-transform:uppercase;color:#9fe9ff}
-.wr-head h1{margin:2px 0 2px;font-size:22pt;letter-spacing:.06em;text-transform:uppercase;font-weight:700;line-height:1.1}
-.wr-range{font-size:10pt;color:#d7ecff}
-.wr-stats{display:flex;gap:8px}
-.wr-stats div{min-width:64px;text-align:center;padding:6px 8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35)}
-.wr-stats b{display:block;font-size:16pt;line-height:1.1}
-.wr-stats span{font-size:7pt;letter-spacing:.14em;text-transform:uppercase;color:#cfeaff}
-.wr-stats .o b{color:#ffd27a}
-.wr-body{display:grid;grid-template-columns:1.6fr 1fr;gap:14px;padding:12px 20px 10px}
-.wr h3{margin:0 0 6px;padding-bottom:3px;font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:#0b4aa8;border-bottom:1.5px solid #0b4aa8}
+.wr-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding:0 0 8px;border-bottom:2px solid #000}
+.wr-brand{font-size:7.5pt;letter-spacing:.35em;text-transform:uppercase;color:#444}
+.wr-head h1{margin:2px 0;font-size:20pt;letter-spacing:.06em;text-transform:uppercase;font-weight:700;line-height:1.1;color:#000}
+.wr-range{font-size:10pt;color:#222}
+.wr-stats{display:flex;gap:6px}
+.wr-stats div{min-width:62px;text-align:center;padding:4px 6px;border:1px solid #000}
+.wr-stats b{display:block;font-size:15pt;line-height:1.1;color:#000}
+.wr-stats span{font-size:6.5pt;letter-spacing:.14em;text-transform:uppercase;color:#333}
+.wr-body{flex:1 1 auto;min-height:0;overflow:hidden;display:grid;grid-template-columns:1.6fr 1fr;gap:16px;padding:10px 0 6px}
+.wr h3{margin:0 0 5px;padding-bottom:2px;font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:#000;border-bottom:1px solid #000}
 .wr-side h3:not(:first-child){margin-top:12px}
-.wr h4{margin:8px 0 3px;font-size:8pt;letter-spacing:.14em;text-transform:uppercase;color:#42597c}
-.wr-day{display:grid;grid-template-columns:50px 1fr;gap:8px;padding:5px 0;border-bottom:1px solid #e1e9f4;break-inside:avoid}
-.wr-day.today .wr-dh b{color:#d97800}
-.wr-dh b{display:block;font-size:11pt;color:#0b4aa8;line-height:1.1}
-.wr-dh span{font-size:7.5pt;color:#6a7f9d}
-.wr-it{display:grid;grid-template-columns:52px 1fr;gap:6px;padding:1px 0 1px 7px;border-left:3px solid #2b8cff}
-.wr-it.k-t{border-left-color:#e0a030}
-.wr-it.k-t.p-high{border-left-color:#d6334a}
-.wr-it.k-t.p-low{border-left-color:#7a8ea8}
-.wr-it.k-b{border-left-color:#22b07a}
-.wr-it.k-h{border-left-color:#a26be0}
-.wr-tm{font-size:7.5pt;color:#6a7f9d;text-transform:uppercase;letter-spacing:.04em;padding-top:1px}
-.wr-tx{font-weight:600;color:#12233d}
-.wr-tx small{display:block;font-weight:400;color:#5b6f8c;font-size:8pt}
-.wr-none,.wr-more{font-size:8pt;color:#8a9bb4;font-style:italic;padding-left:10px}
-.wr-pl{display:grid;grid-template-columns:62px 1fr 38px 28px;gap:5px;align-items:center;padding:2px 0;border-bottom:1px dotted #d3deee}
-.wr-pk{font-size:7.5pt;color:#42597c;text-transform:uppercase;letter-spacing:.04em}
-.wr-pt{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.wr-pt small{display:block;font-weight:400;color:#6a7f9d;font-size:7.5pt;overflow:hidden;text-overflow:ellipsis}
-.wr-pl.empty .wr-pt{color:#9aa9bf;font-weight:400;font-style:italic}
+.wr h4{margin:7px 0 2px;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:#333}
+.wr-day{display:grid;grid-template-columns:48px 1fr;gap:8px;padding:4px 0;border-bottom:1px solid #ccc;break-inside:avoid}
+.wr-dh b{display:block;font-size:11pt;color:#000;line-height:1.1}
+.wr-day.today .wr-dh b{text-decoration:underline}
+.wr-dh span{font-size:7.5pt;color:#444}
+.wr-it{display:grid;grid-template-columns:52px 1fr;gap:6px;padding:1px 0 1px 6px;border-left:2px solid #000}
+.wr-it.k-t{border-left-style:dashed}
+.wr-it.k-t.p-high .wr-tx::before{content:"! ";font-weight:700}
+.wr-it.k-b,.wr-it.k-h{border-left:2px dotted #555}
+.wr-tm{font-size:7.5pt;color:#333;text-transform:uppercase;letter-spacing:.04em;padding-top:1px}
+.wr-tx{font-weight:600;color:#000}
+.wr-tx small{display:block;font-weight:400;color:#333;font-size:8pt}
+.wr-none,.wr-more{font-size:8pt;color:#555;font-style:italic;padding-left:8px}
+.wr-pl{display:grid;grid-template-columns:62px 1fr 38px 28px;gap:5px;align-items:center;padding:2px 0;border-bottom:1px dotted #bbb}
+.wr-pk{font-size:7.5pt;color:#333;text-transform:uppercase;letter-spacing:.04em}
+.wr-pt{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#000}
+.wr-pt small{display:block;font-weight:400;color:#444;font-size:7.5pt;overflow:hidden;text-overflow:ellipsis}
+.wr-pl.empty .wr-pt{color:#777;font-weight:400;font-style:italic}
 .wr-pl.empty{grid-template-columns:62px 1fr}
-.wr-bar{height:5px;background:#dfe8f5;display:block;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.wr-bar i{display:block;height:100%;background:linear-gradient(90deg,#2b8cff,#4df2ff);-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.wr-pp{font-size:7.5pt;color:#42597c;text-align:right}
-.wr-foot{display:flex;justify-content:space-between;padding:6px 20px 10px;font-size:7.5pt;color:#8a9bb4;border-top:1px solid #e1e9f4;margin:0 20px;padding-left:0;padding-right:0}
-@page{size:letter;margin:.4in}
+.wr-bar{height:6px;border:1px solid #000;display:block;background:#fff}
+.wr-bar i{display:block;height:100%;background:#888;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.wr-pp{font-size:7.5pt;color:#000;text-align:right}
+.wr-key{font-size:7pt;color:#444;padding:4px 0 0}
+.wr-foot{display:flex;justify-content:space-between;padding:5px 0 0;font-size:7.5pt;color:#444;border-top:1px solid #000}
+.wr-scroll{display:flex;justify-content:flex-start}
+@page{size:8.5in 11in;margin:0}
 @media print{
 html,body{background:#fff!important;height:auto!important;overflow:visible!important}
 body>*{display:none!important}
@@ -493,8 +541,31 @@ body>#modalWrap{display:block!important;position:static!important;padding:0!impo
 #modalWrap .modal header,.wr-tools{display:none!important}
 #modalWrap .modal .body{overflow:visible!important;padding:0!important}
 .wr-scroll{overflow:visible!important;padding:0!important}
-.wr{width:7.7in!important;box-shadow:none!important;margin:0!important}
+.wr{width:8.5in!important;height:11in!important;box-shadow:none!important;margin:0!important}
+html,body{width:8.5in!important;margin:0!important}
 }
+
+#view-entertainment .panel{padding:12px 14px 14px}
+#view-entertainment .pgrid{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:6px}
+#view-entertainment .slot{padding:7px 9px;gap:4px}
+#view-entertainment .slot .ti{font-size:.86rem;line-height:1.25}
+#view-entertainment .slot .lb{font-size:.58rem;letter-spacing:.14em}
+#view-entertainment .slot .dt,#view-entertainment .slot .nt{font-size:.7rem}
+#view-entertainment .slot .nt{padding-top:3px}
+#view-entertainment .slot .up2{font-size:.58rem}
+#view-entertainment .slot .acts{gap:4px}
+#view-entertainment .btn.mini{padding:3px 7px;font-size:.6rem;letter-spacing:.06em}
+#view-entertainment .pic{width:32px;height:32px}
+#view-entertainment .hint{margin:0 0 8px;font-size:.8rem}
+#view-entertainment .toolbar{margin-bottom:8px}
+#view-playing.sub.active{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;align-items:start}
+#view-playing>.msg{grid-column:1/-1}
+#view-playing .group-gap{margin-top:0}
+#view-playing .pgrid{grid-template-columns:1fr}
+#view-playing h2{margin-bottom:8px}
+.entgh{grid-column:1/-1;margin:4px 0 0;padding-bottom:3px;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;font-weight:normal;color:var(--cyan);border-bottom:1px solid rgba(var(--blue-rgb),.25)}
+.entgh span:not(.ic){color:var(--dim)}
+@media (max-width:520px){#view-entertainment .pgrid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}#view-playing .pgrid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -528,8 +599,11 @@ body>#modalWrap{display:block!important;position:static!important;padding:0!impo
   <header class="top">
     <div class="brand"><h1>INTELDECK</h1></div>
     <div class="spacer"></div>
+    <span class="netchip" id="netChip" hidden title="No internet connection. Your changes are saved on this device and sync when you are back online.">OFFLINE</span>
+    <button class="xbtn gsbtn" id="gsBtn" type="button" aria-label="Search everything" title="Search everything (/)"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
     <div class="clock"><div class="t" id="clkT"></div><div class="d" id="clkD"></div></div>
   </header>
+  <div class="warnbar" id="errBar" hidden role="alert"></div>
   <div class="warnbar" id="warn" hidden><span>Saving is blocked in this view. Anything you enter will be lost when this page reloads or closes. Open index.html directly in a normal browser window, or export a backup from the Settings tab.</span><button type="button" class="btn mini" id="warnGo">Open Settings</button></div>
   <nav class="tabs" id="tabs" aria-label="Modules"></nav>
   <main id="views"></main>
@@ -542,21 +616,20 @@ body>#modalWrap{display:block!important;position:static!important;padding:0!impo
   <div class="modal">
     <header>
       <h2 id="modalTitle"></h2>
-      <button class="btn" id="modalClose" type="button">Close</button>
+      <button class="xbtn" id="modalClose" type="button" aria-label="Close" title="Close (Esc)">&#x2715;</button>
     </header>
     <div class="body" id="modalBody"></div>
   </div>
 </div>
 
 <script>
-const VERSION="0.60.0";
-const BUILT="2026-10-08 14:40 PDT";
+const VERSION="0.69.0";
+const BUILT="2026-10-11 16:10 PDT";
 
 const MODULES=[
   {id:"bridge",name:"Bridge",phase:1,on:true,blurb:"Central overview of all systems."},
   {id:"todo",name:"Projects",phase:2,on:true,blurb:"Tasks and projects with priorities and due dates."},
   {id:"calendar",name:"Calendar",phase:2,on:true,blurb:"Month grid with events."},
-  {id:"notes",name:"Notes",phase:3,on:true,blurb:"Searchable, taggable notes."},
   {id:"people",name:"People",phase:3,on:true,blurb:"Contact and relationship database."},
   {id:"entertainment",name:"Entertainment",phase:8,on:true,blurb:"Playing, shelved and completed games, books and shows."},
   {id:"assets",name:"Assets",phase:14,on:true,blurb:"Vehicles and their maintenance and loan tasks."},
@@ -566,6 +639,64 @@ const MODULES=[
 ];
 
 const UPDATES=[
+  {v:"0.69.0",d:"2026-10-11 16:10 PDT",items:[
+    "Changed: the browser tab now says Ian's Website.",
+    "New: an OFFLINE mark at the top when the internet connection drops. Everything you do is still saved on this device, and account changes upload when the connection is back.",
+    "New: Save Offline Copy in Settings, Backup downloads the whole app as one file you can open with no internet. The app stays a single file on the website."
+  ]},
+  {v:"0.68.0",d:"2026-10-11 15:45 PDT",items:[
+    "New: bills in Accounting can have a Next due date. They then show on the Calendar, in Upcoming and in the Weekly Report every month, year or week. A Bills chip on the Calendar turns them on or off.",
+    "New: Net Worth History in Assets. The deck saves your assets and what you owe once a day and draws your net worth as a line, with 1M, 3M, 1Y and All ranges, hover details and a table view. It is saved in backups and in your account."
+  ]},
+  {v:"0.67.0",d:"2026-10-11 15:15 PDT",items:[
+    "New: Search Everything. Press the magnifying glass next to the clock, or /, and type. It finds tasks, projects, notes (archived too), people, events, assets, accounting items and entertainment, grouped by type. Press a result to open it.",
+    "Changed: / now opens Search Everything on every tab. Notes still has its own Search button, and People its own search box."
+  ]},
+  {v:"0.66.0",d:"2026-10-11 15:00 PDT",items:[
+    "New: Settings, Account has an Account setup code section with the Supabase code for the deck_data table and a Copy Setup Code button. Paste it into the Supabase SQL Editor and press Run once.",
+    "New: backup reminder. When your last backup file is over 30 days old (or 30 days after you start using the deck without one), a window offers Download Backup Now, Remind Me in 7 Days or Stop Reminding Me.",
+    "New: a tick box in Settings, Backup turns the reminder on or off."
+  ]},
+  {v:"0.65.1",d:"2026-10-11 14:45 PDT",items:[
+    "Changed: every popup window now closes with a small X in the top right corner instead of a CLOSE button. Escape and tapping outside the window still close it too."
+  ]},
+  {v:"0.65.0",d:"2026-10-11 14:30 PDT",items:[
+    "Changed: the Weekly Report sheet is exactly one US Letter page (8.5 x 11 inches) on screen and in print, with the page margins built into the sheet.",
+    "Changed: the report is printer friendly: black text on white, no colored header or boxes, thin black lines. Events, tasks and birthdays or holidays are told apart by solid, dashed and dotted lines, and high priority tasks have a ! mark.",
+    "Changed: the report no longer shrinks the text to fit a busy week. Each day lists fewer items with a +N more line instead."
+  ]},
+  {v:"0.64.3",d:"2026-10-11 14:10 PDT",items:[
+    "Fixed: Add Person (and every other Add, Save and Log In button in a window) now works even where the browser or a preview window blocks normal form sending. Before, pressing the button could do nothing at all.",
+    "Pressing Enter in a text box still saves the window, the same as before."
+  ]},
+  {v:"0.64.2",d:"2026-10-11 13:55 PDT",items:[
+    "Fixed: Add Person in the Your Entry window no longer stops if tidying the person editor in the background hits a problem; the person is saved first.",
+    "New: if any window cannot save, a red line at the top of the window says why, and unexpected errors show in a bar at the top of the deck, so problems can be reported."
+  ]},
+  {v:"0.64.1",d:"2026-10-11 13:40 PDT",items:[
+    "Fixed: in the New Person and Your Entry windows, the Add Person and Cancel buttons now stay pinned at the bottom of the window, so you can press them without scrolling past every box (this mattered most on phones).",
+    "Changed: only a first name (or a last name) is needed to add a person. If both are empty, a red line says so instead of only an error sound."
+  ]},
+  {v:"0.64.0",d:"2026-10-11 13:25 PDT",items:[
+    "New: tap a person in People to see all their details in a window, with tap-to-call, tap-to-email, a Map link and their linked people. Edit is in the window too.",
+    "Changed: Entertainment boxes are smaller. Playing shows Games, Books and Video side by side, and Shelved and Completed group items under Games, Books and Video headings."
+  ]},
+  {v:"0.63.0",d:"2026-10-11 13:05 PDT",items:[
+    "New: in Assets, buys of the same stock, crypto, retirement symbol or metal are combined into one card with the total amount, average price paid, current price, total value and gain or loss.",
+    "New: Each buy on a combined card lists every purchase with its own gain or loss, Edit and Delete. Your separate buys are kept, so nothing is lost."
+  ]},
+  {v:"0.62.0",d:"2026-10-11 12:45 PDT",items:[
+    "Changed: Notes moved into the Projects tab. Press Notes at the top of Projects, next to Tasks and Projects. The separate Notes tab is gone; if you were last on Notes, the deck opens Projects, Notes.",
+    "Changed: tab number keys moved up by one after Notes: 4 People, 5 Entertainment, 6 Assets, 7 Accounting, 8 News, 9 and 0 Settings.",
+    "New: tasks in the Calendar day list have a tick box. Tick it to complete the task and it disappears from the calendar."
+  ]},
+  {v:"0.61.0",d:"2026-10-11 12:20 PDT",items:[
+    "New: the browser tab shows an IntelDeck icon.",
+    "New: a Delete button when you open a note. Press it twice (Delete, then Confirm Delete) to remove the note.",
+    "Fixed: the Market Ticker no longer repeats. Each stock, coin or metal shows once even if you bought it more than once, and the row only scrolls when it is too wide to fit.",
+    "Fixed: one stock Finnhub cannot price (for example a fund or a non-US symbol) no longer makes every stock fail with key rejected. Those symbols are listed instead.",
+    "New: Test Finnhub Key and Get a Free Key buttons in Settings, Live Prices. Key rejected now means the key itself is bad."
+  ]},
   {v:"0.60.0",d:"2026-10-08 14:40 PDT",items:[
     "New: Weekly Report. The Bridge has a Weekly Report box with an Open Report button. It opens a one page sheet with the next 7 days of events (with locations), tasks due, birthdays and holidays, a list of overdue tasks, and your 9 Now Playing slots with icons, system icons and progress.",
     "New: Print / Save as PDF on the report prints it on one US Letter page. Choose Save as PDF as the printer in the print window to get a PDF file. The sheet shrinks to fit if there is a lot on it.",
@@ -972,29 +1103,29 @@ const UPDATES=[
 
 const HELP=[
   {h:"What this is",html:"<p>IntelDeck is a personal command deck for tracking the information you need. It runs entirely in this single file and stores everything in your browser.</p>"},
-  {h:"Navigation",html:"<ul><li><b>Layout:</b> boxes are packed tightly in columns with small even gaps, so pages have little empty space. The number of columns follows the width of your window. A list of cards (tasks, people, notes, news, assets and so on) fills each row evenly. In a column layout such as the Bridge, boxes run down the first column, then the next, so their order reads top to bottom, then left to right.</li><li>Click a tab to switch modules (the tabs are not numbered, but the number keys still work), or press <kbd>1</kbd> to <kbd>9</kbd>, or <kbd>0</kbd> for Settings.</li><li><b>Bridge</b> is the overview. It shows your next tasks (with Pause and Complete buttons), your next calendar events and the Scribe Data button. If you have fewer upcoming events than the Bridge shows, the empty spots show upcoming birthdays while the Calendar Birthdays button is on.</li><li>After Initialize you see the login screen. See Account and login for details.</li><li>Boxes are sized to their text instead of stretching across the whole page, so more fits on screen. This applies to the Bridge boxes, the Settings boxes and the cards on every tab.</li><li>All modules are online: Bridge, Projects, Calendar, Notes, People, Entertainment, Assets, Accounting, News and Settings.</li></ul>"},
-  {h:"Account and login",html:"<ul><li>After you press Initialize, the login screen opens. <b>Log In</b> with your email and password. <b>Create Account</b> asks for your email and a password twice (at least 6 characters). You may get a confirmation email; open its link, then log in.</li><li><b>Forgot Password</b>: type your email first, then press it. A reset email arrives; its link opens IntelDeck with a Set a New Password box. The link only works if the deck is opened from the web address set in your Supabase project.</li><li><b>Use Local Profile</b> skips accounts and uses the data on this device, as before.</li><li><b>Remember me on this device</b> keeps your email and password filled in on the login screen next time. It never signs you in by itself; you still press Log In. The password is stored on this device in a scrambled form that is not real encryption, so only tick it on a device you trust. Untick it and log in to clear the saved login.</li><li>Settings, Account shows who is signed in and has Log Out, Log In or Create Account, and Forget Saved Login (clears the saved email and password).</li><li><b>Saving to your account:</b> while signed in, every change is copied to your account about 3 seconds later. When you open the deck, come back to it, or press Sync Now in Settings, Account, it checks for a newer copy saved from another device and loads it. If both changed, the most recent save wins. A copy stays on this device so the deck works offline; changes wait and upload when you are back online.</li><li><b>Data already on a device:</b> the first time you sign in on a device that has its own data, a window shows how many items are on the device and in your account. <b>Delete Local Data, Keep Account</b> replaces the device data with your account copy. <b>Replace Account With This Device</b> uploads the device data over your account (press twice to confirm). Either way the device ends up holding only your account copy. Leave the backup tick on to download the device data as a file first. If you close the window, Settings, Account has Choose What To Keep.</li><li><b>Log Out</b> uploads waiting changes, then removes your account data from this device. If the upload fails you are warned first.</li><li>While signed in, Erase All Data and Restore change your account copy too. UI size, text size and opacity stay per device.</li><li><b>One-time setup for the owner:</b> the account data needs a table called deck_data in Supabase with row level security, so each person can only read and write their own row. If Settings, Account says the table is missing, run the setup SQL from the IntelDeck design notes in the Supabase SQL editor.</li></ul>"},
+  {h:"Navigation",html:"<ul><li><b>Search Everything:</b> press the magnifying glass at the top right, next to the clock, or press <kbd>/</kbd>. Type at least 2 letters; results appear as you type, grouped by Tasks, Projects, Notes, People, Events, Assets, Accounting and Entertainment (8 shown per group; add words to narrow it). Every word you type must appear. Press a result to open it: tasks, projects, assets and accounting items open their edit window, notes and people open their details, events jump to that day on the Calendar, and entertainment opens its section. Enter opens the first result. Your last search is kept until you change it.</li><li><b>Closing windows:</b> every popup window has an X in its top right corner. Press it, press Escape, or tap outside the window to close it. Unsaved typing in an Add window is lost; the person editor saves itself.</li><li><b>Layout:</b> boxes are packed tightly in columns with small even gaps, so pages have little empty space. The number of columns follows the width of your window. A list of cards (tasks, people, notes, news, assets and so on) fills each row evenly. In a column layout such as the Bridge, boxes run down the first column, then the next, so their order reads top to bottom, then left to right.</li><li>Click a tab to switch modules (the tabs are not numbered, but the number keys still work), or press <kbd>1</kbd> to <kbd>9</kbd>, or <kbd>0</kbd> for Settings.</li><li><b>Bridge</b> is the overview. It shows your next tasks (with Pause and Complete buttons), your next calendar events and the Scribe Data button. If you have fewer upcoming events than the Bridge shows, the empty spots show upcoming birthdays while the Calendar Birthdays button is on.</li><li>After Initialize you see the login screen. See Account and login for details.</li><li>Boxes are sized to their text instead of stretching across the whole page, so more fits on screen. This applies to the Bridge boxes, the Settings boxes and the cards on every tab.</li><li>All modules are online: Bridge, Projects, Calendar, Notes, People, Entertainment, Assets, Accounting, News and Settings.</li></ul>"},
+  {h:"Account and login",html:"<ul><li>After you press Initialize, the login screen opens. <b>Log In</b> with your email and password. <b>Create Account</b> asks for your email and a password twice (at least 6 characters). You may get a confirmation email; open its link, then log in.</li><li><b>Forgot Password</b>: type your email first, then press it. A reset email arrives; its link opens IntelDeck with a Set a New Password box. The link only works if the deck is opened from the web address set in your Supabase project.</li><li><b>Use Local Profile</b> skips accounts and uses the data on this device, as before.</li><li><b>Remember me on this device</b> keeps your email and password filled in on the login screen next time. It never signs you in by itself; you still press Log In. The password is stored on this device in a scrambled form that is not real encryption, so only tick it on a device you trust. Untick it and log in to clear the saved login.</li><li>Settings, Account shows who is signed in and has Log Out, Log In or Create Account, and Forget Saved Login (clears the saved email and password).</li><li><b>Saving to your account:</b> while signed in, every change is copied to your account about 3 seconds later. When you open the deck, come back to it, or press Sync Now in Settings, Account, it checks for a newer copy saved from another device and loads it. If both changed, the most recent save wins. A copy stays on this device so the deck works offline; changes wait and upload when you are back online.</li><li><b>Data already on a device:</b> the first time you sign in on a device that has its own data, a window shows how many items are on the device and in your account. <b>Delete Local Data, Keep Account</b> replaces the device data with your account copy. <b>Replace Account With This Device</b> uploads the device data over your account (press twice to confirm). Either way the device ends up holding only your account copy. Leave the backup tick on to download the device data as a file first. If you close the window, Settings, Account has Choose What To Keep.</li><li><b>Log Out</b> uploads waiting changes, then removes your account data from this device. If the upload fails you are warned first.</li><li>While signed in, Erase All Data and Restore change your account copy too. UI size, text size and opacity stay per device.</li><li><b>One-time setup for the owner:</b> the account data needs a table called deck_data in Supabase with row level security, so each person can only read and write their own row. If Settings, Account says the table is missing, open Settings, Account, press Account setup code, press Copy Setup Code, then paste it into the Supabase SQL Editor and press Run.</li></ul>"},
   {h:"New version notice",html:"<ul><li>When IntelDeck is opened from a web address, it checks that address for a newer version about 4 seconds after opening, every 10 minutes, and whenever you come back to the tab. If one is found, a box appears at the top: <b>Refresh Now</b> reloads the page to load it, <b>Later</b> hides the box for 30 minutes.</li><li>Refresh Now first saves a person you are editing on the People tab and uploads waiting account changes. Anything typed into other open windows and not saved is lost, so save first if you are in the middle of something.</li><li>Updates, <b>Check For New Version</b> checks right away and tells you the result.</li><li>A copy opened as a file from your computer cannot check, because it has no web address to look at. The notice does nothing there.</li></ul>"},
-  {h:"Bridge",html:"<ul><li><b>Weekly Report:</b> press Open Report in the Weekly Report box. It lists the next 7 days of events, tasks due, birthdays and holidays, overdue tasks and the 9 default Now Playing slots (3 games, 3 books, 3 video). Press Print / Save as PDF and pick Save as PDF as the destination to make a file; it is sized for one US Letter page. Extra Now Playing slots are not included.</li><li><b>Market Ticker</b> scrolls across the top with the price of each stock, crypto, precious metal, collectible and other priced item you own in Assets. Prices come from Assets. A price you typed yourself and have not looked up shows a small TYPED mark. After a lookup finds a different price, a green up arrow or red down arrow shows the percent change from the price before that lookup. It stays until the next lookup finds another change. Editing an item clears its change. The box is hidden when you own nothing with a price. Hover or touch it to pause.</li><li><b>Net Worth</b> adds up everything in Assets (vehicles, homes, investments and accounts), subtracts your loans and debts, and shows all three numbers. It is hidden until you add assets or loans.</li><li><b>Now Playing</b> lists every game, book and show in your Playing slots with its percent, and scrolls by itself when there are more than three. It is hidden when no slot is filled.</li><li><b>Breaking News</b> shows the top three headlines for the country chosen in the News tab. Press a headline to read it in a new tab. Headlines refresh when you open the Bridge if the saved ones are over 30 minutes old. If you are offline it shows the last saved ones, or asks you to open the News tab.</li><li>If your device is set to reduce motion, the ticker and list do not scroll, you swipe them instead.</li></ul>"},
-  {h:"Projects: Tasks",html:"<ul><li>The Projects tab (key <kbd>2</kbd>) has two sections at the top: Tasks and Projects. Tasks is the old To-Do list.</li><li>Press the + button in the bottom right, or <kbd>N</kbd>, to open the New Task window. Type a task, choose a priority and an optional due date, then press Add Task or Enter.</li><li>A task can also have a project, tags (separated by commas, with suggestions from tags that a person or task currently has) and tagged people. Pick a person and press Add Person. Click the x on a person to remove them.</li><li>Each task is a small card, and the cards sit side by side across the page, so you see more tasks at once. Each card is only as wide as its text needs. Tick the box on a card to complete the task. Tick it again to reopen it.</li><li><b>Type</b> in the task window marks a task as Work (briefcase icon) or Personal (house icon). It is optional.</li><li><b>Repeat</b> in the task window makes a task come back. Choose Days, Weeks, Months or Years and a number. Weeks lets you tick the days of the week (every 2 weeks on Mon and Thu, for example). Months can repeat on the same day of the month, on the same weekday (the 2nd Tuesday) or on the last matching weekday. When you complete the task, from the list or the Bridge, the next one appears with the next due date. A task that repeats with no due date starts today. If you finish late, the next date skips ahead to today or later so it is not already overdue. Unchecking a finished task removes its unfinished copy. To stop a repeat, edit the task and set Repeat to Does not repeat.</li><li><b>Pause</b> sets a task aside without finishing it. Paused tasks show PAUSED, sort below active tasks and do not appear on the Bridge. Press <b>Resume</b> to put it back in line.</li><li>Edit opens a window with every field. Delete asks for a second click within 3 seconds to confirm.</li><li>Filters: All, Active, Paused or Done, plus Work and Personal (the Type you set on a task). Work and Personal combine with the status filter, so Active plus Work shows only active work tasks. Press the highlighted Work or Personal chip again to clear it. Your choice is remembered on this device. When you pick View Tasks on a project, a Project chip appears. Press it to show every task again. Clear Done removes every finished task after a second click.</li><li>Tasks sort by status (active, paused, done), then priority (high first), then due date. Overdue tasks show in red and tasks due today in amber.</li><li>On the Bridge, press Pause or Complete on a task and the next active task moves up.</li><li>A File taxes task (due April 15, repeats yearly) is added for you automatically once. See Settings, Automatic Tasks.</li></ul>"},
+  {h:"Bridge",html:"<ul><li><b>Weekly Report:</b> press Open Report in the Weekly Report box. It lists the next 7 days of events, tasks due, birthdays and holidays, overdue tasks and the 9 default Now Playing slots (3 games, 3 books, 3 video). Press Print / Save as PDF and pick Save as PDF as the destination to make a file. The sheet is exactly one US Letter page (8.5 by 11 inches), black on white with no colored areas, so it uses little ink. In the print window set Margins to None or Default and Scale to 100 (Default). On a busy week each day lists fewer items with a +N more line, so the text never shrinks. Line styles show the kind of item: solid for events, dashed for tasks (! means high priority), dotted for birthdays and holidays. Extra Now Playing slots are not included.</li><li><b>Market Ticker</b> shows the price of each stock, crypto, precious metal, collectible and other priced item you own in Assets. Prices come from Assets. A price you typed yourself and have not looked up shows a small TYPED mark. After a lookup finds a different price, a green up arrow or red down arrow shows the percent change from the price before that lookup. It stays until the next lookup finds another change. Editing an item clears its change. Each symbol, coin or metal shows once, even if you bought it several times. The row scrolls only when it is too long to fit; hover or touch it to pause. The box is hidden when you own nothing with a price.</li><li><b>Net Worth</b> adds up everything in Assets (vehicles, homes, investments and accounts), subtracts your loans and debts, and shows all three numbers. It is hidden until you add assets or loans.</li><li><b>Now Playing</b> lists every game, book and show in your Playing slots with its percent, and scrolls by itself when there are more than three. It is hidden when no slot is filled.</li><li><b>Breaking News</b> shows the top three headlines for the country chosen in the News tab. Press a headline to read it in a new tab. Headlines refresh when you open the Bridge if the saved ones are over 30 minutes old. If you are offline it shows the last saved ones, or asks you to open the News tab.</li><li>If your device is set to reduce motion, the ticker and list do not scroll, you swipe them instead.</li></ul>"},
+  {h:"Projects: Tasks",html:"<ul><li>The Projects tab (key <kbd>2</kbd>) has three sections at the top: Tasks, Projects and Notes. Tasks is the old To-Do list. Notes holds all your notes (it used to be its own tab).</li><li>Press the + button in the bottom right, or <kbd>N</kbd>, to open the New Task window. Type a task, choose a priority and an optional due date, then press Add Task or Enter.</li><li>A task can also have a project, tags (separated by commas, with suggestions from tags that a person or task currently has) and tagged people. Pick a person and press Add Person. Click the x on a person to remove them.</li><li>Each task is a small card, and the cards sit side by side across the page, so you see more tasks at once. Each card is only as wide as its text needs. Tick the box on a card to complete the task. Tick it again to reopen it.</li><li><b>Type</b> in the task window marks a task as Work (briefcase icon) or Personal (house icon). It is optional.</li><li><b>Repeat</b> in the task window makes a task come back. Choose Days, Weeks, Months or Years and a number. Weeks lets you tick the days of the week (every 2 weeks on Mon and Thu, for example). Months can repeat on the same day of the month, on the same weekday (the 2nd Tuesday) or on the last matching weekday. When you complete the task, from the list or the Bridge, the next one appears with the next due date. A task that repeats with no due date starts today. If you finish late, the next date skips ahead to today or later so it is not already overdue. Unchecking a finished task removes its unfinished copy. To stop a repeat, edit the task and set Repeat to Does not repeat.</li><li><b>Pause</b> sets a task aside without finishing it. Paused tasks show PAUSED, sort below active tasks and do not appear on the Bridge. Press <b>Resume</b> to put it back in line.</li><li>Edit opens a window with every field. Delete asks for a second click within 3 seconds to confirm.</li><li>Filters: All, Active, Paused or Done, plus Work and Personal (the Type you set on a task). Work and Personal combine with the status filter, so Active plus Work shows only active work tasks. Press the highlighted Work or Personal chip again to clear it. Your choice is remembered on this device. When you pick View Tasks on a project, a Project chip appears. Press it to show every task again. Clear Done removes every finished task after a second click.</li><li>Tasks sort by status (active, paused, done), then priority (high first), then due date. Overdue tasks show in red and tasks due today in amber.</li><li>On the Bridge, press Pause or Complete on a task and the next active task moves up.</li><li>A File taxes task (due April 15, repeats yearly) is added for you automatically once. See Settings, Automatic Tasks.</li></ul>"},
   {h:"Projects: Projects",html:"<ul><li>A project groups tasks toward one goal. Switch to the Projects section, then press the + button to open the New Project window.</li><li>A project has a name, an optional deadline, general notes and tagged people.</li><li>The percent complete bar is finished tasks divided by all tasks in the project. Paused tasks count as not finished. A project with no tasks shows 0%.</li><li><b>Add Task</b> opens a new task already in that project. <b>View Tasks</b> shows only that project's tasks. To move an existing task into a project, edit the task and choose the project.</li><li>Projects sort by deadline, with no deadline last. Overdue projects show in red and completed projects in cyan.</li><li>Deleting a project asks for a second click and keeps its tasks, which become project-free.</li></ul>"},
-  {h:"Calendar",html:"<ul><li>Check boxes, number boxes, drop-down lists and the date picker all use the app's dark colors. The date and time pickers are drawn by your browser, so their exact look can vary slightly.</li><li><b>Location:</b> an event can have a place (optional). It appears under the title in the day list, Upcoming and the Bridge. In the day list, Map opens the place in Google Maps in a new tab.</li><li><b>Work and Personal events:</b> add or edit an event and pick a Type. A tagged event shows a briefcase (Work) or house (Personal) icon in the day list, Upcoming and Bridge, and its dot on the month grid is pink for Personal (Work and untagged events keep the usual cyan dot). Below the month grid, All, Work and Personal buttons filter the grid, day list and Upcoming; untagged events only show under All. Birthdays, holidays and tasks due are not filtered. The Bridge Next Events box is not filtered either.</li><li>Use the arrow buttons to change month and Today to jump back to the current day.</li><li>Click any day to select it. The side panel shows that day's events and tasks due.</li><li>To add an event, press the + button or <kbd>N</kbd>. The window starts on the selected day. Change the date if you like, add an optional time and notes, then press Add Event.</li><li>Cyan dots mark events. An amber square marks tasks due that day.</li><li>Edit opens the event window with every field. Delete needs a second click to confirm.</li><li><b>Repeat</b> in the event window makes an event come back: every X days, every X weeks on the days you tick, every X months (same day of the month, same weekday like the 2nd Tuesday, or the last matching weekday) or every X years. A repeating event shows on every matching day, in Upcoming and on the Bridge, and the day list notes how it repeats. Editing or deleting a repeating event changes the whole series. To stop a repeat, edit the event and set Repeat to Does not repeat.</li><li>Upcoming lists events, birthdays and holidays in the next 30 days. Click one to jump to it.</li><li><b>Holidays</b> show as violet markers and in the day list. The Holidays button under the calendar turns them all on or off. Press <b>Hide</b> on a holiday in the day list to stop showing that one. In Settings, Holidays lets you turn off whole groups (US federal, other well-known days, Christian, Jewish, Islamic, Hindu and Sikh, Lunar New Year) or pick individual holidays. Show Every Holiday Again resets your choices. Jewish holidays are shown on the first full day (they begin at sundown the evening before). Islamic, Hindu and Lunar New Year dates come from moon calculations and can differ by a day where you live. On the Bridge, holidays fill empty spots in Next Events after birthdays.</li><li>Tasks due are shown on the calendar, but you complete them in the Projects tab.</li><li>Holidays have icons: a flag for US federal days, special ones for days like Christmas, Halloween, Easter and Diwali, and a symbol for each religious group.</li><li>People birthdays show as green markers and in the day panel with the age. Use the Birthdays button under the calendar to show or hide them.</li></ul>"},
-  {h:"Notes",html:"<ul><li>Press the + button in the bottom right of the Notes tab, or <kbd>N</kbd>, to open the New Note window. Fill in a title, optional tags separated by commas, and the note text, then press Add Note. <kbd>Ctrl</kbd>+<kbd>Enter</kbd> saves from inside the text box.</li><li>Each note in the list has four buttons. <b>Read</b> opens the full text. <b>Edit</b> opens the edit window. <b>Archive</b> moves the note out of the list. <b>Delete</b> asks for a second click within 3 seconds to confirm. Tapping the note itself also opens Read.</li><li>Edit changes are saved only when you press Save Note. Closing the window discards them.</li><li><b>Import</b> reads a .txt, .md, .docx or .pdf file and saves its text as a new plain text note tagged <i>imported</i>. Word files work offline. PDF files load a reader from the internet the first time, so they need a connection. Scanned PDFs that are only pictures have no text to read. Notes are limited to 20,000 characters.</li><li>In the Read window, <b>Copy</b> puts the note (title, tags and text) on your clipboard and <b>Export .txt</b> downloads it as a text file. <b>Export All</b> on the Notes tab downloads every active note in one file.</li><li><b>Search</b> opens a search window. It looks through titles, text and tags. The search shows as a chip next to the button. Press the chip to clear it. <kbd>/</kbd> opens the same window.</li><li>Notes are cards side by side, each only as wide as its text needs.</li><li>Click a tag chip to show only notes with that tag. The newest edited note appears first.</li><li><b>Archive</b> is for notes that are no longer relevant. Archived notes disappear from the list and from search. Open Settings, then Archived Notes, to read them or press Unarchive to bring one back. Backups include archived notes.</li></ul>"},
+  {h:"Calendar",html:"<ul><li><b>Bills:</b> bills from Accounting that have a due date show as an orange diamond on the grid, as a BILL row in the day list (Edit opens the bill) and in Upcoming. The Bills: On / Off chip hides or shows them.</li><li><b>Tasks on a day:</b> tasks due on the chosen day show in the day list beside the calendar with a tick box. Tick it to mark the task complete; it disappears from the calendar, the day list and the Bridge and shows as done in Projects. A repeating task makes its next one, the same as ticking it in Projects.</li><li>Check boxes, number boxes, drop-down lists and the date picker all use the app's dark colors. The date and time pickers are drawn by your browser, so their exact look can vary slightly.</li><li><b>Location:</b> an event can have a place (optional). It appears under the title in the day list, Upcoming and the Bridge. In the day list, Map opens the place in Google Maps in a new tab.</li><li><b>Work and Personal events:</b> add or edit an event and pick a Type. A tagged event shows a briefcase (Work) or house (Personal) icon in the day list, Upcoming and Bridge, and its dot on the month grid is pink for Personal (Work and untagged events keep the usual cyan dot). Below the month grid, All, Work and Personal buttons filter the grid, day list and Upcoming; untagged events only show under All. Birthdays, holidays and tasks due are not filtered. The Bridge Next Events box is not filtered either.</li><li>Use the arrow buttons to change month and Today to jump back to the current day.</li><li>Click any day to select it. The side panel shows that day's events and tasks due.</li><li>To add an event, press the + button or <kbd>N</kbd>. The window starts on the selected day. Change the date if you like, add an optional time and notes, then press Add Event.</li><li>Cyan dots mark events. An amber square marks tasks due that day.</li><li>Edit opens the event window with every field. Delete needs a second click to confirm.</li><li><b>Repeat</b> in the event window makes an event come back: every X days, every X weeks on the days you tick, every X months (same day of the month, same weekday like the 2nd Tuesday, or the last matching weekday) or every X years. A repeating event shows on every matching day, in Upcoming and on the Bridge, and the day list notes how it repeats. Editing or deleting a repeating event changes the whole series. To stop a repeat, edit the event and set Repeat to Does not repeat.</li><li>Upcoming lists events, birthdays and holidays in the next 30 days. Click one to jump to it.</li><li><b>Holidays</b> show as violet markers and in the day list. The Holidays button under the calendar turns them all on or off. Press <b>Hide</b> on a holiday in the day list to stop showing that one. In Settings, Holidays lets you turn off whole groups (US federal, other well-known days, Christian, Jewish, Islamic, Hindu and Sikh, Lunar New Year) or pick individual holidays. Show Every Holiday Again resets your choices. Jewish holidays are shown on the first full day (they begin at sundown the evening before). Islamic, Hindu and Lunar New Year dates come from moon calculations and can differ by a day where you live. On the Bridge, holidays fill empty spots in Next Events after birthdays.</li><li>Tasks due are shown on the calendar, but you complete them in the Projects tab.</li><li>Holidays have icons: a flag for US federal days, special ones for days like Christmas, Halloween, Easter and Diwali, and a symbol for each religious group.</li><li>People birthdays show as green markers and in the day panel with the age. Use the Birthdays button under the calendar to show or hide them.</li></ul>"},
+  {h:"Notes",html:"<ul><li>Notes is the third section of the Projects tab (press Notes at the top of Projects; there is no separate Notes tab any more). Press the + button in the bottom right while Notes is open, or <kbd>N</kbd>, to open the New Note window. Fill in a title, optional tags separated by commas, and the note text, then press Add Note. <kbd>Ctrl</kbd>+<kbd>Enter</kbd> saves from inside the text box.</li><li>Each note in the list has four buttons. <b>Read</b> opens the full text. <b>Edit</b> opens the edit window. <b>Archive</b> moves the note out of the list. <b>Delete</b> asks for a second click within 3 seconds to confirm. Tapping the note itself also opens Read.</li><li>The Read window has Edit, Copy, Export .txt and <b>Delete</b>. Press Delete, then Confirm Delete within 4 seconds, to remove the note and close the window.</li><li>Edit changes are saved only when you press Save Note. Closing the window discards them.</li><li><b>Import</b> reads a .txt, .md, .docx or .pdf file and saves its text as a new plain text note tagged <i>imported</i>. Word files work offline. PDF files load a reader from the internet the first time, so they need a connection. Scanned PDFs that are only pictures have no text to read. Notes are limited to 20,000 characters.</li><li>In the Read window, <b>Copy</b> puts the note (title, tags and text) on your clipboard and <b>Export .txt</b> downloads it as a text file. <b>Export All</b> in Notes downloads every active note in one file.</li><li><b>Search</b> opens a search window. It looks through titles, text and tags. The search shows as a chip next to the button. Press the chip to clear it. To search everything at once, use the magnifying glass at the top or <kbd>/</kbd>.</li><li>Notes are cards side by side, each only as wide as its text needs.</li><li>Click a tag chip to show only notes with that tag. The newest edited note appears first.</li><li><b>Archive</b> is for notes that are no longer relevant. Archived notes disappear from the list and from search. Open Settings, then Archived Notes, to read them or press Unarchive to bring one back. Backups include archived notes.</li></ul>"},
   {h:"Scribe Data",html:"<ul><li>Press <b>Scribe Data</b> on the Bridge to fill in gaps. The Bridge shows how many details are missing across people and tasks.</li><li>It picks a random person or task and asks about one missing detail: a name part, gender, birthday, phone, email, occupation, religion, street address, city, state, zip, a tag, or a relationship to another person. Tasks without a tag are asked for a tag. Notes are never asked. The gender question has two buttons, Male and Female, and one tap saves it.</li><li>Relationship questions only come up for people who are not linked yet. The question reads 'How is (person) related to (person B)?' where person B is the first person who is not linked yet, chosen for you with no list to change it. Type what person B is to the first person (for example brother or boss). Typing Unknown or Co-worker fills in the same label for the other person. The other side fills in for common labels and you can change it. When the person's gender is set it uses it (a brother of a woman becomes sister, a father of a man becomes son). Otherwise it uses Sibling, Child, Spouse and similar. Both people are updated.</li><li>Tap the answer box to type it, then press Save or Enter. Tag answers autofill from tags that a person or task currently has, so old tags and misspellings nothing uses any more are not offered. A person tag question has Interest, Game and Skill buttons: tap one to save the tag with that type, or press Save to save it with no type.</li><li><b>Skip</b> passes on a question for now. Skipped questions return after you reopen the page or press Ask Skipped Again. <b>Never Ask This</b> turns off that whole question type. Turn types back on in Settings under Scribe Data Questions. <b>Done</b> closes the window.</li></ul>"},
-  {h:"People",html:"<ul><li><b>No address prompts:</b> text boxes tell Brave and Chrome not to autofill or offer to save addresses. If your browser still shows a prompt, choose Never or turn off Save and fill addresses in its settings.</li><li><b>Birthdays:</b> pick a month and a day, and type the year only if you know it. With a year, the person list shows their age and the Calendar and Bridge say \"turns N\". Without a year, only the name shows. If the day is not valid for the month (such as Feb 30), it is set to the last day of that month; if you choose only a month or only a day, the birthday is left empty.</li><li>Press the + button in the bottom right, or <kbd>N</kbd>, to add a person. Enter a first name, and optionally a middle name, last name, gender (male or female), birthday (month and day, with the year only if you know it), phone, email, occupation, religion, street address, city, state, zip, tags (separated by commas) and notes. A first or last name is required.</li><li>People are shown as cards side by side, each as wide as its text needs. Every person card has an <b>Edit</b> button. It opens the editor in a window with all of that person's details, tags and relationships. Birthday, gender and the Is this you? choice share one row, and short boxes such as state and zip sit beside the city instead of taking a whole row.</li><li>Tags describe skills, interests or games the person plays. Type a tag and press Enter or Add Tag. Choose Interest (star), Game (controller) or Skill (tools) in the list beside the box to give the tag a type and an icon; leave it on No type for a plain tag. Add an existing tag again with a type to change its type. Tags that a person or task currently has are suggested as you type. Click the x on a tag to remove it.</li><li>Relationships link the person to someone else in your list: choose the person, type how they are related (for example brother or boss) and press Add Link. The other person's card shows it as Listed by, so you only enter a link once. Links are the only way to record how people are related; there is no separate Relationship box. Delete a link with its x.</li><li>In the editor window, press Save Person to save and close it. Closing the window another way (Close, Esc or tapping outside) also saves your changes, as long as a first or last name is filled in. Delete in the editor asks for a second click.</li><li>Search looks through names, occupation, address, tags, links and notes. Sort by name (last name, then first) or next birthday.</li><li>Birthday shows how many days remain. People with a birthday also appear on the Calendar.</li><li>Call and Email links appear when a person has a phone or email saved.</li><li><b>Your entry:</b> the first time you open People, and whenever no entry is marked as you, a window asks you to fill one in. Fill In Now opens the form, That Is Me marks someone already in your list, and Not Now asks again next time. Your entry shows a Me tag and sorts like everyone else. To change which entry is you, open your own entry, set Is this you? to No, then mark the other person. The box is hidden on other people while your entry exists. Only one entry can be you.</li><li>Phone numbers add dashes as you type (555-123-4567). A number with letters or a plus sign is kept exactly as typed.</li><li>Religion is free text. Religions you already entered are suggested as you type.</li><li>Delete asks for a second click to confirm.</li></ul>"},
-  {h:"News",html:"<ul><li>The News tab opens on Breaking News each time you open it. Choose another topic or search after it opens. It asks for up to 10 headlines, drops those tagged sports, health, environment or entertainment, and asks for one more page if fewer than 5 are left. If you still see fewer than 5, the source did not send more, or the request failed (the reason shows above the list).</li><li>Each headline shows a picture preview when the news source has one. If the picture is missing or fails to load, a topic picture is shown instead. The page shows 5 headlines at most. Sports, health, environment and entertainment news are left out everywhere in IntelDeck; a headline tagged with one of those topics is hidden, but a story that is not tagged can still slip through.</li><li>The News tab (key <kbd>9</kbd>) shows headlines from NewsData.io. The tab opens on Breaking News. Pick a country and a topic (Breaking News, All topics or a single topic), or type words to search for and press Enter, then press Refresh to load now.</li><li>Each topic has an icon, such as a siren for Breaking News.</li><li>Each headline opens the full story in a new tab. Under it you see the source, how long ago it was published and a short summary.</li><li>The last articles for each search are saved on this device. If you are offline, or the free daily limit is used up, you see the saved copy and a note saying why.</li><li>Opening the tab reloads headlines only when the saved ones are over 30 minutes old, to save your free allowance. Refresh always loads new ones.</li><li>The NewsData key is in Settings under Live Prices. It is already filled in; replace it if you get a key of your own.</li></ul>"},
-  {h:"Accounting",html:"<ul><li>The boxes on this tab are packed edge to edge in columns with small even gaps, and stack on a narrow screen.</li><li>The Accounting tab (key <kbd>8</kbd>) shows your estimated monthly bills and what you owe. Press the + button in the bottom right and choose Rent, Subscription, Utilities, Food, Gas, Entertainment budget, Credit card, Loan, Other (for any bill not listed) or Other debt (money you owe that is not a card or loan).</li><li>A bill is an amount per month, per year or per week. Yearly and weekly amounts are converted to a monthly estimate (weekly is amount times 52 divided by 12). For food and gas, enter your average.</li><li>A credit card or loan takes a balance, the interest rate (APR) and optionally your monthly payment. The interest shown is balance times rate divided by 12, a rough estimate that ignores how the payment changes the balance during the month. Mortgage interest is not counted in Estimated interest per month. It has its own line, Mortgage interest (tax write-off), per month and per year, for homes with a mortgage and an interest rate.</li><li>Mortgages and vehicle loans from the Assets tab appear here automatically, are counted in the totals, and are edited in Assets.</li><li>The totals at the top: estimated per month (bills plus loan and card payments), per year, total owed and estimated interest per month.</li><li>Edit changes an item. Delete asks for a second click.</li></ul>"},
-  {h:"Assets",html:"<ul><li><b>Assets to Buy</b>: press the + button on the Assets tab, choose <b>To Buy</b>, and type what you want, an estimated price, notes and a link. The Assets to Buy box lists each item and the estimated total. <b>Bought</b> takes the item off the list and opens Add an Asset so you can enter it as a vehicle, home or investment (the name is not filled in for you). Items on this list are not counted in Net Worth, the pie or the Market Ticker.</li><li>The boxes on this tab are packed edge to edge in columns with small even gaps, and stack on a narrow screen.</li><li>The Assets tab (key <kbd>7</kbd>) keeps things you own. Each kind has an icon (car, house, stock chart, gold, vase, coin, bank, palm tree, box). Press the + button in the bottom right and choose Vehicle, Home, an investment type, or Other for anything else you own (type its value yourself; it shows as Other in the pie chart).</li><li>Fill in what you know: name, year, bought date and price, odometer, last oil change, wipers, air filter, tires, brake fluid check, antifreeze check, registration, and loan balance, monthly payment, due day and optional interest rate.</li><li>Each date creates a repeating task in Projects (tagged vehicle), due after a typical gap: oil 6 months, wipers and air filter 12, tires 5 years, brake fluid and antifreeze 2 years, registration 12 months. The gaps are general guesses, not a manufacturer schedule, and ignore mileage.</li><li>A loan creates a Pay loan task on its due day each month. Finishing it lowers the balance by the payment (less interest if you gave a rate). At zero the payments stop.</li><li>When you finish a maintenance task, today becomes the last-done date and a window lets you change the date and add the odometer. The next task is scheduled from that date.</li><li>Edit a vehicle to change anything; its open tasks update to match (a due date you changed by hand is replaced). Delete removes the vehicle and its open tasks.</li><li>Homes: choose Home in the + menu. Enter name, address, bought date and price, current value, last property tax and insurance dates (each creates a yearly task, tagged home) and mortgage balance, payment, due day and optional rate (a monthly Pay mortgage task). Property tax and insurance dates are only a year after the last one you entered; they do not know your real bill dates, so edit the due date if needed.</li><li><b>Investments and accounts:</b> choose Stock, Precious metal, Collectible, Crypto, Bank account or Retirement account in the + menu. Stocks, retirement and crypto take a quantity, the price you paid per unit and a current price you type in (value is quantity times current price). A stock or retirement account can use a plain balance instead. Metals use ounces. Collectibles use what you paid and the current value. Bank accounts take a balance and interest rate. Gain or loss shows when you gave a price paid.</li><li><b>Totals and pie chart:</b> the top of the Assets tab adds up vehicles, homes and every investment (a vehicle or home counts its Current value), subtracts what you owe from loans and cards in Accounting for the net worth line, and draws a pie of each kind's share. The list beside the pie gives the amounts and percentages. Prices are not looked up online yet.</li><li><b>Live prices:</b> press Refresh Prices on the Assets tab. Crypto uses CoinGecko (no key; put the coin name or symbol such as BTC). A stock or retirement account needs a ticker symbol and a number of shares, plus a free Finnhub key from finnhub.io entered in Settings. Metals need a MetalCharts key and an amount in ounces. Prices are in US dollars. Only items with an amount are looked up. If a lookup fails you will see why and your last price is kept. Some sites may not allow lookups from a saved page; if so, type the price yourself.</li><li><b>Look up links:</b> PriceCharting (collectibles), Kelley Blue Book (vehicles) and Check rate (bank accounts) open the website in a new tab. They are not read automatically, so type the value into the item.</li></ul>"},
-  {h:"Entertainment",html:"<ul><li>The Entertainment tab (key <kbd>6</kbd>) keeps everything you play, read and watch in three sections: Playing, Shelved and Completed.</li><li>Playing slots, Shelved items and Completed items are all cards side by side, each only as wide as its text needs. A slot being edited widens to fit its boxes.</li><li>Switch sections with the buttons at the top. Each shows how many items it holds.</li><li>Items move between sections: from Playing to Shelved or Completed, and back to Playing again.</li></ul>"},
+  {h:"People",html:"<ul><li><b>Adding a person:</b> only a first name (or a last name) is needed; every other box is optional and can be filled in later with Edit. The Add Person and Cancel buttons stay at the bottom of the window while you scroll.</li><li><b>See everything about a person:</b> tap a person card to open a window with all their details: gender, birthday and age, phone (tap to call), email (tap to write), occupation, religion, address with a Map link, tags, linked people and notes. Tap a linked person to see their details. Press Edit to change them, or use the Edit button on the card.</li><li><b>No address prompts:</b> text boxes tell Brave and Chrome not to autofill or offer to save addresses. If your browser still shows a prompt, choose Never or turn off Save and fill addresses in its settings.</li><li><b>Birthdays:</b> pick a month and a day, and type the year only if you know it. With a year, the person list shows their age and the Calendar and Bridge say \"turns N\". Without a year, only the name shows. If the day is not valid for the month (such as Feb 30), it is set to the last day of that month; if you choose only a month or only a day, the birthday is left empty.</li><li>Press the + button in the bottom right, or <kbd>N</kbd>, to add a person. Enter a first name, and optionally a middle name, last name, gender (male or female), birthday (month and day, with the year only if you know it), phone, email, occupation, religion, street address, city, state, zip, tags (separated by commas) and notes. A first or last name is required.</li><li>People are shown as cards side by side, each as wide as its text needs. Every person card has an <b>Edit</b> button. It opens the editor in a window with all of that person's details, tags and relationships. Birthday, gender and the Is this you? choice share one row, and short boxes such as state and zip sit beside the city instead of taking a whole row.</li><li>Tags describe skills, interests or games the person plays. Type a tag and press Enter or Add Tag. Choose Interest (star), Game (controller) or Skill (tools) in the list beside the box to give the tag a type and an icon; leave it on No type for a plain tag. Add an existing tag again with a type to change its type. Tags that a person or task currently has are suggested as you type. Click the x on a tag to remove it.</li><li>Relationships link the person to someone else in your list: choose the person, type how they are related (for example brother or boss) and press Add Link. The other person's card shows it as Listed by, so you only enter a link once. Links are the only way to record how people are related; there is no separate Relationship box. Delete a link with its x.</li><li>In the editor window, press Save Person to save and close it. Closing the window another way (Close, Esc or tapping outside) also saves your changes, as long as a first or last name is filled in. Delete in the editor asks for a second click.</li><li>Search looks through names, occupation, address, tags, links and notes. Sort by name (last name, then first) or next birthday.</li><li>Birthday shows how many days remain. People with a birthday also appear on the Calendar.</li><li>Call and Email links appear when a person has a phone or email saved.</li><li><b>Your entry:</b> the first time you open People, and whenever no entry is marked as you, a window asks you to fill one in. Fill In Now opens the form, That Is Me marks someone already in your list, and Not Now asks again next time. Your entry shows a Me tag and sorts like everyone else. To change which entry is you, open your own entry, set Is this you? to No, then mark the other person. The box is hidden on other people while your entry exists. Only one entry can be you.</li><li>Phone numbers add dashes as you type (555-123-4567). A number with letters or a plus sign is kept exactly as typed.</li><li>Religion is free text. Religions you already entered are suggested as you type.</li><li>Delete asks for a second click to confirm.</li></ul>"},
+  {h:"News",html:"<ul><li>The News tab opens on Breaking News each time you open it. Choose another topic or search after it opens. It asks for up to 10 headlines, drops those tagged sports, health, environment or entertainment, and asks for one more page if fewer than 5 are left. If you still see fewer than 5, the source did not send more, or the request failed (the reason shows above the list).</li><li>Each headline shows a picture preview when the news source has one. If the picture is missing or fails to load, a topic picture is shown instead. The page shows 5 headlines at most. Sports, health, environment and entertainment news are left out everywhere in IntelDeck; a headline tagged with one of those topics is hidden, but a story that is not tagged can still slip through.</li><li>The News tab (key <kbd>8</kbd>) shows headlines from NewsData.io. The tab opens on Breaking News. Pick a country and a topic (Breaking News, All topics or a single topic), or type words to search for and press Enter, then press Refresh to load now.</li><li>Each topic has an icon, such as a siren for Breaking News.</li><li>Each headline opens the full story in a new tab. Under it you see the source, how long ago it was published and a short summary.</li><li>The last articles for each search are saved on this device. If you are offline, or the free daily limit is used up, you see the saved copy and a note saying why.</li><li>Opening the tab reloads headlines only when the saved ones are over 30 minutes old, to save your free allowance. Refresh always loads new ones.</li><li>The NewsData key is in Settings under Live Prices. It is already filled in; replace it if you get a key of your own.</li></ul>"},
+  {h:"Accounting",html:"<ul><li><b>Bill due dates:</b> when you add or edit a bill you can give a Next due date. The bill then shows on the Calendar (orange diamond), in Upcoming and in the Weekly Report on that day every month, year or week, depending on How often. A monthly bill due on the 31st shows on the last day of shorter months. The bill card says when it is due.</li><li>The boxes on this tab are packed edge to edge in columns with small even gaps, and stack on a narrow screen.</li><li>The Accounting tab (key <kbd>7</kbd>) shows your estimated monthly bills and what you owe. Press the + button in the bottom right and choose Rent, Subscription, Utilities, Food, Gas, Entertainment budget, Credit card, Loan, Other (for any bill not listed) or Other debt (money you owe that is not a card or loan).</li><li>A bill is an amount per month, per year or per week. Yearly and weekly amounts are converted to a monthly estimate (weekly is amount times 52 divided by 12). For food and gas, enter your average.</li><li>A credit card or loan takes a balance, the interest rate (APR) and optionally your monthly payment. The interest shown is balance times rate divided by 12, a rough estimate that ignores how the payment changes the balance during the month. Mortgage interest is not counted in Estimated interest per month. It has its own line, Mortgage interest (tax write-off), per month and per year, for homes with a mortgage and an interest rate.</li><li>Mortgages and vehicle loans from the Assets tab appear here automatically, are counted in the totals, and are edited in Assets.</li><li>The totals at the top: estimated per month (bills plus loan and card payments), per year, total owed and estimated interest per month.</li><li>Edit changes an item. Delete asks for a second click.</li></ul>"},
+  {h:"Assets",html:"<ul><li><b>Net Worth History:</b> once a day, when you open the deck or the Assets tab, it saves your total assets and what you owe. The Net Worth History box draws your net worth (assets minus what you owe) as a line. Choose 1M, 3M, 1Y or All for the time range. Move over the line (or touch it) to see the date and amounts, and press Show as a table for the numbers. The line appears after two different days are saved. History is kept in backups and in your account.</li><li><b>Several buys of the same thing:</b> when you add the same stock, crypto or retirement symbol (or the same metal) more than once, for example because you bought at different prices, they show as one card. It gives the total amount, the average price you paid, the current price, the total value and the gain or loss. Press <b>Each buy</b> to see every purchase with its own gain or loss and its own Edit and Delete buttons. To add another buy, press + and add it with the same symbol. Bank accounts, collectibles and other items are never combined. Items without an amount (a plain balance) are not combined either.</li><li><b>Assets to Buy</b>: press the + button on the Assets tab, choose <b>To Buy</b>, and type what you want, an estimated price, notes and a link. The Assets to Buy box lists each item and the estimated total. <b>Bought</b> takes the item off the list and opens Add an Asset so you can enter it as a vehicle, home or investment (the name is not filled in for you). Items on this list are not counted in Net Worth, the pie or the Market Ticker.</li><li>The boxes on this tab are packed edge to edge in columns with small even gaps, and stack on a narrow screen.</li><li>The Assets tab (key <kbd>6</kbd>) keeps things you own. Each kind has an icon (car, house, stock chart, gold, vase, coin, bank, palm tree, box). Press the + button in the bottom right and choose Vehicle, Home, an investment type, or Other for anything else you own (type its value yourself; it shows as Other in the pie chart).</li><li>Fill in what you know: name, year, bought date and price, odometer, last oil change, wipers, air filter, tires, brake fluid check, antifreeze check, registration, and loan balance, monthly payment, due day and optional interest rate.</li><li>Each date creates a repeating task in Projects (tagged vehicle), due after a typical gap: oil 6 months, wipers and air filter 12, tires 5 years, brake fluid and antifreeze 2 years, registration 12 months. The gaps are general guesses, not a manufacturer schedule, and ignore mileage.</li><li>A loan creates a Pay loan task on its due day each month. Finishing it lowers the balance by the payment (less interest if you gave a rate). At zero the payments stop.</li><li>When you finish a maintenance task, today becomes the last-done date and a window lets you change the date and add the odometer. The next task is scheduled from that date.</li><li>Edit a vehicle to change anything; its open tasks update to match (a due date you changed by hand is replaced). Delete removes the vehicle and its open tasks.</li><li>Homes: choose Home in the + menu. Enter name, address, bought date and price, current value, last property tax and insurance dates (each creates a yearly task, tagged home) and mortgage balance, payment, due day and optional rate (a monthly Pay mortgage task). Property tax and insurance dates are only a year after the last one you entered; they do not know your real bill dates, so edit the due date if needed.</li><li><b>Investments and accounts:</b> choose Stock, Precious metal, Collectible, Crypto, Bank account or Retirement account in the + menu. Stocks, retirement and crypto take a quantity, the price you paid per unit and a current price you type in (value is quantity times current price). A stock or retirement account can use a plain balance instead. Metals use ounces. Collectibles use what you paid and the current value. Bank accounts take a balance and interest rate. Gain or loss shows when you gave a price paid.</li><li><b>Totals and pie chart:</b> the top of the Assets tab adds up vehicles, homes and every investment (a vehicle or home counts its Current value), subtracts what you owe from loans and cards in Accounting for the net worth line, and draws a pie of each kind's share. The list beside the pie gives the amounts and percentages. Prices are not looked up online yet.</li><li><b>Live prices:</b> press Refresh Prices on the Assets tab. Crypto uses CoinGecko (no key; put the coin name or symbol such as BTC). A stock or retirement account needs a ticker symbol and a number of shares, plus a free Finnhub key from finnhub.io entered in Settings. Use Test Finnhub Key in Settings, Live Prices to check it. Key rejected means the key is wrong or was replaced: get a new one with Get a Free Key and paste it in. The free Finnhub plan only prices US stocks; funds and non-US symbols are listed as having no price, and you can type their price yourself. Metals need a MetalCharts key and an amount in ounces. Prices are in US dollars. Only items with an amount are looked up. If a lookup fails you will see why and your last price is kept. Some sites may not allow lookups from a saved page; if so, type the price yourself.</li><li><b>Look up links:</b> PriceCharting (collectibles), Kelley Blue Book (vehicles) and Check rate (bank accounts) open the website in a new tab. They are not read automatically, so type the value into the item.</li></ul>"},
+  {h:"Entertainment",html:"<ul><li><b>Layout:</b> cards are small and tight. On Playing, Games, Books and Video sit side by side in three columns (stacked on a phone). On Shelved and Completed, when All is chosen, items are grouped under Games, Books and Video headings with a count.</li><li>The Entertainment tab (key <kbd>5</kbd>) keeps everything you play, read and watch in three sections: Playing, Shelved and Completed.</li><li>Playing slots, Shelved items and Completed items are all cards side by side, each only as wide as its text needs. A slot being edited widens to fit its boxes.</li><li>Switch sections with the buttons at the top. Each shows how many items it holds.</li><li>Items move between sections: from Playing to Shelved or Completed, and back to Playing again.</li></ul>"},
   {h:"Entertainment: Playing",html:"<ul><li>Games show a system icon beside the Detail (for example a P for PlayStation, an X for Xbox, a mushroom for Nintendo, a computer for Steam or PC, a handheld for Steam Deck). It is picked from the words you type in Detail, so type the system there. If it is not recognized you get a controller, computer or handheld icon for that slot.</li><li>The Bridge Now Playing box scrolls by itself when two or more items are playing. Each row has an icon for games, books or video, and games also show their system. Hover over the box to pause it.</li><li>Each item has a small picture beside its title, here and in Shelved and Completed. By default it is a pixel icon drawn from the title. In Settings, Entertainment Pictures lets you turn pictures off or use Wikipedia thumbnails instead (see Settings).</li><li>Slots track what you are into right now. There are three per group by default. Games: console, computer, handheld. Books: fiction, non-fiction, comics or manga. Video: movie, TV show, cartoon or anime. Settings, under Display, lets you show up to nine per group. Extra slots are named Game 4, Book 4 and so on. A slot that holds an item always stays visible.</li><li>Press Set on an empty slot, or Update on a filled one. Fill in the title and, optionally, a detail such as the platform, author or episode.</li><li><b>Complete</b> moves the item to Completed. <b>Shelve</b> moves it to Shelved to try again later. Both free the slot. <b>Clear</b> deletes the item permanently after a second click.</li><li>Press Enter to save while editing or Esc to cancel. Leaving the tab while editing discards unsaved changes.</li></ul>"},
   {h:"Entertainment: Shelved",html:"<ul><li>Shelved keeps things you set aside so you can try them again.</li><li>Shelve an item from Playing, or add one directly with the + button in the bottom right (or <kbd>N</kbd>) while you are on Shelved: choose a type, enter a title, and optionally a detail and a note, then press Add to Shelved.</li><li><b>Try Again</b> moves the item back into its Playing slot. The slot must be empty. If it is in use, shelve or complete the current item first.</li><li>Search the list, or filter by Games, Books or Video. Delete removes an item permanently after a second click.</li></ul>"},
   {h:"Entertainment: Completed",html:"<ul><li>Completed is your record of finished games, books and shows.</li><li>Complete an item from Playing, or add one directly with the + button in the bottom right (or <kbd>N</kbd>) while you are on Completed. Set the Completed on date to log something you finished earlier. It defaults to today.</li><li>Optional: turn on Track Wallpaper made and Card made in Settings under Completed Media. It starts off. When on, each item gets two checkboxes, the top shows totals, and extra filters appear for No wallpaper and No card.</li><li>Filters: All, Games, Books and Video. Search looks through title, detail and notes.</li><li><b>Play Again</b> moves an item back into its Playing slot at 0%. The slot must be empty. Delete removes an item permanently after a second click.</li></ul>"},
   {h:"Sound",html:"<ul><li>Open the Settings tab to mute or unmute, set the volume and test the sound. Press <kbd>M</kbd> to mute or unmute from any tab.</li><li>Sounds are generated live by your browser. No audio files are loaded.</li><li>Browsers only allow audio after you interact with the page, so sound begins when you press Initialize Systems.</li><li>Your sound settings are remembered.</li></ul>"},
-  {h:"Settings",html:"<ul><li>Each box in Settings is a button. Press a button to open that box in a window; press Close, Escape or tap outside to come back. Changes you make there save as before. Opening Help, Updates or Choose What To Keep from inside a box replaces that window. The Account, Sound and Help and Updates buttons show a short status line.</li><li>The Settings tab (key <kbd>0</kbd>) holds Account, Intel, Scribe Data Questions, Holidays, Color Theme, Sound, Help and Updates, Entertainment Pictures, Automatic Tasks, Completed Media, Archived Notes, Display, Support, Backup, Restore, Storage and Erase All Data.</li><li>Entertainment Pictures: None, Pixel icons, or Wikipedia thumbnails. Thumbnails need an internet connection, send only the title (plus a word like book or video game) to Wikipedia, are saved on your device, and may pick the wrong page for vague titles. Clear Saved Thumbnails throws the saved ones away so they are looked up again.</li><li>Automatic Tasks: the deck adds a File taxes task once, due April 15, repeating every year. Delete or edit it like any task. The checkbox only controls whether it is added in future.</li><li>Drop-down choices open as an in-app list in the deck's style. Typing suggestions (tags, religion) also show in-app. Date, time and color choosers are the browser's own.</li><li>The Help and Updates buttons are here. You can also press <kbd>H</kbd> for Help and <kbd>U</kbd> for Updates from any tab.</li><li>Sound has an on and off button, a Test Sound button and a volume slider. Your choices are remembered.</li><li><b>Completed Media</b> has one switch, Track Wallpaper made and Card made. It starts off. When on, Completed items show two checkboxes plus totals and No wallpaper and No card filters.</li><li><b>Archived Notes</b> lists notes you archived. Press Read to view one or Unarchive to move it back to the Notes tab.</li><li><b>Color Theme</b> sets the accent color. Tap a preset or choose a custom color. It is remembered and saved in backups. Back to Cyan restores the original.</li><li><b>Holidays</b> has a switch for showing holidays, a tick box for each group and a list of every holiday to switch off individually.</li><li><b>Intel</b> shows how many details you have collected and a pixel brain. It lights up more as your intel and your save size grow.</li><li><b>Scribe Data Questions</b> has a tick box for each question type. Untick one to stop Scribe Data asking it.</li><li><b>Display</b> has three look controls. UI size (70% to 150%) scales the whole deck, so a larger number makes everything bigger and fewer things fit on screen. Text size (70% to 160%) changes the lettering only. UI opacity (30% to 100%) makes panels, tabs and windows more see-through. Windows stay at least half solid so they are readable. Use the - and + buttons to change size in steps of 10, and Reset Look to go back to 100%. These are remembered on this device and saved in backups. Display also sets how many next tasks and next events the Bridge shows (1 to 10, default 3) and how many Games, Books and Video slots Entertainment shows (1 to 9, default 3).</li><li><b>Support</b> says who made IntelDeck and has a link to the Patreon page.</li><li>Speed: the moving star background pauses while you scroll or type and while a window is open, so lists stay smooth. If the deck still feels slow on an old device, turn on reduced motion in your device settings to slow the stars further.</li></ul>"},
+  {h:"Settings",html:"<ul><li><b>Working offline:</b> once the page is open, everything works without internet: your data is saved on this device, and an OFFLINE mark shows at the top while the connection is gone. Live prices, News and Wikipedia pictures wait for the connection, and account changes upload when you are back online. To open the app with no internet at all, press <b>Save Offline Copy</b> in Settings, Backup while online. It downloads the whole app as one file (ians-website-offline.html) that opens from your device. The copy keeps its own data; sign in to your account in it to get the same data when you are online again. Save a new copy after updates.</li><li><b>Backup reminder:</b> when your last backup file is more than 30 days old (or 30 days after you first use the deck without one), a window offers Download Backup Now, Remind Me in 7 Days or Stop Reminding Me. It only appears when you have something saved. The tick box in Settings, Backup turns it back on or off.</li><li>Each box in Settings is a button. Press a button to open that box in a window; press the X in the top right corner, Escape or tap outside to come back. Changes you make there save as before. Opening Help, Updates or Choose What To Keep from inside a box replaces that window. The Account, Sound and Help and Updates buttons show a short status line.</li><li>The Settings tab (key <kbd>0</kbd>) holds Account, Intel, Scribe Data Questions, Holidays, Color Theme, Sound, Help and Updates, Entertainment Pictures, Automatic Tasks, Completed Media, Archived Notes, Display, Support, Backup, Restore, Storage and Erase All Data.</li><li>Entertainment Pictures: None, Pixel icons, or Wikipedia thumbnails. Thumbnails need an internet connection, send only the title (plus a word like book or video game) to Wikipedia, are saved on your device, and may pick the wrong page for vague titles. Clear Saved Thumbnails throws the saved ones away so they are looked up again.</li><li>Automatic Tasks: the deck adds a File taxes task once, due April 15, repeating every year. Delete or edit it like any task. The checkbox only controls whether it is added in future.</li><li>Drop-down choices open as an in-app list in the deck's style. Typing suggestions (tags, religion) also show in-app. Date, time and color choosers are the browser's own.</li><li>The Help and Updates buttons are here. You can also press <kbd>H</kbd> for Help and <kbd>U</kbd> for Updates from any tab.</li><li>Sound has an on and off button, a Test Sound button and a volume slider. Your choices are remembered.</li><li><b>Completed Media</b> has one switch, Track Wallpaper made and Card made. It starts off. When on, Completed items show two checkboxes plus totals and No wallpaper and No card filters.</li><li><b>Archived Notes</b> lists notes you archived. Press Read to view one or Unarchive to move it back to Notes in the Projects tab.</li><li><b>Color Theme</b> sets the accent color. Tap a preset or choose a custom color. It is remembered and saved in backups. Back to Cyan restores the original.</li><li><b>Holidays</b> has a switch for showing holidays, a tick box for each group and a list of every holiday to switch off individually.</li><li><b>Intel</b> shows how many details you have collected and a pixel brain. It lights up more as your intel and your save size grow.</li><li><b>Scribe Data Questions</b> has a tick box for each question type. Untick one to stop Scribe Data asking it.</li><li><b>Display</b> has three look controls. UI size (70% to 150%) scales the whole deck, so a larger number makes everything bigger and fewer things fit on screen. Text size (70% to 160%) changes the lettering only. UI opacity (30% to 100%) makes panels, tabs and windows more see-through. Windows stay at least half solid so they are readable. Use the - and + buttons to change size in steps of 10, and Reset Look to go back to 100%. These are remembered on this device and saved in backups. Display also sets how many next tasks and next events the Bridge shows (1 to 10, default 3) and how many Games, Books and Video slots Entertainment shows (1 to 9, default 3).</li><li><b>Support</b> says who made IntelDeck and has a link to the Patreon page.</li><li>Speed: the moving star background pauses while you scroll or type and while a window is open, so lists stay smooth. If the deck still feels slow on an old device, turn on reduced motion in your device settings to slow the stars further.</li></ul>"},
   {h:"Data and backups",html:"<ul><li>The Settings tab protects your information. Everything lives in this browser only, so make a backup now and then.</li><li><b>Export File</b> downloads everything as a .json backup. <b>Copy Backup</b> copies the same text if downloads are blocked.</li><li><b>Restore</b>: choose a backup file or paste backup text, press Check Backup to see a summary, then press Replace My Data and confirm with a second click. This replaces everything currently saved.</li><li><b>Erase All Data</b> deletes everything. Type ERASE to enable the button.</li><li>The Settings tab shows when you last made a backup.</li><li>Export before clearing browser data, moving the file or switching browsers.</li></ul>"},
   {h:"Saving your data",html:"<ul><li>Changes save automatically in this browser as soon as you make them.</li><li>A different browser or device starts empty until you restore a backup there.</li><li>Clearing browser data or using a private window can erase your data.</li><li>The opening screen is for show: its Server Status and API Connection lines are wording only and do not check anything. Press Initialize to enter. If saving is blocked in your browser, a red warning bar appears at the top once you are in, and Settings, Storage shows Blocked.</li><li>Open index.html from the same place each time. Some browsers may keep separate storage for each file location, so a copy opened from another folder can look empty. Export from the old copy and restore into the new one.</li></ul>"},
   {h:"If your data does not save",html:"<ul><li>A red bar at the top means the browser is blocking saving. This can happen in preview windows, private windows or when the page is opened inside another app.</li><li>Fix: save the file and open index.html directly in a normal browser window, for example by double-clicking it.</li><li>While saving is blocked, everything you enter is lost when the page reloads or closes. Use Export File or Copy Backup on the Settings tab to keep your work.</li></ul>"},
-  {h:"Keyboard shortcuts",html:"<ul><li><kbd>1</kbd> to <kbd>9</kbd>, <kbd>0</kbd>: switch tab (0 is Settings)</li><li><kbd>N</kbd>: open the New Task, New Project, New Event or New Person window, open the New Note window, or open the Add to Shelved or Add to Completed window in Entertainment</li><li><kbd>/</kbd>: open the Notes search window, or search People</li><li><kbd>H</kbd>: open Help</li><li><kbd>U</kbd>: open Updates</li><li><kbd>M</kbd>: mute or unmute</li><li><kbd>Ctrl</kbd>+<kbd>Enter</kbd>: save the note in the New Note or Edit Note window</li><li><kbd>Esc</kbd>: close a window or cancel an edit</li></ul><p>Shortcuts are ignored while you are typing in a field.</p>"},
+  {h:"Keyboard shortcuts",html:"<ul><li><kbd>1</kbd> to <kbd>9</kbd>, <kbd>0</kbd>: switch tab (1 Bridge, 2 Projects, 3 Calendar, 4 People, 5 Entertainment, 6 Assets, 7 Accounting, 8 News, 9 and 0 Settings)</li><li><kbd>N</kbd>: open the New Task, New Project, New Event or New Person window, open the New Note window, or open the Add to Shelved or Add to Completed window in Entertainment</li><li><kbd>/</kbd>: open Search Everything</li><li><kbd>H</kbd>: open Help</li><li><kbd>U</kbd>: open Updates</li><li><kbd>M</kbd>: mute or unmute</li><li><kbd>Ctrl</kbd>+<kbd>Enter</kbd>: save the note in the New Note or Edit Note window</li><li><kbd>Esc</kbd>: close a window or cancel an edit</li></ul><p>Shortcuts are ignored while you are typing in a field.</p>"},
   {h:"Version and updates",html:"<p>The current version and build time are in the Settings tab. The Updates button lists every change, newest first.</p>"}
 ];
 
@@ -1358,6 +1489,7 @@ const Data={
   bills:loadList("bills"),
   invest:loadList("invest"),
   tobuy:loadList("tobuy"),
+  nwhist:cleanHist(Store.get("nwhist",[])),
   debts:loadList("debts"),
   save(key){
     const ok=Store.set(key,this[key]);
@@ -1862,8 +1994,8 @@ function renderProjects(){
 function renderProjNav(){
   const nav=$("projNav");
   if(!nav)return;
-  const c={tasks:Data.todos.length,projects:Data.projects.length};
-  nav.innerHTML=[["tasks","Tasks"],["projects","Projects"]].map(x=>'<button type="button" class="chip'+(TodoUI.sub===x[0]?" active":"")+'" data-sub="'+x[0]+'">'+x[1]+" <span>"+c[x[0]]+"</span></button>").join("");
+  const c={tasks:Data.todos.length,projects:Data.projects.length,notes:Data.notes.filter(n=>!n.archived).length};
+  nav.innerHTML=[["tasks","Tasks"],["projects","Projects"],["notes","Notes"]].map(x=>'<button type="button" class="chip'+(TodoUI.sub===x[0]?" active":"")+'" data-sub="'+x[0]+'">'+x[1]+" <span>"+c[x[0]]+"</span></button>").join("");
 }
 
 function refreshProjectsView(){
@@ -1874,11 +2006,13 @@ function refreshProjectsView(){
 }
 
 function showProjSub(name){
-  if(name!=="projects")name="tasks";
+  if(name!=="projects"&&name!=="notes")name="tasks";
   TodoUI.sub=name;
   Store.set("projSub",name);
   $("taskPane").classList.toggle("active",name==="tasks");
   $("projPane").classList.toggle("active",name==="projects");
+  $("view-notes").classList.toggle("active",name==="notes");
+  if(name==="notes")renderNoteList();
   renderProjNav();
   if(currentTab==="todo")setFab("todo");
 }
@@ -1887,7 +2021,9 @@ function buildTodo(){
   $("view-todo").innerHTML=
     '<div class="toolbar subnav" id="projNav"></div>'+
     '<div class="sub" id="taskPane"><div class="panel"><h2>Task List</h2><div class="toolbar" id="todoBar"></div><div class="pgrid" id="todoList"></div></div></div>'+
-    '<div class="sub" id="projPane"><div class="panel"><h2>Projects <span id="projCount" style="color:var(--dim);letter-spacing:.1em"></span></h2><div class="pgrid" id="projList"></div></div></div>';
+    '<div class="sub" id="projPane"><div class="panel"><h2>Projects <span id="projCount" style="color:var(--dim);letter-spacing:.1em"></span></h2><div class="pgrid" id="projList"></div></div></div>'+
+    '<div class="sub" id="view-notes"></div>';
+  buildNotes();
 
   $("projNav").addEventListener("click",e=>{
     const b=e.target.closest("[data-sub]");
@@ -2016,6 +2152,7 @@ const evTag=e=>e&&(e.kind==="work"||e.kind==="personal")?'<span class="ic" aria-
 })();
 CalUI.bday=Store.get("showBirthdays",true)!==false;
 CalUI.hol=Store.get("showHolidays",true)!==false;
+CalUI.bills=Store.get("showBills",true)!==false;
 
 function mapUrl(q){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q)}
 
@@ -2035,8 +2172,9 @@ function renderDay(){
   const tds=Data.todos.filter(t=>!t.done&&t.due===s);
   let html="";
   evs.forEach(e=>{html+=evRow(e)});
-  tds.forEach(t=>{html+='<div class="evrow task"><span class="tm">TASK</span><span class="tx">'+esc(t.text)+"</span></div>"});
+  tds.forEach(t=>{html+='<div class="evrow task"><input type="checkbox" data-tdone="'+esc(t.id)+'" aria-label="Mark task complete"><span class="tm">TASK</span><span class="tx">'+esc(t.text)+"</span></div>"});
   if(CalUI.bday)bdayList(s).forEach(p=>{html+='<div class="evrow bday"><span class="tm">BDAY</span><span class="tx">'+esc(bdayText(p,s))+"</span></div>"});
+  billsOn(s).forEach(b=>{html+='<div class="evrow bill"><span class="tm">BILL</span><span class="tx">'+esc(billName(b))+" <small>"+esc(moneyText(b.amount))+(b.per==="month"?"":" "+b.per+"ly")+'</small></span><button type="button" class="btn mini" data-billgo="'+esc(b.id)+'">Edit</button></div>'});
   holidaysOn(s).forEach(h=>{html+='<div class="evrow hol"><span class="tm">HOLIDAY</span><span class="tx">'+esc(holIcon(h)+" "+h.name)+"</span>"+'<button type="button" class="btn mini" data-hhide="'+esc(h.id)+'">Hide</button></div>'});
   $("dayList").innerHTML=html||'<p class="empty">Nothing scheduled for this day.</p>';
 }
@@ -2044,7 +2182,7 @@ function renderDay(){
 function renderUpcoming(){
   const ups=upcomingItems(8);
   $("upList").innerHTML=ups.length?ups.map(e=>
-    '<button type="button" class="up'+(e.kind==="b"?" b":e.kind==="h"?" h":"")+'" data-date="'+esc(e.date)+'"><span class="d">'+esc(fmtDate(e.date))+'</span><span class="tm">'+(e.time?esc(fmtTime(e.time)):(e.kind==="b"?"Birthday":e.kind==="h"?"Holiday":"All day"))+'</span><span class="tx">'+evTag({kind:e.tag})+esc(e.title)+(e.loc?"<small>\ud83d\udccd "+esc(e.loc)+"</small>":"")+"</span></button>"
+    '<button type="button" class="up'+(e.kind==="b"?" b":e.kind==="h"?" h":e.kind==="l"?" l":"")+'" data-date="'+esc(e.date)+'"><span class="d">'+esc(fmtDate(e.date))+'</span><span class="tm">'+(e.time?esc(fmtTime(e.time)):(e.kind==="b"?"Birthday":e.kind==="h"?"Holiday":e.kind==="l"?"Bill":"All day"))+'</span><span class="tx">'+evTag({kind:e.tag})+esc(e.title)+(e.loc?"<small>\ud83d\udccd "+esc(e.loc)+"</small>":"")+"</span></button>"
   ).join(""):'<p class="empty">Nothing coming up in the next 30 days.</p>';
 }
 
@@ -2057,6 +2195,8 @@ function renderCalendar(){
   $("calBday").classList.toggle("active",CalUI.bday);
   $("calHol").textContent="Holidays: "+(CalUI.hol?"On":"Off");
   $("calHol").classList.toggle("active",CalUI.hol);
+  $("calBill").textContent="Bills: "+(CalUI.bills?"On":"Off");
+  $("calBill").classList.toggle("active",CalUI.bills);
   const tdBy={};
   const gridStart=new Date(y,m,1-new Date(y,m,1).getDay());
   const evBy=eventsByDate(ymd(gridStart),ymd(new Date(gridStart.getFullYear(),gridStart.getMonth(),gridStart.getDate()+41)));
@@ -2073,6 +2213,7 @@ function renderCalendar(){
     const td=tdBy[s]||[];
     const bd=CalUI.bday?bdayList(s):[];
     const hl=holidaysOn(s);
+    const bl=billsOn(s);
     const cls="cal-day"+(d.getMonth()!==m?" out":"")+(s===today?" today":"")+(s===CalUI.sel?" sel":"");
     let dots="";
     ev.slice(0,3).forEach(x=>{dots+='<i class="dot'+(x.kind==="work"?" kw":x.kind==="personal"?" kp":"")+'"></i>'});
@@ -2080,7 +2221,8 @@ function renderCalendar(){
     if(td.length)dots+='<i class="dot t"></i>';
     if(bd.length)dots+='<i class="dot b"></i>';
     if(hl.length)dots+='<i class="dot h"></i>';
-    const label=fmtLong(s)+": "+ev.length+" events, "+td.length+" tasks due"+(bd.length?", "+bd.length+" birthdays":"")+(hl.length?", "+hl.map(h=>h.name).join(", "):"");
+    if(bl.length)dots+='<i class="dot l"></i>';
+    const label=fmtLong(s)+": "+ev.length+" events, "+td.length+" tasks due"+(bd.length?", "+bd.length+" birthdays":"")+(bl.length?", "+bl.length+" bills":"")+(hl.length?", "+hl.map(h=>h.name).join(", "):"");
     html+='<button type="button" class="'+cls+'" data-date="'+s+'" aria-label="'+esc(label)+'"><span class="n">'+d.getDate()+'</span><span class="dots">'+dots+"</span></button>";
   }
   $("calGrid").innerHTML=html;
@@ -2106,7 +2248,7 @@ function buildCalendar(){
     '<button type="button" class="btn mini" id="calNext" aria-label="Next month">&gt;</button>'+
     '<button type="button" class="btn mini amber" id="calToday">Today</button></div>'+
     '<div class="cal-grid" id="calGrid"></div>'+
-    '<div class="legend"><span><i class="dot"></i>Event</span><span><i class="dot t"></i>Task due</span><span><i class="dot b"></i>Birthday</span><span><i class="dot h"></i>Holiday</span><button type="button" class="chip" id="calBday"></button><button type="button" class="chip" id="calHol"></button></div>'+
+    '<div class="legend"><span><i class="dot"></i>Event</span><span><i class="dot t"></i>Task due</span><span><i class="dot b"></i>Birthday</span><span><i class="dot h"></i>Holiday</span><span><i class="dot l"></i>Bill</span><button type="button" class="chip" id="calBday"></button><button type="button" class="chip" id="calHol"></button><button type="button" class="chip" id="calBill"></button></div>'+
     '<div class="legend" id="calKinds"></div></div>'+
     "<div>"+
     '<div class="panel"><h2 id="dayTitle"></h2><div id="dayList"></div>'+
@@ -2142,12 +2284,31 @@ function buildCalendar(){
     renderCalendar();
   });
   $("dayList").addEventListener("click",e=>{
+    const bg=e.target.closest("[data-billgo]");
+    if(bg){Sound.play("click");openPopup("billedit",bg.dataset.billgo);return}
+    const tk=e.target.closest("[data-tdone]");
+    if(tk){
+      const t=Data.todos.find(x=>x.id===tk.dataset.tdone);
+      if(!t)return;
+      setTaskDone(t,true);
+      Data.save("todos");
+      Sound.play("complete");
+      renderCalendar();
+      if($("view-todo")&&$("view-todo").innerHTML)refreshProjectsView();
+      return;
+    }
     const b=e.target.closest("[data-hhide]");
     if(!b)return;
     Hol.off[b.dataset.hhide]=true;
     saveHolPrefs();
     syncHolOpts();
     Sound.play("close");
+    renderCalendar();
+  });
+  $("calBill").addEventListener("click",()=>{
+    CalUI.bills=!CalUI.bills;
+    Store.set("showBills",CalUI.bills);
+    Sound.play("click");
     renderCalendar();
   });
   $("calBday").addEventListener("click",()=>{
@@ -2241,19 +2402,20 @@ function wrData(){
     todoSorted(active.filter(t=>t.due===s)).forEach(t=>items.push({k:"t",time:"Due",tx:t.text,pri:["high","med","low"].indexOf(t.priority)>=0?t.priority:"med"}));
     bdayList(s).forEach(p=>items.push({k:"b",time:"Birthday",tx:bdayText(p,s).replace(/ birthday/,"")}));
     holidaysOn(s).forEach(h=>items.push({k:"h",time:"Holiday",tx:h.name}));
+    billsOn(s).forEach(b=>items.push({k:"h",time:"Bill",tx:billName(b)+" "+moneyText(b.amount)}));
     return {s:s,items:items};
   });
   return {today:today,days:days,rows:rows,over:over};
 }
 
-function wrHtml(){
+function wrHtml(capMax){
   const d=wrData();
   const a=wrDay(d.days[0]),b=wrDay(d.days[6]);
   const yr=d.days[6].slice(0,4);
   const nEv=d.rows.reduce((x,r)=>x+r.items.filter(i=>i.k==="e").length,0);
   const nTk=d.rows.reduce((x,r)=>x+r.items.filter(i=>i.k==="t").length,0);
   const total=d.rows.reduce((x,r)=>x+r.items.length,0)+Math.min(d.over.length,6);
-  const cap=total>26?3:total>18?4:6;
+  const cap=Math.min(capMax||6,total>26?3:total>18?4:6);
   const dayHtml=d.rows.map((r,i)=>{
     const w=wrDay(r.s);
     const evs=r.items.filter(x=>x.k==="e");
@@ -2279,25 +2441,29 @@ function wrHtml(){
   }).join("");
   const gen=new Date();
   const genTxt=MON3[gen.getMonth()]+" "+gen.getDate()+", "+gen.getFullYear()+" "+fmtTime(("0"+gen.getHours()).slice(-2)+":"+("0"+gen.getMinutes()).slice(-2));
-  return '<div class="wr-tools"><button type="button" class="btn" data-wr="print">Print / Save as PDF</button><span>In the print window, choose Save as PDF as the destination.</span></div>'+
+  return '<div class="wr-tools"><button type="button" class="btn" data-wr="print">Print / Save as PDF</button><span>US Letter, 8.5 x 11 in. In the print window choose Save as PDF or your printer, Margins: None or Default, Scale: 100.</span></div>'+
     '<div class="wr-scroll"><div class="wr" id="wrSheet"><div class="wr-head"><div><div class="wr-brand">IntelDeck</div><h1>Weekly Report</h1><div class="wr-range">'+a.wd+" "+a.md+" – "+b.wd+" "+b.md+", "+yr+'</div></div>'+
     '<div class="wr-stats"><div><b>'+nEv+"</b><span>Events</span></div><div><b>"+nTk+"</b><span>Tasks due</span></div><div class=\"o\"><b>"+d.over.length+"</b><span>Overdue</span></div></div></div>"+
-    '<div class="wr-body"><div class="wr-main"><h3>Next 7 days</h3>'+dayHtml+'</div><div class="wr-side"><h3>Overdue</h3>'+overHtml+'<h3>Now Playing</h3>'+play+"</div></div>"+
+    '<div class="wr-body"><div class="wr-main"><h3>Next 7 days</h3>'+dayHtml+'</div><div class="wr-side"><h3>Overdue</h3>'+overHtml+'<h3>Now Playing</h3>'+play+'<div class="wr-key">Solid line: event · Dashed: task (! high priority) · Dotted: birthday or holiday</div></div></div>'+
     '<div class="wr-foot"><span>Generated '+esc(genTxt)+"</span><span>IntelDeck v"+VERSION+"</span></div></div></div>";
 }
 
+function wrFits(){
+  const b=document.querySelector("#wrSheet .wr-body");
+  if(!b)return true;
+  const cols=b.children;
+  for(let i=0;i<cols.length;i++)if(cols[i].scrollHeight>b.clientHeight+1)return false;
+  return true;
+}
+
 function openWeekly(){
-  openModal("Weekly Report",wrHtml());
+  openModal("Weekly Report",wrHtml(6));
   $("modalWrap").classList.add("wide");
+  for(let c=5;c>=1&&!wrFits();c--)$("modalBody").innerHTML=wrHtml(c);
 }
 
 function printWeekly(){
-  const el=$("wrSheet");
-  if(!el)return;
-  el.style.setProperty("--wrz","1");
-  const h=el.offsetHeight;
-  const max=Math.floor(10.15*96);
-  el.style.setProperty("--wrz",h>max?String(Math.max(.5,max/h)):"1");
+  if(!$("wrSheet"))return;
   window.print();
 }
 
@@ -2673,6 +2839,10 @@ function upcomingItems(limit){
   const items=upcomingEvents(500).filter(evKeep).map(e=>({date:e.date,time:e.time||"",title:e.title,kind:"e",tag:e.kind,loc:e.loc||""}));
   if(CalUI.bday)upcomingBirthdays(30).forEach(b=>items.push({date:b.date,time:"",title:b.text,kind:"b"}));
   upcomingHolidays(30).forEach(h=>items.push({date:h.date,time:"",title:h.text,kind:"h"}));
+  if(CalUI.bills){
+    const n=new Date();
+    for(let i=0;i<30;i++){const s=ymd(new Date(n.getFullYear(),n.getMonth(),n.getDate()+i));billsOn(s).forEach(b=>items.push({date:s,time:"",title:billName(b)+" "+moneyText(b.amount),kind:"l"}))}
+  }
   items.sort((a,b)=>{
     if(a.date!==b.date)return a.date<b.date?-1:1;
     if(a.time!==b.time)return a.time<b.time?-1:1;
@@ -2724,6 +2894,7 @@ function renderNoteTags(){
 function renderNoteList(){
   if(!$("noteList"))return;
   renderNoteTags();
+  renderProjNav();
   const all=activeNotes();
   $("noteBar").innerHTML='<button type="button" class="btn" data-nsearch="1">Search</button>'+
     '<button type="button" class="btn" data-nimport="1">Import</button>'+
@@ -2809,7 +2980,10 @@ function exportAllNotes(){
 }
 
 function copyNote(n,btn){
-  const text=noteAsText(n);
+  copyText(noteAsText(n),btn);
+}
+
+function copyText(text,btn){
   const done=()=>{
     Sound.play("confirm");
     if(btn){
@@ -3165,6 +3339,29 @@ function relTexts(p){
   return (p.rels||[]).map(r=>{const o=personById(r.pid);return (o?o.name:"")+" "+r.label});
 }
 
+function personViewHtml(p){
+  const row=(l,v)=>v?'<div class="stat"><span>'+esc(l)+"</span><span>"+v+"</span></div>":"";
+  const bd=p.birthday?esc(bdayLabel(p.birthday)||p.birthday)+(bdayAge(p.birthday)!==null?" · age "+bdayAge(p.birthday):""):"";
+  const ad=addrText(p);
+  const rels=(p.rels||[]).map(r=>{const o=personById(r.pid);return o?'<button type="button" class="btn mini" data-pop="pview" data-pid="'+esc(o.id)+'">'+esc(o.name)+(r.label?" · "+esc(r.label):"")+"</button>":""}).filter(Boolean).join("");
+  const tags=(p.tags||[]).map(t=>'<span class="tag">'+ic("tag",(p.tagTypes||{})[t])+esc(t)+"</span>").join("");
+  return '<div class="pview">'+
+    row("Gender",p.gender?ic("gender",p.gender)+(p.gender==="male"?"Male":"Female"):"")+
+    row("Birthday",bd)+
+    row("Phone",p.phone?'<a href="tel:'+esc(p.phone.replace(/[^\d+]/g,""))+'">'+esc(p.phone)+"</a>":"")+
+    row("Email",p.email?'<a href="mailto:'+esc(p.email)+'">'+esc(p.email)+"</a>":"")+
+    row("Occupation",esc(p.job||""))+
+    row("Religion",p.religion?esc(religionIcon(p.religion)+" "+p.religion):"")+
+    row("Address",ad?esc(ad)+' <a class="maplink" href="'+esc(mapUrl(ad))+'" target="_blank" rel="noopener noreferrer">Map</a>':"")+
+    row("Relationship",esc(p.relation||""))+
+    (tags?'<h3 class="pvh">Tags</h3><div class="chipbox">'+tags+"</div>":"")+
+    (rels?'<h3 class="pvh">Linked people</h3><div class="row">'+rels+"</div>":"")+
+    (String(p.notes||"").trim()?'<h3 class="pvh">Notes</h3><div class="readbody">'+esc(p.notes)+"</div>":"")+
+    (p.created?'<p class="bmeta">Added '+esc(fmtStamp(p.created))+"</p>":"")+
+    "</div>"+
+    '<div class="row" style="margin-top:14px"><button type="button" class="btn" data-pop="pviewedit">Edit</button><button type="button" class="btn amber" data-pop="cancel">Close</button></div>';
+}
+
 function renderPeopleList(){
   const shown=personSorted(Data.people.filter(p=>matchText(PersonUI.q,[p.name,p.phone,p.email,p.notes,p.birthday,p.job,p.religion,p.me?"me":"",addrText(p)].concat(p.tags||[],relTexts(p)))));
   $("pList").innerHTML=shown.length?shown.map(p=>{
@@ -3445,9 +3642,16 @@ function buildPeople(){
   });
   $("pList").addEventListener("click",e=>{
     const b=e.target.closest("[data-pedit]");
-    if(!b)return;
+    if(b){
+      Sound.play("click");
+      openPopup("personedit",b.dataset.pedit);
+      return;
+    }
+    if(e.target.closest("a,button,input"))return;
+    const row=e.target.closest(".pitem[data-id]");
+    if(!row)return;
     Sound.play("click");
-    openPopup("personedit",b.dataset.pedit);
+    openPopup("personview",row.dataset.id);
   });
   $("pForm").addEventListener("submit",e=>{
     e.preventDefault();
@@ -3804,6 +4008,7 @@ function exportPayload(){
       bills:Data.bills,
       invest:Data.invest,
       tobuy:Data.tobuy,
+      nwhist:Data.nwhist,
       debts:Data.debts,
       settings:{muted:Sound.muted,volume:Sound.vol,todoFilter:TodoUI.filter,personSort:PersonUI.sort,showBirthdays:CalUI.bday,showHolidays:CalUI.hol,holGroups:Hol.groups,holOff:Hol.off,theme:{id:Theme.id,primary:Theme.primary},showExtras:Prefs.extras,pics:Prefs.pics,autoTax:Prefs.autoTax,taxAdded:Store.get("taxAdded",false)===true,bridgeTasks:Prefs.bridgeTasks,bridgeEvents:Prefs.bridgeEvents,slots:Prefs.slots,uiSize:Prefs.uiSize,textSize:Prefs.textSize,uiOpacity:Prefs.uiOpacity}
     }
@@ -3935,6 +4140,7 @@ function validateImport(raw){
   const assets=uniqueIds(arr(d.assets).map(cleanAsset).filter(a=>a.name));
   const invest=uniqueIds(arr(d.invest).map(cleanInvest).filter(r=>r.name));
   const tobuy=uniqueIds(arr(d.tobuy).map(cleanBuy).filter(x=>x.name));
+  const nwhist=cleanHist(d.nwhist);
   const bills=uniqueIds(arr(d.bills).map(cleanBill).filter(b=>b.amount!==""));
   const debts=uniqueIds(arr(d.debts).map(cleanDebt).filter(x=>x.name));
   const completed=uniqueIds(arr(d.completed).map(e=>({
@@ -3971,7 +4177,7 @@ function validateImport(raw){
       Video:clampInt(s.slots&&s.slots.Video,1,9,3)
     }
   };
-  return {ok:true,clean:{todos:todos,projects:projects,events:events,notes:notes,people:people,playing:playing,shelved:shelved,completed:completed,assets:assets,bills:bills,debts:debts,invest:invest,tobuy:tobuy,settings:settings},skipped:skipped.n,exported:typeof obj.exported==="string"?obj.exported:"",from:typeof obj.version==="string"?obj.version:""};
+  return {ok:true,clean:{todos:todos,projects:projects,events:events,notes:notes,people:people,playing:playing,shelved:shelved,completed:completed,assets:assets,bills:bills,debts:debts,invest:invest,tobuy:tobuy,nwhist:nwhist,settings:settings},skipped:skipped.n,exported:typeof obj.exported==="string"?obj.exported:"",from:typeof obj.version==="string"?obj.version:""};
 }
 
 function summaryText(c){
@@ -4053,9 +4259,10 @@ function applyImport(c){
   Data.bills=c.bills;
   Data.invest=c.invest;
   Data.tobuy=c.tobuy;
+  Data.nwhist=c.nwhist||[];
   Data.debts=c.debts;
   migratePlaying();
-  ["todos","projects","events","notes","people","playing","shelved","completed","assets","bills","debts","invest","tobuy"].forEach(k=>Data.save(k));
+  ["todos","projects","events","notes","people","playing","shelved","completed","assets","bills","debts","invest","tobuy","nwhist"].forEach(k=>Data.save(k));
   applySettings(c.settings);
   refreshAll();
 }
@@ -4075,8 +4282,9 @@ function eraseAll(){
   Data.bills=[];
   Data.invest=[];
   Data.tobuy=[];
+  Data.nwhist=[];
   Data.debts=[];
-  ["todos","projects","events","notes","people","playing","shelved","completed","assets","bills","debts","invest","tobuy"].forEach(k=>Data.save(k));
+  ["todos","projects","events","notes","people","playing","shelved","completed","assets","bills","debts","invest","tobuy","nwhist"].forEach(k=>Data.save(k));
   Store.remove("lastExport");
   Store.remove("priceKeys");
   Store.remove("newsKey");
@@ -4383,6 +4591,7 @@ function buildData(){
     '<div class="panel"><h2>Live Prices</h2>'+
     '<p class="hint">Looks up current prices for stocks, crypto and metals in Assets, and articles for the News tab. Crypto needs no key. Stocks use a Finnhub key, metals a MetalCharts key and News a NewsData key. Your keys are already filled in; replace or clear them here.</p>'+
     '<div class="field"><label for="keyFin">Finnhub key</label><input type="password" id="keyFin" maxlength="120" autocomplete="off" placeholder="Paste key"></div>'+
+    '<div class="row"><button type="button" class="btn" id="keyFinTest">Test Finnhub Key</button><a class="btn" href="https://finnhub.io/register" target="_blank" rel="noopener noreferrer">Get a Free Key</a></div><div class="msg" id="keyFinMsg" role="status"></div>'+
     '<div class="field"><label for="keyNews">NewsData key (News tab)</label><input type="password" id="keyNews" maxlength="120" autocomplete="off" placeholder="Paste key"></div>'+
     '<div class="field"><label for="keyMet">MetalCharts key</label><input type="password" id="keyMet" maxlength="160" autocomplete="off" placeholder="Paste key"></div>'+
     '<label class="chk"><input type="checkbox" id="optAutoPrice"> Update prices when Assets opens</label>'+
@@ -4397,7 +4606,7 @@ function buildData(){
     '<label class="chk"><input type="checkbox" id="optExtras"> Track Wallpaper made and Card made</label>'+
     '<p class="hint" style="margin-top:12px">Your ticks are kept while this is off and come back when you turn it on again.</p></div>'+
     '<div class="panel"><h2>Archived Notes <span id="archCount" style="color:var(--dim);letter-spacing:.1em"></span></h2>'+
-    '<p class="hint">Notes you archived. Press Unarchive to move a note back to the Notes tab.</p><div id="archList"></div></div>'+
+    '<p class="hint">Notes you archived. Press Unarchive to move a note back to Notes in the Projects tab.</p><div id="archList"></div></div>'+
     '<div class="panel"><h2>Holidays</h2>'+
     '<p class="hint">Holidays show on the Calendar and fill empty spots in Next Events on the Bridge. Jewish dates are the first full day (the holiday starts at sundown the evening before). Islamic, Hindu and Lunar New Year dates are worked out from the moon, so they can be a day off from your local calendar.</p>'+
     '<label class="chk"><input type="checkbox" id="optHolAll"> Show holidays</label>'+
@@ -4427,7 +4636,8 @@ function buildData(){
     '<p class="hint">When you are signed in, everything you save is copied to your account a few seconds later and loads on any device you sign in on. A copy also stays on this device so the deck works offline. Display size, text size and opacity stay per device.</p>'+
     '<p class="msg" id="syncState" role="status"></p>'+
     '<div class="row"><button type="button" class="btn" id="acctSync">Sync Now</button><button type="button" class="btn" id="acctChoose">Choose What To Keep</button><button type="button" class="btn" id="acctIn">Log In or Create Account</button><button type="button" class="btn amber" id="acctOut">Log Out</button><button type="button" class="btn" id="acctForget">Forget Saved Login</button></div>'+
-    '<p class="msg" id="acctMsg" role="status"></p></div>'+
+    '<p class="msg" id="acctMsg" role="status"></p>'+
+    '<details class="sqlbox"><summary>Account setup code (Supabase)</summary><p class="hint">Account sync saves your data in a table called deck_data. If Sync says the table is missing, open your Supabase project, go to SQL Editor, paste this code and press Run. You only need to do this once.</p><pre id="syncSql"></pre><div class="row"><button type="button" class="btn" id="sqlCopy">Copy Setup Code</button></div></details></div>'+
     '<div class="panel"><h2>Support</h2>'+
     '<p style="margin:0 0 10px">IntelDeck was created by Ian McGonigal.</p>'+
     '<p class="hint">Enjoying IntelDeck? You can support it on Patreon.</p>'+
@@ -4436,7 +4646,9 @@ function buildData(){
     '<p class="hint">Everything is stored in this browser only. Export a backup to keep your data safe or to move it to another browser or device.</p>'+
     '<div id="dataCounts"></div>'+
     '<div class="row" style="margin-top:14px"><button type="button" class="btn" id="expBtn">Export File</button><button type="button" class="btn" id="copyBtn">Copy Backup</button></div>'+
-    '<textarea id="copyBox" hidden readonly style="margin-top:12px;min-height:120px"></textarea></div>'+
+    '<textarea id="copyBox" hidden readonly style="margin-top:12px;min-height:120px"></textarea>'+
+    '<div class="row" style="margin-top:14px"><button type="button" class="btn" id="offCopy">Save Offline Copy</button></div><p class="hint" id="offHint" style="margin-top:6px">Downloads this app as one file you can open with no internet. The copy keeps its own data on this device; sign in to your account in it to share the same data when you are back online.</p><p class="msg" id="offMsg" role="status"></p>'+
+    '<label class="chk" style="margin-top:12px"><input type="checkbox" id="optBackupRemind"> Remind me when my last backup is over 30 days old</label></div>'+
     '<div class="panel"><h2>Restore</h2>'+
     '<p class="hint">Load a backup file or paste backup text. You will see a summary before anything is replaced.</p>'+
     '<div class="form"><div class="field"><label for="impFile">Backup file</label><input type="file" id="impFile" accept=".json,application/json,text/plain"></div>'+
@@ -4562,6 +4774,30 @@ function buildData(){
   $("keyNews").addEventListener("change",saveKeys);
   $("keyFin").addEventListener("change",saveKeys);
   $("keyMet").addEventListener("change",saveKeys);
+  $("syncSql").textContent=SYNC_SQL;
+  $("offCopy").addEventListener("click",saveOfflineCopy);
+  $("sqlCopy").addEventListener("click",e=>copyText(SYNC_SQL,e.currentTarget));
+  $("optBackupRemind").checked=Store.get("backupNever",false)!==true;
+  $("optBackupRemind").addEventListener("change",e=>{
+    if(e.target.checked){Store.remove("backupNever");Store.remove("backupSnooze")}
+    else Store.set("backupNever",true);
+    Sound.play("click");
+  });
+  $("keyFinTest").addEventListener("click",async()=>{
+    const m=$("keyFinMsg");
+    const k=$("keyFin").value.trim();
+    if(!k){m.textContent="Paste a Finnhub key first.";Sound.play("error");return}
+    saveKeys();
+    m.textContent="Testing...";
+    try{
+      const j=await fetchJson("https://finnhub.io/api/v1/quote?symbol=AAPL&token="+encodeURIComponent(k));
+      if(j&&typeof j.c==="number"&&j.c>0){m.textContent="Key works. AAPL is "+moneyText(j.c)+".";Sound.play("confirm")}
+      else{m.textContent="The key was accepted but no price came back. Try again later.";Sound.play("error")}
+    }catch(e){
+      m.textContent="Finnhub: "+priceErr(e)+(e&&e.status===401?". Get a new free key at finnhub.io (Dashboard, API Key).":"");
+      Sound.play("error");
+    }
+  });
   $("keyClear").addEventListener("click",()=>{
     $("keyFin").value="";
     $("keyMet").value="";
@@ -4721,16 +4957,8 @@ function newItemShortcut(e){
 }
 
 function searchShortcut(e){
-  if(currentTab==="notes"){
-    e.preventDefault();
-    openPopup("notesearch");
-    return;
-  }
-  const t={people:"pSearch"}[currentTab];
-  if(t){
-    e.preventDefault();
-    $(t).focus();
-  }
+  e.preventDefault();
+  openPopup("gsearch");
 }
 
 const slotById=id=>SLOTS.find(s=>s.id===id);
@@ -4839,6 +5067,14 @@ function shelvedCard(e){
     '<button type="button" class="btn mini amber" data-act="del">'+(Armed.key==="sh:"+e.id?"Sure?":"Delete")+"</button></div></div>";
 }
 
+function entGrouped(list,fn){
+  const by={};
+  list.forEach(e=>{const sl=slotById(e.slot);const g=sl?sl.group:"Other";(by[g]=by[g]||[]).push(e)});
+  const gs=["Games","Books","Video","Other"].filter(g=>by[g]);
+  if(gs.length<2)return list.map(fn).join("");
+  return gs.map(g=>'<h3 class="entgh">'+(GROUP_ICONS[g]?'<span class="ic" aria-hidden="true">'+GROUP_ICONS[g]+"</span> ":"")+esc(g)+" <span>"+by[g].length+"</span></h3>"+by[g].map(fn).join("")).join("");
+}
+
 function renderShelved(){
   const counts=groupCounts(Data.shelved);
   if(ShelfUI.group!=="all"&&!counts[ShelfUI.group])ShelfUI.group="all";
@@ -4848,7 +5084,7 @@ function renderShelved(){
     if(ShelfUI.group!=="all"&&(!sl||sl.group!==ShelfUI.group))return false;
     return matchText(ShelfUI.q,[e.title,e.detail,e.notes,sl?sl.label:""]);
   }).sort((a,b)=>(b.shelved||0)-(a.shelved||0));
-  $("shelfList").innerHTML=shown.length?shown.map(shelvedCard).join(""):
+  $("shelfList").innerHTML=shown.length?entGrouped(shown,shelvedCard):
     '<p class="empty">'+(Data.shelved.length?"Nothing matches.":"Nothing shelved. Use Shelve on a Playing slot, or add something above, to come back to it later.")+"</p>";
   $("shelfCount").textContent="("+Data.shelved.length+")";
   hydratePics();
@@ -4941,7 +5177,7 @@ function renderCompleted(){
     if(["Games","Books","Video"].indexOf(DoneUI.filter)>=0&&(!sl||sl.group!==DoneUI.filter))return false;
     return matchText(DoneUI.q,[e.title,e.detail,e.notes,sl?sl.label:""]);
   }).sort((a,b)=>(b.completed||0)-(a.completed||0));
-  $("doneList").innerHTML=shown.length?shown.map(completedCard).join(""):
+  $("doneList").innerHTML=shown.length?entGrouped(shown,completedCard):
     '<p class="empty">'+(list.length?"Nothing matches.":"Nothing completed yet. Use Complete on a Playing slot, or add something you finished above.")+"</p>";
   const w=list.filter(e=>e.wallpaper).length;
   const c=list.filter(e=>e.card).length;
@@ -5337,7 +5573,8 @@ function setLive(r,v){
 }
 
 function priceErr(e){
-  if(e&&e.status===401||e&&e.status===403)return "key rejected";
+  if(e&&e.status===401)return "key rejected, paste a new key in Settings, Live Prices";
+  if(e&&e.status===403)return "not allowed with this key (free plan)";
   if(e&&e.status===429)return "limit reached, try later";
   if(e&&e.status)return "error "+e.status;
   return "could not reach it (offline, blocked, or the site does not allow this page)";
@@ -5376,13 +5613,23 @@ async function refreshStocks(){
   if(!key)return "needs a Finnhub key in Settings";
   const syms=[...new Set(recs.map(r=>r.sym))].slice(0,25);
   const got={};
+  const bad=[];
+  let last=null;
   for(const sy of syms){
-    const j=await fetchJson("https://finnhub.io/api/v1/quote?symbol="+encodeURIComponent(sy)+"&token="+encodeURIComponent(key));
-    if(j&&typeof j.c==="number"&&j.c>0)got[sy]=j.c;
+    try{
+      const j=await fetchJson("https://finnhub.io/api/v1/quote?symbol="+encodeURIComponent(sy)+"&token="+encodeURIComponent(key));
+      if(j&&typeof j.c==="number"&&j.c>0)got[sy]=j.c;
+      else bad.push(sy);
+    }catch(e){
+      if(e&&(e.status===401||e.status===429)||!e||!e.status&&!Object.keys(got).length)throw e;
+      last=e;
+      bad.push(sy);
+    }
   }
   let n=0;
   recs.forEach(r=>{if(got[r.sym]){setLive(r,got[r.sym]);n++}});
-  return n+" of "+recs.length;
+  if(!n&&last)throw last;
+  return n+" of "+recs.length+(bad.length?" (no price for "+bad.slice(0,6).join(", ")+(bad.length>6?"...":"")+"; Finnhub free covers US stocks only)":"");
 }
 
 async function refreshMetals(){
@@ -5460,10 +5707,139 @@ function investCard(r){
   return h;
 }
 
+function invGroupKey(r){
+  if(["stock","crypto","retire","metal"].indexOf(r.type)<0||!(Number(r.qty)>0))return "id|"+r.id;
+  if(r.type==="metal")return "metal|"+r.metal;
+  const k=String(r.sym||r.name||"").trim().toUpperCase();
+  return k?r.type+"|"+k:"id|"+r.id;
+}
+
+function investGroups(){
+  const map={},out=[];
+  Data.invest.forEach(r=>{
+    const k=invGroupKey(r);
+    if(!map[k]){map[k]=[];out.push(map[k])}
+    map[k].push(r);
+  });
+  return out;
+}
+
+const LotsOpen={};
+
+function investGroupCard(g){
+  const r0=g[0];
+  const unit=r0.type==="metal"?" oz":r0.type==="crypto"?" coins":" shares";
+  const fq=q=>Number(q).toLocaleString(undefined,{maximumFractionDigits:8});
+  const fp=v=>"$"+Number(v).toLocaleString(undefined,{maximumFractionDigits:Number(v)>=1?2:4});
+  const qty=g.reduce((n,r)=>n+(Number(r.qty)||0),0);
+  const val=g.reduce((n,r)=>n+investValue(r),0);
+  const withCost=g.filter(r=>Number(r.cost)>0);
+  const cq=withCost.reduce((n,r)=>n+Number(r.qty),0);
+  const paid=withCost.reduce((n,r)=>n+Number(r.qty)*Number(r.cost),0);
+  const avg=cq>0?paid/cq:0;
+  const priced=g.filter(r=>Number(r.price)>0).sort((a,b)=>(Number(b.at)||0)-(Number(a.at)||0));
+  const price=priced.length?Number(priced[0].price):0;
+  const at=g.reduce((n,r)=>Math.max(n,Number(r.at)||0),0);
+  const cval=withCost.reduce((n,r)=>n+investValue(r),0);
+  const name=r0.type==="metal"?(METALS.find(m=>m[0]===r0.metal)||["","Gold"])[1]:(r0.name||r0.sym);
+  let h='<div class="slot igrp" data-igrp="'+esc(invGroupKey(r0))+'"><div class="sh"><span class="lb">'+ic("asset",r0.type)+esc(invLabel(r0.type))+'</span><span class="lb">'+g.length+' buys</span></div><div class="ti">'+esc(name)+(r0.sym&&r0.type!=="metal"?" ("+esc(r0.sym)+")":"")+"</div>"+
+    '<div class="dt">Value '+esc(moneyText(val))+"</div>"+
+    '<div class="dt">'+esc(fq(qty))+unit+(avg>0?" · average buy "+esc(fp(avg)):"")+(price>0?" · now "+esc(fp(price)):"")+"</div>";
+  if(paid>0&&cval>0){
+    const gn=cval-paid;
+    h+='<div class="dt">'+(gn>=0?"Gain ":"Loss ")+esc(moneyText(Math.abs(gn)))+" ("+(gn>=0?"+":"-")+Math.abs(gn/paid*100).toFixed(1)+"%)"+(withCost.length<g.length?" on buys with a price paid":"")+"</div>";
+  }
+  if(at>0)h+='<div class="dt">Price updated '+esc(new Date(at).toLocaleString([],{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}))+"</div>";
+  h+='<details class="lots"'+(LotsOpen[invGroupKey(r0)]?" open":"")+'><summary>Each buy ('+g.length+")</summary>"+g.map(r=>{
+    const q=Number(r.qty)||0,c=Number(r.cost)||0;
+    let line=esc(fq(q))+unit+(c>0?" at "+esc(fp(c)):"");
+    if(c>0&&Number(r.price)>0){const d=(Number(r.price)-c)*q;line+=' <span class="'+(d>=0?"gain":"loss")+'">'+(d>=0?"+":"-")+esc(moneyText(Math.abs(d)))+"</span>"}
+    return '<div class="lot" data-iid="'+esc(r.id)+'"><span class="lt">'+line+(r.name&&r.name!==name?" · "+esc(r.name):"")+'</span><span class="acts"><button type="button" class="btn mini" data-iedit="'+esc(r.id)+'">Edit</button><button type="button" class="btn mini amber" data-idel="'+esc(r.id)+'">'+(Armed.key==="iv:"+r.id?"Sure?":"Delete")+"</button></span></div>";
+  }).join("")+"</details></div>";
+  return h;
+}
+
+function cleanHist(a){
+  const seen={};
+  return (Array.isArray(a)?a:[]).filter(x=>x&&validDate(x.d)&&isFinite(Number(x.a))&&isFinite(Number(x.o))).map(x=>({d:x.d,a:Math.round(Number(x.a)*100)/100,o:Math.round(Number(x.o)*100)/100})).filter(x=>!seen[x.d]&&(seen[x.d]=1)).sort((x,y)=>x.d<y.d?-1:1).slice(-3660);
+}
+function nwSnap(){
+  const t=assetTotals();
+  if(!(t.total>0)&&!(t.owed>0))return;
+  const d=todayStr(),a=Math.round(t.total*100)/100,o=Math.round(t.owed*100)/100;
+  const h=Data.nwhist;
+  const last=h[h.length-1];
+  if(last&&last.d===d){
+    if(last.a===a&&last.o===o)return;
+    last.a=a;last.o=o;
+  }else h.push({d:d,a:a,o:o});
+  if(h.length>3660)h.splice(0,h.length-3660);
+  Data.save("nwhist");
+}
+const NwUI={range:Store.get("nwRange","3m")};
+const NW_RANGES=[["1m","1M",31],["3m","3M",92],["1y","1Y",366],["all","All",0]];
+function nwChart(){
+  const r=NW_RANGES.find(x=>x[0]===NwUI.range)||NW_RANGES[1];
+  const from=r[2]?ymd(new Date(Date.now()-r[2]*86400000)):"";
+  const pts=Data.nwhist.filter(x=>x.d>=from).map(x=>({d:x.d,v:x.a-x.o}));
+  const chips='<div class="toolbar nwchips">'+NW_RANGES.map(x=>'<button type="button" class="chip'+(x[0]===r[0]?" active":"")+'" data-nwr="'+x[0]+'">'+x[1]+"</button>").join("")+"</div>";
+  if(pts.length<2)return chips+'<p class="empty">The deck saves your net worth once a day when you open it. The line appears after two different days are saved'+(pts.length?" (first one saved "+esc(fmtDate(pts[0].d))+")":"")+".</p>";
+  const W=440,H=170,L=58,R=10,T=10,B=24;
+  const t0=parseYmd(pts[0].d).getTime(),t1=parseYmd(pts[pts.length-1].d).getTime();
+  let lo=Math.min(...pts.map(p=>p.v)),hi=Math.max(...pts.map(p=>p.v));
+  if(hi===lo){hi+=1;lo-=1}
+  const pad=(hi-lo)*.08;lo-=pad;hi+=pad;
+  const X=p=>L+(t1===t0?0:(parseYmd(p.d).getTime()-t0)/(t1-t0))*(W-L-R);
+  const Y=v=>T+(1-(v-lo)/(hi-lo))*(H-T-B);
+  const short=v=>{const a=Math.abs(v),sg=v<0?"-":"";return sg+"$"+(a>=1e6?(a/1e6).toFixed(a>=1e7?0:1)+"M":a>=1e3?(a/1e3).toFixed(a>=1e4?0:1)+"k":Math.round(a))};
+  let grid="";
+  for(let i=0;i<=3;i++){const v=lo+(hi-lo)*i/3,y=Y(v);grid+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y.toFixed(1)+'" y2="'+y.toFixed(1)+'" class="nwg"/><text x="'+(L-6)+'" y="'+(y+3).toFixed(1)+'" class="nwt" text-anchor="end">'+short(v)+"</text>"}
+  const zero=lo<0&&hi>0?'<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(0).toFixed(1)+'" y2="'+Y(0).toFixed(1)+'" class="nwz"/>':"";
+  const xl='<text x="'+L+'" y="'+(H-6)+'" class="nwt">'+esc(fmtDate(pts[0].d))+'</text><text x="'+(W-R)+'" y="'+(H-6)+'" class="nwt" text-anchor="end">'+esc(fmtDate(pts[pts.length-1].d))+"</text>";
+  const path=pts.map((p,i)=>(i?"L":"M")+X(p).toFixed(1)+" "+Y(p.v).toFixed(1)).join("");
+  const lp=pts[pts.length-1],fp=pts[0],ch=lp.v-fp.v;
+  const head='<div class="stat"><span>Change in this range</span><span style="color:'+(ch<0?"var(--red)":"var(--green)")+'">'+(ch<0?"-":"+")+esc(moneyText(Math.abs(ch)))+"</span></div>";
+  return chips+head+'<div class="nwbox"><svg class="nwsvg" viewBox="0 0 '+W+" "+H+'" role="img" aria-label="Net worth from '+esc(fmtDate(fp.d))+" to "+esc(fmtDate(lp.d))+", now "+esc(moneyText(lp.v))+'">'+grid+zero+xl+'<path d="'+path+'" class="nwl"/><circle cx="'+X(lp).toFixed(1)+'" cy="'+Y(lp.v).toFixed(1)+'" r="4" class="nwd"/><line class="nwx" y1="'+T+'" y2="'+(H-B)+'" x1="0" x2="0" visibility="hidden"/><circle class="nwh" r="4.5" visibility="hidden"/></svg><div class="nwtip" hidden></div></div>'+
+    '<details class="nwtab"><summary>Show as a table</summary><table><thead><tr><th>Date</th><th>Assets</th><th>Owed</th><th>Net worth</th></tr></thead><tbody>'+Data.nwhist.filter(x=>x.d>=from).slice().reverse().slice(0,60).map(x=>"<tr><td>"+esc(fmtDate(x.d))+"</td><td>"+esc(moneyText(x.a))+"</td><td>"+esc(moneyText(x.o))+"</td><td>"+esc((x.a-x.o<0?"-":"")+moneyText(Math.abs(x.a-x.o)))+"</td></tr>").join("")+"</tbody></table></details>";
+}
+function nwHover(e){
+  const svg=e.target.closest&&e.target.closest(".nwsvg");
+  const box=svg&&svg.parentNode;
+  if(!svg)return;
+  const r=NW_RANGES.find(x=>x[0]===NwUI.range)||NW_RANGES[1];
+  const from=r[2]?ymd(new Date(Date.now()-r[2]*86400000)):"";
+  const pts=Data.nwhist.filter(x=>x.d>=from);
+  if(pts.length<2)return;
+  const bb=svg.getBoundingClientRect();
+  const W=440,L=58,R=10,T=10,B=24,H=170;
+  const px=(e.clientX-bb.left)/bb.width*W;
+  const t0=parseYmd(pts[0].d).getTime(),t1=parseYmd(pts[pts.length-1].d).getTime();
+  let best=pts[0],bd=1e18;
+  pts.forEach(p=>{const x=L+(parseYmd(p.d).getTime()-t0)/(t1-t0)*(W-L-R);const d=Math.abs(x-px);if(d<bd){bd=d;best=p}});
+  const vals=pts.map(p=>p.a-p.o);
+  let lo=Math.min(...vals),hi=Math.max(...vals);
+  if(hi===lo){hi+=1;lo-=1}
+  const pad=(hi-lo)*.08;lo-=pad;hi+=pad;
+  const x=L+(parseYmd(best.d).getTime()-t0)/(t1-t0)*(W-L-R),v=best.a-best.o,y=T+(1-(v-lo)/(hi-lo))*(H-T-B);
+  const ln=svg.querySelector(".nwx"),c=svg.querySelector(".nwh"),tip=box.querySelector(".nwtip");
+  ln.setAttribute("x1",x);ln.setAttribute("x2",x);ln.setAttribute("visibility","visible");
+  c.setAttribute("cx",x);c.setAttribute("cy",y);c.setAttribute("visibility","visible");
+  tip.hidden=false;
+  tip.innerHTML="<b>"+esc(fmtDate(best.d))+"</b>Net worth "+esc((v<0?"-":"")+moneyText(Math.abs(v)))+"<br>Assets "+esc(moneyText(best.a))+" · Owed "+esc(moneyText(best.o));
+  const left=x/W*bb.width;
+  tip.style.left=Math.max(0,Math.min(bb.width-170,left-85))+"px";
+}
+function nwLeave(e){
+  const box=e.target.closest&&e.target.closest(".nwbox");
+  if(!box)return;
+  box.querySelectorAll(".nwx,.nwh").forEach(x=>x.setAttribute("visibility","hidden"));
+  box.querySelector(".nwtip").hidden=true;
+}
+
 function renderAssets(){
   if(!$("asList"))return;
   $("asList").innerHTML=Data.assets.length?Data.assets.map(a=>a.type==="home"?homeCard(a):vehicleCard(a)).join(""):'<p class="empty">No vehicles or homes yet. Press the + button to add one.</p>';
-  $("asInv").innerHTML=Data.invest.length?Data.invest.map(investCard).join(""):'<p class="empty">No investments or accounts yet. Press the + button to add a stock, precious metal, collectible, crypto, bank account or retirement account.</p>';
+  $("asInv").innerHTML=Data.invest.length?investGroups().map(g=>g.length>1?investGroupCard(g):investCard(g[0])).join(""):'<p class="empty">No investments or accounts yet. Press the + button to add a stock, precious metal, collectible, crypto, bank account or retirement account.</p>';
   $("asCount").textContent="("+(Data.assets.length+Data.invest.length)+")";
   $("asBuy").innerHTML=Data.tobuy.length?Data.tobuy.map(buyCard).join(""):'<p class="empty">Nothing on the list. Press the + button, choose To Buy, and add things you want to buy later.</p>';
   $("asBuyCount").textContent=Data.tobuy.length?"("+Data.tobuy.length+")":"";
@@ -5476,6 +5852,8 @@ function renderAssets(){
     '<div class="stat"><span>Owed (loans and cards)</span><span>'+esc(moneyText(t.owed))+"</span></div>"+
     '<div class="stat"><span>Net worth after what you owe</span><span>'+esc((net<0?"-":"")+moneyText(Math.abs(net)))+"</span></div>"+
     (t.total>0?'<div class="pieRow">'+pieSvg(t)+'<ul class="legend2">'+rows+"</ul></div>":'<p class="empty">Add values to see the share of your total.</p>');
+  nwSnap();
+  if($("asHist"))$("asHist").innerHTML=nwChart();
   if($("asPriceMsg")){$("asPriceMsg").textContent=PriceUI.msg;$("asPriceMsg").className="msg"+(PriceUI.msg?" ok":"")}
   if($("asRefresh")){$("asRefresh").disabled=PriceUI.busy;$("asRefresh").textContent=PriceUI.busy?"Refreshing...":"Refresh Prices"}
   if($("acSum"))renderAccounting();
@@ -5484,10 +5862,27 @@ function renderAssets(){
 function buildAssets(){
   $("view-assets").innerHTML='<div class="cols"><div class="panel"><h2>Assets <span id="asCount" style="color:var(--dim);letter-spacing:.1em"></span></h2>'+
     '<p class="hint">Press the + button to add a vehicle, home, investment or account. Values are typed in by you. Vehicles and homes create maintenance and payment tasks from the dates you enter.</p><div id="asSum"></div><div class="row" style="margin-top:12px"><button type="button" class="btn" id="asRefresh">Refresh Prices</button></div><div class="msg" id="asPriceMsg" role="status"></div></div>'+
+    '<div class="panel nwpanel"><h2>Net Worth History</h2><div id="asHist"></div></div>'+
     '<div class="panel"><h2>Vehicles and Homes</h2><div class="pgrid" id="asList"></div></div>'+
     '<div class="panel"><h2>Investments and Accounts</h2><div class="pgrid" id="asInv"></div></div>'+
     '<div class="panel"><h2>Assets to Buy <span id="asBuyCount" style="color:var(--dim);letter-spacing:.1em"></span></h2><div id="asBuySum"></div><div class="pgrid" id="asBuy"></div></div></div>';
   $("asRefresh").addEventListener("click",()=>{Sound.play("click");PriceUI.msg="";refreshPrices(true)});
+  $("asHist").addEventListener("click",e=>{
+    const c=e.target.closest("[data-nwr]");
+    if(!c)return;
+    NwUI.range=c.dataset.nwr;
+    Store.set("nwRange",NwUI.range);
+    Sound.play("click");
+    $("asHist").innerHTML=nwChart();
+  });
+  $("asHist").addEventListener("pointermove",nwHover);
+  $("asHist").addEventListener("pointerleave",e=>nwLeave({target:$("asHist").querySelector(".nwsvg")||$("asHist")}));
+  $("view-assets").addEventListener("toggle",e=>{
+    const d=e.target;
+    if(!d.classList||!d.classList.contains("lots"))return;
+    const c=d.closest("[data-igrp]");
+    if(c)LotsOpen[c.dataset.igrp]=d.open;
+  },true);
   $("view-assets").addEventListener("click",e=>{
     const ie=e.target.closest("[data-iedit]");
     if(ie){Sound.play("click");openPopup("investedit",ie.dataset.iedit);return}
@@ -5672,12 +6067,29 @@ function buyPopupHtml(x){
 }
 
 function cleanBill(b){
-  return {id:b.id,kind:BILL_KINDS.some(x=>x[0]===b.kind)?b.kind:"sub",name:str(b.name,80).trim(),amount:numIn(b.amount,1e9,true),per:BILL_PER.some(x=>x[0]===b.per)?b.per:"month"};
+  return {id:b.id,kind:BILL_KINDS.some(x=>x[0]===b.kind)?b.kind:"sub",name:str(b.name,80).trim(),amount:numIn(b.amount,1e9,true),per:BILL_PER.some(x=>x[0]===b.per)?b.per:"month",due:validDate(b.due)?b.due:""};
 }
 
 function cleanDebt(x){
   return {id:x.id,type:x.type==="loan"?"loan":x.type==="other"?"other":"card",name:str(x.name,80).trim(),balance:numIn(x.balance,1e10,true),rate:numIn(x.rate,100,true),pay:numIn(x.pay,1e9,true)};
 }
+
+function billOn(b,s){
+  if(!b.due||!validDate(b.due)||s<b.due)return false;
+  if(b.per==="week")return Math.round((parseYmd(s)-parseYmd(b.due))/86400000)%7===0;
+  const dd=Number(b.due.slice(8,10)),dm=b.due.slice(5,7);
+  const y=Number(s.slice(0,4)),m=Number(s.slice(5,7)),d=Number(s.slice(8,10));
+  if(b.per==="year"&&s.slice(5,7)!==dm)return false;
+  return d===Math.min(dd,new Date(y,m,0).getDate());
+}
+function billsOn(s){return CalUI.bills?Data.bills.filter(b=>billOn(b,s)):[]}
+function billDueText(b){
+  const dd=Number(b.due.slice(8,10));
+  if(b.per==="week")return "every "+["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][parseYmd(b.due).getDay()]+" from "+fmtDate(b.due);
+  if(b.per==="year")return "every "+MON3[Number(b.due.slice(5,7))-1]+" "+dd+" from "+fmtDate(b.due);
+  return "the "+dd+ordSuffix(dd)+" of each month from "+fmtDate(b.due);
+}
+function billName(b){return b.name||billLabel(b.kind)}
 
 function billMonthly(b){
   const a=Number(b.amount)||0;
@@ -5715,7 +6127,7 @@ function renderAccounting(){
     (t.mortgageInterest>0?st("Mortgage interest (tax write-off)",moneyText(t.mortgageInterest)+"/mo · "+moneyText(t.mortgageInterest*12)+"/yr"):"");
   $("acBills").innerHTML=Data.bills.length?Data.bills.map(b=>{
     const per=b.per==="month"?"":" ("+moneyText(b.amount)+" "+b.per+"ly)";
-    return '<div class="slot" data-bid="'+esc(b.id)+'"><div class="sh"><span class="lb">'+esc(billLabel(b.kind))+'</span></div><div class="ti">'+esc(b.name||billLabel(b.kind))+'</div><div class="dt">'+esc(moneyText(billMonthly(b)))+" per month"+esc(per)+'</div>'+
+    return '<div class="slot" data-bid="'+esc(b.id)+'"><div class="sh"><span class="lb">'+esc(billLabel(b.kind))+'</span></div><div class="ti">'+esc(b.name||billLabel(b.kind))+'</div><div class="dt">'+esc(moneyText(billMonthly(b)))+" per month"+esc(per)+'</div>'+(b.due?'<div class="dt">Due '+esc(billDueText(b))+"</div>":"")+
       '<div class="acts"><button type="button" class="btn mini" data-bedit="'+esc(b.id)+'">Edit</button><button type="button" class="btn mini amber" data-bdel="'+esc(b.id)+'">'+(Armed.key==="bl:"+b.id?"Sure?":"Delete")+"</button></div></div>";
   }).join(""):'<p class="empty">No bills yet. Press the + button to add rent, subscriptions, utilities, food, gas or an entertainment budget.</p>';
   const own=Data.debts.map(x=>'<div class="slot" data-did="'+esc(x.id)+'"><div class="sh"><span class="lb">'+(x.type==="loan"?"Loan":x.type==="other"?"Other debt":"Credit card")+'</span></div><div class="ti">'+esc(x.name)+'</div><div class="dt">Balance '+esc(moneyText(x.balance||0))+(x.rate!==""?" · "+x.rate+"% · about "+esc(moneyText(debtInterest(x)))+" interest per month":"")+(x.pay!==""?" · paying "+esc(moneyText(x.pay))+"/month":"")+'</div>'+
@@ -5766,7 +6178,8 @@ function billPopupHtml(kind,b){
     acctField("nwBName",kind==="sub"||kind==="other"?"Name":"Name (optional)",v.name,kind==="sub"?"Netflix, gym":kind==="other"?"Insurance, daycare":lab)+
     '<div class="pair">'+acctField("nwBAmt","Amount ($)",v.amount,"0.00",'inputmode="decimal"')+
     '<div class="field"><label for="nwBPer">How often</label><select id="nwBPer">'+perOpts+"</select></div></div>"+
-    '<p class="hint">Enter your average for '+esc(lab.toLowerCase())+'. Yearly and weekly amounts are turned into a monthly estimate.</p>'+
+    '<div class="field fit"><label for="nwBDue">Next due date (optional)</label><input type="date" id="nwBDue" value="'+esc(v.due||"")+'"></div>'+
+    '<p class="hint">Enter your average for '+esc(lab.toLowerCase())+'. Yearly and weekly amounts are turned into a monthly estimate. With a due date the bill shows on the Calendar every month, year or week from that date.</p>'+
     popupActions(b?"Save":"Add");
 }
 
@@ -5984,7 +6397,7 @@ function buildNews(){
   renderNews();
 }
 
-const RENDERERS={todo:buildTodo,calendar:buildCalendar,notes:buildNotes,people:buildPeople,entertainment:buildEntertainment,assets:buildAssets,accounting:buildAccounting,news:buildNews,data:buildData};
+const RENDERERS={todo:buildTodo,calendar:buildCalendar,people:buildPeople,entertainment:buildEntertainment,assets:buildAssets,accounting:buildAccounting,news:buildNews,data:buildData};
 
 function buildTabs(){
   const tabs=$("tabs");
@@ -6018,11 +6431,18 @@ function renderOffline(m){
 
 function renderBridge(){
   $("view-bridge").innerHTML='<div class="grid">'+bridgeTicker()+bridgeTasks()+bridgeEvents()+bridgeWeekly()+bridgeNet()+bridgePlaying()+bridgeNews()+bridgeScribe()+"</div>";
+  fitTicker();
 }
 
 function tickerItems(){
   const st=priceStamps();
-  return Data.invest.filter(r=>["stock","metal","crypto","collect","other"].indexOf(r.type)>=0&&Number(r.price)>0).map(r=>{
+  const seen={};
+  return Data.invest.filter(r=>["stock","metal","crypto","collect","other"].indexOf(r.type)>=0&&Number(r.price)>0).filter(r=>{
+    const k=r.type+"|"+String(r.type==="metal"?r.metal:(r.sym||r.name||"")).trim().toUpperCase();
+    if(seen[k])return false;
+    seen[k]=1;
+    return true;
+  }).map(r=>{
     const label=r.type==="stock"||r.type==="crypto"?(r.sym||r.name):r.type==="metal"?r.name||(METALS.find(m=>m[0]===r.metal)||["","Metal"])[1]:r.name;
     const typed=["stock","crypto","metal"].indexOf(r.type)>=0&&!st[r.type];
     const pp=Number(r.pp),pr=Number(r.price);
@@ -6039,7 +6459,24 @@ function bridgeTicker(){
   const items=tickerItems();
   if(!items.length)return "";
   const row=items.join("");
-  return '<div class="panel tickbox" style="grid-column:1/-1"><h2>Market Ticker</h2><div class="tick" role="marquee" aria-label="Prices of what you own"><div class="trk" style="--dur:'+Math.max(14,items.length*6)+'s"><div class="trkset">'+row+'</div><div class="trkset" aria-hidden="true">'+row+"</div></div></div></div>";
+  return '<div class="panel tickbox" style="grid-column:1/-1"><h2>Market Ticker</h2><div class="tick" role="marquee" aria-label="Prices of what you own"><div class="trk" style="--dur:'+Math.max(14,items.length*6)+'s"><div class="trkset">'+row+"</div></div></div></div>";
+}
+
+function fitTicker(){
+  const t=document.querySelector("#view-bridge .tick");
+  if(!t)return;
+  const trk=t.querySelector(".trk");
+  const sets=trk.querySelectorAll(".trkset");
+  const first=sets[0];
+  const wide=first.scrollWidth>t.clientWidth+2;
+  if(wide&&sets.length<2){
+    const c=first.cloneNode(true);
+    c.setAttribute("aria-hidden","true");
+    trk.appendChild(c);
+  }else if(!wide&&sets.length>1){
+    for(let i=1;i<sets.length;i++)sets[i].remove();
+  }
+  t.classList.toggle("run",wide);
 }
 
 function bridgeNet(){
@@ -6092,6 +6529,11 @@ function showTab(id,silent){
     EntUI.sub=id;
     id="entertainment";
   }
+  if(id==="notes"){
+    TodoUI.sub="notes";
+    Store.set("projSub","notes");
+    id="todo";
+  }
   if(!MODULES.some(m=>m.id===id))id="bridge";
   if(currentTab==="people")commitPerson();
   currentTab=id;
@@ -6103,9 +6545,8 @@ function showTab(id,silent){
   if(activeTab&&activeTab.scrollIntoView)activeTab.scrollIntoView({inline:"nearest",block:"nearest"});
   Armed.clear();
   if(id==="bridge"){renderBridge();fetchBreaking()}
-  else if(id==="todo")refreshProjectsView();
+  else if(id==="todo"){refreshProjectsView();showProjSub(TodoUI.sub)}
   else if(id==="calendar")renderCalendar();
-  else if(id==="notes")renderNoteList();
   else if(id==="assets"){
     renderAssets();
     maybeAutoPrices();
@@ -6211,6 +6652,23 @@ function pickerGesture(e){
   }
 }
 
+function sendSubmit(form){
+  form.dispatchEvent(new Event("submit",{bubbles:true,cancelable:true}));
+}
+document.addEventListener("click",e=>{
+  const b=e.target&&e.target.closest?e.target.closest("button"):null;
+  if(!b||!b.form||(b.getAttribute("type")||"submit").toLowerCase()!=="submit"||b.disabled)return;
+  e.preventDefault();
+  sendSubmit(b.form);
+},true);
+document.addEventListener("keydown",e=>{
+  if(e.key!=="Enter"||e.isComposing||e.ctrlKey||e.metaKey||e.altKey||e.shiftKey)return;
+  const t=e.target;
+  if(!t||t.tagName!=="INPUT"||!t.form)return;
+  if(["checkbox","radio","button","submit","file","range","color"].indexOf(t.type)>=0)return;
+  e.preventDefault();
+  sendSubmit(t.form);
+},false);
 document.addEventListener("mousedown",pickerGesture,true);
 document.addEventListener("click",pickerGesture,true);
 document.addEventListener("touchend",pickerGesture,{capture:true,passive:false});
@@ -6344,6 +6802,8 @@ document.addEventListener("keydown",e=>{
   }
 },true);
 window.addEventListener("resize",suggClose);
+let fitTickTimer=null;
+window.addEventListener("resize",()=>{clearTimeout(fitTickTimer);fitTickTimer=setTimeout(fitTicker,200)});
 new MutationObserver(ms=>{
   ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)stripLists(n)}));
 }).observe(document.documentElement,{childList:true,subtree:true});
@@ -6369,6 +6829,74 @@ function openModal(title,html){
   $("modalClose").focus();
   Sound.play("open");
 }
+function errText(err){
+  return String(err&&err.message||err||"unknown error").slice(0,200)+(err&&err.stack?" @ "+String(err.stack).split("\n").slice(1,3).map(x=>x.trim()).join(" | ").slice(0,200):"");
+}
+function showPopErr(err){
+  Sound.play("error");
+  const box=$("modalBody");
+  if(!box)return;
+  let m=$("popErr");
+  if(!m){
+    box.insertAdjacentHTML("afterbegin",'<div class="needmsg" id="popErr" role="alert"></div>');
+    m=$("popErr");
+  }
+  m.textContent="Could not save: "+errText(err)+". Please send this message to the developer.";
+  box.scrollTop=0;
+}
+window.addEventListener("error",e=>{
+  if(!e||!e.error||!$("errBar"))return;
+  $("errBar").hidden=false;
+  $("errBar").textContent="Something went wrong: "+errText(e.error);
+});
+
+const GS={q:"",t:null};
+function gsGroups(q){
+  const G=[];
+  const add=(name,icon,list)=>{if(list.length)G.push({name:name,icon:icon,list:list})};
+  const m=parts=>matchText(q,parts.map(x=>String(x==null?"":x)));
+  add("Tasks","\u2611\ufe0f",Data.todos.filter(t=>m([t.text,(t.tags||[]).join(" "),t.due])).map(t=>({tx:t.text,sub:(t.done?"Done":"Open")+(t.due?" \u00b7 due "+fmtDate(t.due):""),go:"task",id:t.id})));
+  add("Projects","\ud83d\udcc1",Data.projects.filter(x=>m([x.name,x.notes])).map(x=>({tx:x.name,sub:x.deadline?"Deadline "+fmtDate(x.deadline):"Project",go:"project",id:x.id})));
+  add("Notes","\ud83d\udcdd",Data.notes.filter(n=>m([n.title,n.body,(n.tags||[]).join(" ")])).map(n=>({tx:n.title||"Untitled",sub:(n.archived?"Archived \u00b7 ":"")+String(n.body||"").slice(0,70),go:"note",id:n.id})));
+  add("People","\ud83d\udc64",Data.people.filter(x=>m([x.name,x.phone,x.email,x.job,x.religion,x.notes,addrText(x),(x.tags||[]).join(" ")])).map(x=>({tx:x.name,sub:[x.job,x.phone,x.email].filter(Boolean).join(" \u00b7 "),go:"person",id:x.id})));
+  add("Events","\ud83d\udcc5",Data.events.filter(e=>m([e.title,e.notes,e.loc,e.date])).map(e=>({tx:e.title,sub:fmtDate(e.date)+(e.time?" "+fmtTime(e.time):"")+(cleanRep(e.rep)?" \u00b7 repeats":""),go:"event",id:e.id,date:e.date})));
+  const as=Data.assets.filter(a=>m([a.name,a.type,a.address])).map(a=>({tx:a.name,sub:a.type==="home"?"Home":"Vehicle",go:"asset",id:a.id,home:a.type==="home"}));
+  Data.invest.filter(r=>m([r.name,r.sym,invLabel(r.type)])).forEach(r=>as.push({tx:r.name+(r.sym?" ("+r.sym+")":""),sub:invLabel(r.type)+" \u00b7 "+moneyText(investValue(r)),go:"invest",id:r.id}));
+  add("Assets","\ud83d\udcb0",as);
+  const ac=Data.bills.filter(x=>m([x.name])).map(x=>({tx:x.name,sub:"Bill",go:"bill",id:x.id}));
+  Data.debts.filter(x=>m([x.name])).forEach(x=>ac.push({tx:x.name,sub:x.type==="loan"?"Loan":"Credit card or debt",go:"debt",id:x.id}));
+  add("Accounting","\ud83d\udcb3",ac);
+  const en=[];
+  SLOTS.forEach(sl=>{const pl=Data.playing[sl.id];if(pl&&pl.title&&m([pl.title,pl.detail,pl.notes]))en.push({tx:pl.title,sub:"Playing \u00b7 "+sl.label,go:"ent",sub2:"playing"})});
+  Data.shelved.filter(x=>m([x.title,x.detail,x.notes])).forEach(x=>en.push({tx:x.title,sub:"Shelved",go:"ent",sub2:"shelved"}));
+  Data.completed.filter(x=>m([x.title,x.detail,x.notes])).forEach(x=>en.push({tx:x.title,sub:"Completed",go:"ent",sub2:"completed"}));
+  add("Entertainment","\ud83c\udfae",en);
+  return G;
+}
+function gsRender(){
+  const box=$("gsRes");
+  if(!box)return;
+  const q=GS.q.trim();
+  if(q.length<2){box.innerHTML='<p class="empty">Type at least 2 letters. Searches tasks, projects, notes, people, events, assets, accounting and entertainment.</p>';return}
+  const G=gsGroups(q);
+  const total=G.reduce((n,g)=>n+g.list.length,0);
+  box.innerHTML=total?'<p class="hint" style="margin:0 0 6px">'+total+" found</p>"+G.map((g,gi)=>'<h3 class="pvh">'+g.icon+" "+esc(g.name)+" <span>"+g.list.length+"</span></h3>"+g.list.slice(0,8).map((r,ri)=>'<button type="button" class="gsr" data-gs="'+gi+":"+ri+'"><span class="t">'+esc(r.tx)+'</span>'+(r.sub?'<span class="s">'+esc(r.sub)+"</span>":"")+"</button>").join("")+(g.list.length>8?'<p class="wr-more" style="color:var(--dim)">+'+(g.list.length-8)+" more, type more words to narrow it</p>":"")).join(""):'<p class="empty">Nothing found for \u201c'+esc(q)+'\u201d.</p>';
+  GS.last=G;
+}
+function gsOpen(r){
+  Sound.play("click");
+  if(r.go==="task")openPopup("taskedit",r.id);
+  else if(r.go==="project")openPopup("projectedit",r.id);
+  else if(r.go==="note")openPopup("noteread",r.id);
+  else if(r.go==="person")openPopup("personview",r.id);
+  else if(r.go==="event"){closeModal(true);showTab("calendar",true);selectDate(r.date||todayStr())}
+  else if(r.go==="asset")openPopup(r.home?"homeedit":"vehicleedit",r.id);
+  else if(r.go==="invest")openPopup("investedit",r.id);
+  else if(r.go==="bill")openPopup("billedit",r.id);
+  else if(r.go==="debt")openPopup("debtedit",r.id);
+  else if(r.go==="ent"){closeModal(true);showTab(r.sub2,true)}
+}
+
 function closeModal(quiet){
   if(!$("modalWrap").classList.contains("open"))return;
   $("modalWrap").classList.remove("open");
@@ -6785,7 +7313,7 @@ function projectPopupHtml(p){
 }
 
 function fabFor(id){
-  if(id==="todo")return TodoUI.sub==="projects"?["project","New project"]:["task","New task"];
+  if(id==="todo")return TodoUI.sub==="projects"?["project","New project"]:TodoUI.sub==="notes"?["note","New note"]:["task","New task"];
   if(id==="entertainment")return EntUI.sub==="shelved"?["shelvedadd","Add to Shelved"]:EntUI.sub==="completed"?["doneadd","Add to Completed"]:null;
   return FAB[id]||null;
 }
@@ -6804,6 +7332,44 @@ function openPopup(kind,id,extra){
     openModal("Edit Person","");
     $("modalBody").appendChild($("pForm"));
     $("pForm").hidden=false;
+    return;
+  }
+  if(kind==="gsearch"){
+    Popup.kind=kind;
+    Popup.id="";
+    Popup.people=[];
+    openModal("Search Everything",'<div class="field"><label for="gsQ">Search</label><input type="search" id="gsQ" maxlength="100" autocomplete="off" placeholder="Words to find" value="'+esc(GS.q)+'"></div><div id="gsRes" class="gsres"></div>');
+    gsRender();
+    const q=$("gsQ");
+    q.focus();
+    q.select();
+    q.addEventListener("input",()=>{GS.q=q.value;clearTimeout(GS.t);GS.t=setTimeout(gsRender,120)});
+    q.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();const f=$("gsRes").querySelector("[data-gs]");if(f)f.click()}});
+    $("gsRes").addEventListener("click",e=>{
+      const b=e.target.closest("[data-gs]");
+      if(!b||!GS.last)return;
+      const ij=b.dataset.gs.split(":").map(Number);
+      const r=GS.last[ij[0]]&&GS.last[ij[0]].list[ij[1]];
+      if(r)gsOpen(r);
+    });
+    return;
+  }
+  if(kind==="backupremind"){
+    Popup.kind=kind;
+    Popup.id="";
+    Popup.people=[];
+    const days=Backup.last?Math.floor((Date.now()-Backup.last)/86400000):0;
+    openModal("Backup Reminder",'<p style="margin:0 0 12px">'+(Backup.last?"Your last backup file was made "+days+" days ago ("+esc(fmtStamp(Backup.last))+").":"You have not made a backup file yet.")+" A backup file keeps your tasks, notes, people and everything else safe if this browser's data is cleared"+(syncOn()?". Your account also keeps a copy, but a file is an extra safe copy you control.":".")+"</p>"+
+      '<div class="row"><button type="button" class="btn" data-pop="bkdo">Download Backup Now</button><button type="button" class="btn" data-pop="bklater">Remind Me in 7 Days</button><button type="button" class="btn amber" data-pop="bknever">Stop Reminding Me</button></div>');
+    return;
+  }
+  if(kind==="personview"){
+    const pv=personById(id);
+    if(!pv)return;
+    Popup.kind=kind;
+    Popup.id=id;
+    Popup.people=[];
+    openModal(pv.name||"Person",personViewHtml(pv));
     return;
   }
   if(kind==="noteread"||kind==="noteedit"){
@@ -6979,7 +7545,7 @@ function noteReadHtml(n){
   return '<p class="bmeta">Updated '+esc(fmtStamp(n.updated||n.created||Date.now()))+(n.archived?" · Archived":"")+"</p>"+
     (tags?'<div class="chipbox" style="margin-bottom:10px">'+tags+"</div>":"")+
     '<div class="readbody">'+(String(n.body||"").trim()?esc(n.body):'<span class="empty">No text in this note.</span>')+"</div>"+
-    '<div class="row" style="margin-top:14px"><button type="button" class="btn" data-pop="noteedit">Edit</button><button type="button" class="btn" data-pop="notecopy">Copy</button><button type="button" class="btn" data-pop="noteexport">Export .txt</button><button type="button" class="btn amber" data-pop="cancel">Close</button></div>';
+    '<div class="row" style="margin-top:14px"><button type="button" class="btn" data-pop="noteedit">Edit</button><button type="button" class="btn" data-pop="notecopy">Copy</button><button type="button" class="btn" data-pop="noteexport">Export .txt</button><button type="button" class="btn red" data-pop="notedel">Delete</button><button type="button" class="btn amber" data-pop="cancel">Close</button></div>';
 }
 
 function noteSearchHtml(){
@@ -7039,7 +7605,7 @@ function popupSave(){
     return;
   }
   if(k==="bill"||k==="billedit"){
-    const raw={id:Popup.id||uid(),kind:Popup.bk,name:$("nwBName").value,amount:$("nwBAmt").value,per:$("nwBPer").value};
+    const raw={id:Popup.id||uid(),kind:Popup.bk,name:$("nwBName").value,amount:$("nwBAmt").value,per:$("nwBPer").value,due:$("nwBDue").value};
     const b=cleanBill(raw);
     if(b.kind==="other"&&!b.name){
       Sound.play("error");
@@ -7238,10 +7804,11 @@ function popupSave(){
     const last=$("nwLast").value.trim();
     if(!first&&!last){
       Sound.play("error");
+      if(!$("nwNeed"))$("nwFirst").insertAdjacentHTML("afterend",'<div class="needmsg" id="nwNeed" role="alert">Type a first name (or a last name) to add this person. Everything else is optional.</div>');
       $("nwFirst").focus();
       return;
     }
-    commitPerson();
+    try{commitPerson()}catch(e){}
     const tags=cleanTagList($("nwTags").value.split(","),20);
     const p={
       id:uid(),created:Date.now(),first:first,middle:middle,last:last,name:joinName(first,middle,last),
@@ -7251,11 +7818,11 @@ function popupSave(){
     };
     Data.people.push(p);
     if(Popup.me)setMe(p.id);
-    rememberTags(tags);
+    try{rememberTags(tags)}catch(e){}
     Data.save("people");
     Sound.play("confirm");
     closeModal(true);
-    selectPerson(p.id);
+    try{selectPerson(p.id)}catch(e){renderPeopleList()}
   }
 }
 
@@ -7429,6 +7996,77 @@ function enterApp(){
   refreshStatus();
   syncAccountUi();
   if(syncOn()&&!Sync.ready&&!Sync.pending)syncStart();
+  try{nwSnap()}catch(e){}
+  netState();
+  maybeBackupReminder();
+}
+
+const SYNC_SQL=["create table if not exists public.deck_data (",
+"  user_id uuid primary key references auth.users(id) on delete cascade,",
+"  data jsonb not null,",
+"  updated_at timestamptz not null default now()",
+");",
+"alter table public.deck_data enable row level security;",
+"create policy \"own row read\" on public.deck_data for select using (auth.uid() = user_id);",
+"create policy \"own row insert\" on public.deck_data for insert with check (auth.uid() = user_id);",
+"create policy \"own row update\" on public.deck_data for update using (auth.uid() = user_id) with check (auth.uid() = user_id);",
+"create policy \"own row delete\" on public.deck_data for delete using (auth.uid() = user_id);"].join("\n");
+
+function netState(){
+  const off=navigator.onLine===false;
+  if($("netChip"))$("netChip").hidden=!off;
+}
+window.addEventListener("online",netState);
+window.addEventListener("offline",netState);
+
+async function saveOfflineCopy(){
+  const m=$("offMsg");
+  if(!updHosted()){
+    m.className="msg err";
+    m.textContent="This is already a file on your device. Open it from the same place any time; it works without internet.";
+    Sound.play("error");
+    return;
+  }
+  m.className="msg";
+  m.textContent="Getting the app file...";
+  try{
+    const r=await fetch(location.href.split("#")[0],{cache:"reload"});
+    if(!r.ok)throw new Error("status "+r.status);
+    const text=await r.text();
+    if(text.indexOf('const VERSION="')<0)throw new Error("not the app file");
+    const url=URL.createObjectURL(new Blob([text],{type:"text/html"}));
+    const a=document.createElement("a");
+    a.href=url;
+    a.download="ians-website-offline.html";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),2000);
+    m.className="msg ok";
+    m.textContent="Saved ians-website-offline.html. Open it from your downloads when you have no internet. Save a new copy after updates.";
+    Sound.play("confirm");
+  }catch(e){
+    m.className="msg err";
+    m.textContent="Could not get the app file ("+String(e&&e.message||e)+"). Check your connection and try again.";
+    Sound.play("error");
+  }
+}
+
+const BACKUP_DAYS=30;
+function backupDue(){
+  if(Store.get("backupNever",false)===true)return false;
+  const now=Date.now();
+  if(now<Number(Store.get("backupSnooze",0)))return false;
+  let first=Number(Store.get("firstSeen",0));
+  if(!first){first=now;Store.set("firstSeen",first)}
+  const since=Backup.last||first;
+  return now-since>=BACKUP_DAYS*86400000&&localCount()>0;
+}
+function maybeBackupReminder(){
+  setTimeout(()=>{
+    if(!$("app").classList.contains("live")||$("modalWrap").classList.contains("open")||Sync.pending||!backupDue())return;
+    openPopup("backupremind");
+  },1500);
 }
 
 const SUPA={url:"https://bvupmbevlkpbusxbenyo.supabase.co",key:"sb_publishable_3dl3sFrGVWxMPJuIHZjnRg_7ipLygkO"};
@@ -7657,7 +8295,7 @@ async function logOut(){
   showLogin("login","You are logged out.","ok");
 }
 
-const DATA_KEYS=["todos","projects","events","notes","people","playing","shelved","completed","assets","bills","debts","invest","tobuy"];
+const DATA_KEYS=["todos","projects","events","notes","people","playing","shelved","completed","assets","bills","debts","invest","tobuy","nwhist"];
 const LOOK_KEYS=["uiSize","textSize","uiOpacity"];
 const Sync={ready:false,busy:false,applying:false,timer:0,retry:0,status:"",kind:"ok",pending:null,lastCheck:0};
 
@@ -7665,12 +8303,12 @@ function syncOn(){return !!(Auth.session&&Auth.session.uid)}
 
 function localCount(){
   const autoTax=t=>t&&t.text==="File taxes"&&!t.done&&Array.isArray(t.tags)&&t.tags.length===1&&t.tags[0]==="taxes"&&t.rep&&t.rep.type==="years";
-  return DATA_KEYS.reduce((n,k)=>n+(k==="todos"?Data.todos.filter(t=>!autoTax(t)).length:Array.isArray(Data[k])?Data[k].length:Object.keys(Data[k]||{}).filter(x=>Data[k][x]&&Data[k][x].title).length),0);
+  return DATA_KEYS.reduce((n,k)=>n+(k==="nwhist"?0:k==="todos"?Data.todos.filter(t=>!autoTax(t)).length:Array.isArray(Data[k])?Data[k].length:Object.keys(Data[k]||{}).filter(x=>Data[k][x]&&Data[k][x].title).length),0);
 }
 
 function payloadCount(d){
   if(!d||typeof d!=="object")return 0;
-  return DATA_KEYS.reduce((n,k)=>n+(Array.isArray(d[k])?d[k].length:(d[k]&&typeof d[k]==="object"?Object.keys(d[k]).length:0)),0);
+  return DATA_KEYS.reduce((n,k)=>n+(k==="nwhist"?0:Array.isArray(d[k])?d[k].length:(d[k]&&typeof d[k]==="object"?Object.keys(d[k]).length:0)),0);
 }
 
 function setSync(text,kind){
@@ -7703,7 +8341,7 @@ async function supaRest(method,query,body,prefer){
   try{j=await r.json()}catch(e){j=null}
   if(!r.ok){
     const m=j&&(j.message||j.hint||j.error)||("Server error "+r.status);
-    const x=new Error(/deck_data|relation .* does not exist|could not find the table/i.test(m)?"The deck_data table is missing in Supabase. Run the deck_data setup SQL in the Supabase SQL editor (see Help, Account and login).":/permission|row-level security|violates/i.test(m)?"Supabase refused access to your data. Check the deck_data security policies from Help.":m);
+    const x=new Error(/deck_data|relation .* does not exist|could not find the table/i.test(m)?"The deck_data table is missing in Supabase. Copy the setup code from Settings, Account (Account setup code) and run it in the Supabase SQL Editor.":/permission|row-level security|violates/i.test(m)?"Supabase refused access to your data. Check the deck_data security policies from Help.":m);
     x.status=r.status;
     throw x;
   }
@@ -7959,6 +8597,7 @@ function init(){
   $("helpBtn").addEventListener("click",()=>{Sound.play("click");showHelp()});
   $("updatesBtn").addEventListener("click",()=>{Sound.play("click");showUpdates()});
   $("modalClose").addEventListener("click",closeModal);
+  $("gsBtn").addEventListener("click",()=>{Sound.play("click");openPopup("gsearch")});
   $("modalBody").addEventListener("click",boredClick);
   $("modalBody").addEventListener("click",e=>{
     const b=e.target.closest("[data-sync]");
@@ -8025,6 +8664,40 @@ function init(){
           if(b.dataset.pop==="notecopy")copyNote(n,b);
           else exportNote(n);
         }
+      }else if(b.dataset.pop==="bkdo"){
+        doExport();
+        Store.remove("backupSnooze");
+        closeModal(true);
+      }else if(b.dataset.pop==="bklater"){
+        Store.set("backupSnooze",Date.now()+7*86400000);
+        Sound.play("click");
+        closeModal(true);
+      }else if(b.dataset.pop==="bknever"){
+        Store.set("backupNever",true);
+        Sound.play("close");
+        closeModal(true);
+        if($("optBackupRemind"))$("optBackupRemind").checked=false;
+      }else if(b.dataset.pop==="pview"){
+        Sound.play("click");
+        openPopup("personview",b.dataset.pid);
+      }else if(b.dataset.pop==="pviewedit"){
+        Sound.play("click");
+        openPopup("personedit",Popup.id);
+      }else if(b.dataset.pop==="notedel"){
+        if(b.dataset.armed!=="1"){
+          b.dataset.armed="1";
+          b.textContent="Confirm Delete";
+          Sound.play("click");
+          setTimeout(()=>{if(b.isConnected){b.dataset.armed="";b.textContent="Delete"}},4000);
+        }else{
+          const id=Popup.id;
+          Data.notes=Data.notes.filter(x=>x.id!==id);
+          Data.save("notes");
+          Sound.play("remove");
+          closeModal(true);
+          renderNoteList();
+          renderArchived();
+        }
       }else if(b.dataset.pop==="noteedit"){
         Sound.play("click");
         openPopup("noteedit",Popup.id);
@@ -8068,7 +8741,7 @@ function init(){
       boredSave();
     }else if(e.target.id==="nwForm"){
       e.preventDefault();
-      popupSave();
+      try{popupSave()}catch(err){showPopErr(err)}
     }
   });
   $("view-bridge").addEventListener("keydown",e=>{
@@ -8112,7 +8785,7 @@ function init(){
     if(!$("app").classList.contains("live")||$("modalWrap").classList.contains("open")||!$("login").classList.contains("gone"))return;
     const k=e.key.toLowerCase();
     if(k>="0"&&k<="9"){
-      const m=MODULES[k==="0"?9:Number(k)-1];
+      const m=k==="0"?MODULES.find(x=>x.id==="data"):MODULES[Number(k)-1];
       if(m)showTab(m.id);
     }else if(k==="h"){showHelp()}
     else if(k==="u"){showUpdates()}
