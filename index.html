@@ -137,6 +137,19 @@ main{flex:1;overflow:auto;padding:18px;border-top:1px solid var(--cyan);margin-t
 .nwtab th,.nwtab td{text-align:right;padding:3px 4px;border-bottom:1px solid rgba(var(--blue-rgb),.2)}
 .nwtab th:first-child,.nwtab td:first-child{text-align:left}
 .nwtab th{color:var(--dim);font-weight:normal}
+.clcard{border:1px solid rgba(var(--blue-rgb),.35);background:var(--panel2);border-radius:6px;padding:8px 10px;margin-bottom:10px}
+.clcard>summary{cursor:pointer;color:var(--cyan);letter-spacing:.06em}
+.clmeta{color:var(--dim);font-size:.72rem;margin-left:6px;letter-spacing:0}
+.clcard .clacts{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.cltabwrap{overflow-x:auto}
+.cltab{width:100%;border-collapse:collapse;font-size:.82rem}
+.cltab th,.cltab td{padding:4px 6px;border-bottom:1px solid rgba(var(--blue-rgb),.2);text-align:center;white-space:nowrap}
+.cltab th{color:var(--dim);font-weight:normal}
+.cltab th small{display:block;font-size:.66rem}
+.cltab .clname{text-align:left;white-space:normal;min-width:140px}
+.cltx{background:none;border:0;color:var(--text);font:inherit;text-align:left;cursor:pointer;padding:0}
+.cltab input[type=checkbox]{width:18px;height:18px}
+.clundo{display:flex;align-items:center;gap:10px;justify-content:space-between;border:1px solid var(--amber);border-radius:6px;padding:6px 10px;margin-bottom:10px}
 .gsbtn{margin-right:10px}
 .gsres{margin-top:10px}
 .gsres .pvh span{color:var(--dim)}
@@ -623,8 +636,8 @@ html,body{width:8.5in!important;margin:0!important}
 </div>
 
 <script>
-const VERSION="0.69.0";
-const BUILT="2026-10-11 16:10 PDT";
+const VERSION="0.70.0";
+const BUILT="2026-10-19 18:30 PDT";
 
 const MODULES=[
   {id:"bridge",name:"Bridge",phase:1,on:true,blurb:"Central overview of all systems."},
@@ -639,6 +652,12 @@ const MODULES=[
 ];
 
 const UPDATES=[
+  {v:"0.70.0",d:"2026-10-19 18:30 PDT",items:[
+    "New: Scribe Data has an I Don't Know button for people questions. It adds a task like Find out Sam's job. Press the task (or Answer) to get the question, type the answer, and it fills in that person and deletes the task.",
+    "New: Scribe Data has an N/A button for people questions. The question is never asked again for that person. Typing a value later in Edit Person clears the N/A.",
+    "New: Checklists, a fourth section in the Projects tab. Name a checklist, paste a list of text into rows, add checkbox columns (like Have it, Have manual, Have box) and tick them off. Turn on the auto-remove option and a row disappears once all its boxes are checked, with an Undo button.",
+    "Changed: backups, restore, Erase All, account sync and the Intel counts include Checklists, and the Scribe N/A marks and I Don't Know tasks."
+  ]},
   {v:"0.69.0",d:"2026-10-11 16:10 PDT",items:[
     "Changed: the browser tab now says Ian's Website.",
     "New: an OFFLINE mark at the top when the internet connection drops. Everything you do is still saved on this device, and account changes upload when the connection is back.",
@@ -1107,11 +1126,12 @@ const HELP=[
   {h:"Account and login",html:"<ul><li>After you press Initialize, the login screen opens. <b>Log In</b> with your email and password. <b>Create Account</b> asks for your email and a password twice (at least 6 characters). You may get a confirmation email; open its link, then log in.</li><li><b>Forgot Password</b>: type your email first, then press it. A reset email arrives; its link opens IntelDeck with a Set a New Password box. The link only works if the deck is opened from the web address set in your Supabase project.</li><li><b>Use Local Profile</b> skips accounts and uses the data on this device, as before.</li><li><b>Remember me on this device</b> keeps your email and password filled in on the login screen next time. It never signs you in by itself; you still press Log In. The password is stored on this device in a scrambled form that is not real encryption, so only tick it on a device you trust. Untick it and log in to clear the saved login.</li><li>Settings, Account shows who is signed in and has Log Out, Log In or Create Account, and Forget Saved Login (clears the saved email and password).</li><li><b>Saving to your account:</b> while signed in, every change is copied to your account about 3 seconds later. When you open the deck, come back to it, or press Sync Now in Settings, Account, it checks for a newer copy saved from another device and loads it. If both changed, the most recent save wins. A copy stays on this device so the deck works offline; changes wait and upload when you are back online.</li><li><b>Data already on a device:</b> the first time you sign in on a device that has its own data, a window shows how many items are on the device and in your account. <b>Delete Local Data, Keep Account</b> replaces the device data with your account copy. <b>Replace Account With This Device</b> uploads the device data over your account (press twice to confirm). Either way the device ends up holding only your account copy. Leave the backup tick on to download the device data as a file first. If you close the window, Settings, Account has Choose What To Keep.</li><li><b>Log Out</b> uploads waiting changes, then removes your account data from this device. If the upload fails you are warned first.</li><li>While signed in, Erase All Data and Restore change your account copy too. UI size, text size and opacity stay per device.</li><li><b>One-time setup for the owner:</b> the account data needs a table called deck_data in Supabase with row level security, so each person can only read and write their own row. If Settings, Account says the table is missing, open Settings, Account, press Account setup code, press Copy Setup Code, then paste it into the Supabase SQL Editor and press Run.</li></ul>"},
   {h:"New version notice",html:"<ul><li>When IntelDeck is opened from a web address, it checks that address for a newer version about 4 seconds after opening, every 10 minutes, and whenever you come back to the tab. If one is found, a box appears at the top: <b>Refresh Now</b> reloads the page to load it, <b>Later</b> hides the box for 30 minutes.</li><li>Refresh Now first saves a person you are editing on the People tab and uploads waiting account changes. Anything typed into other open windows and not saved is lost, so save first if you are in the middle of something.</li><li>Updates, <b>Check For New Version</b> checks right away and tells you the result.</li><li>A copy opened as a file from your computer cannot check, because it has no web address to look at. The notice does nothing there.</li></ul>"},
   {h:"Bridge",html:"<ul><li><b>Weekly Report:</b> press Open Report in the Weekly Report box. It lists the next 7 days of events, tasks due, birthdays and holidays, overdue tasks and the 9 default Now Playing slots (3 games, 3 books, 3 video). Press Print / Save as PDF and pick Save as PDF as the destination to make a file. The sheet is exactly one US Letter page (8.5 by 11 inches), black on white with no colored areas, so it uses little ink. In the print window set Margins to None or Default and Scale to 100 (Default). On a busy week each day lists fewer items with a +N more line, so the text never shrinks. Line styles show the kind of item: solid for events, dashed for tasks (! means high priority), dotted for birthdays and holidays. Extra Now Playing slots are not included.</li><li><b>Market Ticker</b> shows the price of each stock, crypto, precious metal, collectible and other priced item you own in Assets. Prices come from Assets. A price you typed yourself and have not looked up shows a small TYPED mark. After a lookup finds a different price, a green up arrow or red down arrow shows the percent change from the price before that lookup. It stays until the next lookup finds another change. Editing an item clears its change. Each symbol, coin or metal shows once, even if you bought it several times. The row scrolls only when it is too long to fit; hover or touch it to pause. The box is hidden when you own nothing with a price.</li><li><b>Net Worth</b> adds up everything in Assets (vehicles, homes, investments and accounts), subtracts your loans and debts, and shows all three numbers. It is hidden until you add assets or loans.</li><li><b>Now Playing</b> lists every game, book and show in your Playing slots with its percent, and scrolls by itself when there are more than three. It is hidden when no slot is filled.</li><li><b>Breaking News</b> shows the top three headlines for the country chosen in the News tab. Press a headline to read it in a new tab. Headlines refresh when you open the Bridge if the saved ones are over 30 minutes old. If you are offline it shows the last saved ones, or asks you to open the News tab.</li><li>If your device is set to reduce motion, the ticker and list do not scroll, you swipe them instead.</li></ul>"},
-  {h:"Projects: Tasks",html:"<ul><li>The Projects tab (key <kbd>2</kbd>) has three sections at the top: Tasks, Projects and Notes. Tasks is the old To-Do list. Notes holds all your notes (it used to be its own tab).</li><li>Press the + button in the bottom right, or <kbd>N</kbd>, to open the New Task window. Type a task, choose a priority and an optional due date, then press Add Task or Enter.</li><li>A task can also have a project, tags (separated by commas, with suggestions from tags that a person or task currently has) and tagged people. Pick a person and press Add Person. Click the x on a person to remove them.</li><li>Each task is a small card, and the cards sit side by side across the page, so you see more tasks at once. Each card is only as wide as its text needs. Tick the box on a card to complete the task. Tick it again to reopen it.</li><li><b>Type</b> in the task window marks a task as Work (briefcase icon) or Personal (house icon). It is optional.</li><li><b>Repeat</b> in the task window makes a task come back. Choose Days, Weeks, Months or Years and a number. Weeks lets you tick the days of the week (every 2 weeks on Mon and Thu, for example). Months can repeat on the same day of the month, on the same weekday (the 2nd Tuesday) or on the last matching weekday. When you complete the task, from the list or the Bridge, the next one appears with the next due date. A task that repeats with no due date starts today. If you finish late, the next date skips ahead to today or later so it is not already overdue. Unchecking a finished task removes its unfinished copy. To stop a repeat, edit the task and set Repeat to Does not repeat.</li><li><b>Pause</b> sets a task aside without finishing it. Paused tasks show PAUSED, sort below active tasks and do not appear on the Bridge. Press <b>Resume</b> to put it back in line.</li><li>Edit opens a window with every field. Delete asks for a second click within 3 seconds to confirm.</li><li>Filters: All, Active, Paused or Done, plus Work and Personal (the Type you set on a task). Work and Personal combine with the status filter, so Active plus Work shows only active work tasks. Press the highlighted Work or Personal chip again to clear it. Your choice is remembered on this device. When you pick View Tasks on a project, a Project chip appears. Press it to show every task again. Clear Done removes every finished task after a second click.</li><li>Tasks sort by status (active, paused, done), then priority (high first), then due date. Overdue tasks show in red and tasks due today in amber.</li><li>On the Bridge, press Pause or Complete on a task and the next active task moves up.</li><li>A File taxes task (due April 15, repeats yearly) is added for you automatically once. See Settings, Automatic Tasks.</li></ul>"},
+  {h:"Projects: Tasks",html:"<ul><li>The Projects tab (key <kbd>2</kbd>) has four sections at the top: Tasks, Projects, Checklists and Notes. Tasks is the old To-Do list. Notes holds all your notes (it used to be its own tab).</li><li>Press the + button in the bottom right, or <kbd>N</kbd>, to open the New Task window. Type a task, choose a priority and an optional due date, then press Add Task or Enter.</li><li>A task can also have a project, tags (separated by commas, with suggestions from tags that a person or task currently has) and tagged people. Pick a person and press Add Person. Click the x on a person to remove them.</li><li>Each task is a small card, and the cards sit side by side across the page, so you see more tasks at once. Each card is only as wide as its text needs. Tick the box on a card to complete the task. Tick it again to reopen it.</li><li><b>Type</b> in the task window marks a task as Work (briefcase icon) or Personal (house icon). It is optional.</li><li><b>Repeat</b> in the task window makes a task come back. Choose Days, Weeks, Months or Years and a number. Weeks lets you tick the days of the week (every 2 weeks on Mon and Thu, for example). Months can repeat on the same day of the month, on the same weekday (the 2nd Tuesday) or on the last matching weekday. When you complete the task, from the list or the Bridge, the next one appears with the next due date. A task that repeats with no due date starts today. If you finish late, the next date skips ahead to today or later so it is not already overdue. Unchecking a finished task removes its unfinished copy. To stop a repeat, edit the task and set Repeat to Does not repeat.</li><li><b>Pause</b> sets a task aside without finishing it. Paused tasks show PAUSED, sort below active tasks and do not appear on the Bridge. Press <b>Resume</b> to put it back in line.</li><li>Edit opens a window with every field. Delete asks for a second click within 3 seconds to confirm.</li><li>Filters: All, Active, Paused or Done, plus Work and Personal (the Type you set on a task). Work and Personal combine with the status filter, so Active plus Work shows only active work tasks. Press the highlighted Work or Personal chip again to clear it. Your choice is remembered on this device. When you pick View Tasks on a project, a Project chip appears. Press it to show every task again. Clear Done removes every finished task after a second click.</li><li>Tasks sort by status (active, paused, done), then priority (high first), then due date. Overdue tasks show in red and tasks due today in amber.</li><li>On the Bridge, press Pause or Complete on a task and the next active task moves up.</li><li>A File taxes task (due April 15, repeats yearly) is added for you automatically once. See Settings, Automatic Tasks.</li></ul>"},
   {h:"Projects: Projects",html:"<ul><li>A project groups tasks toward one goal. Switch to the Projects section, then press the + button to open the New Project window.</li><li>A project has a name, an optional deadline, general notes and tagged people.</li><li>The percent complete bar is finished tasks divided by all tasks in the project. Paused tasks count as not finished. A project with no tasks shows 0%.</li><li><b>Add Task</b> opens a new task already in that project. <b>View Tasks</b> shows only that project's tasks. To move an existing task into a project, edit the task and choose the project.</li><li>Projects sort by deadline, with no deadline last. Overdue projects show in red and completed projects in cyan.</li><li>Deleting a project asks for a second click and keeps its tasks, which become project-free.</li></ul>"},
+  {h:"Projects: Checklists",html:"<ul><li>Checklists is the third section of the Projects tab. Use it to track a collection, like which games you own and whether you have the manual and the box.</li><li>Press the + button (or <kbd>N</kbd>) to open New Checklist. Give it a name. Columns are the boxes you tick for each item: they start as Have it, Have manual and Have box, and you can change them (separate columns with commas, up to 12). You can paste your first list in the same window.</li><li><b>Add Rows</b> on a checklist opens a box where you paste a list, one item per line. Copying a column from a spreadsheet works too. Bullets and numbers at the start of a line are dropped.</li><li>Tick a box in a row to mark it. Under each column name you see how many rows have it ticked. Press an item's name to rename it, or the red x to remove the row (Undo appears at the top).</li><li><b>Edit</b> renames the checklist, renames or removes columns, adds columns and turns on the auto-remove option. With auto-remove on, a row is deleted the moment every box in it is ticked. Undo at the top puts it back with its last box unticked. It does nothing when a checklist has no columns.</li><li>Search items at the top filters rows in every checklist. Press a checklist's name to fold it open or shut. Delete asks for a second click.</li><li>Checklists are saved in backups, restored with them, synced to your account and removed by Erase All.</li></ul>"},
   {h:"Calendar",html:"<ul><li><b>Bills:</b> bills from Accounting that have a due date show as an orange diamond on the grid, as a BILL row in the day list (Edit opens the bill) and in Upcoming. The Bills: On / Off chip hides or shows them.</li><li><b>Tasks on a day:</b> tasks due on the chosen day show in the day list beside the calendar with a tick box. Tick it to mark the task complete; it disappears from the calendar, the day list and the Bridge and shows as done in Projects. A repeating task makes its next one, the same as ticking it in Projects.</li><li>Check boxes, number boxes, drop-down lists and the date picker all use the app's dark colors. The date and time pickers are drawn by your browser, so their exact look can vary slightly.</li><li><b>Location:</b> an event can have a place (optional). It appears under the title in the day list, Upcoming and the Bridge. In the day list, Map opens the place in Google Maps in a new tab.</li><li><b>Work and Personal events:</b> add or edit an event and pick a Type. A tagged event shows a briefcase (Work) or house (Personal) icon in the day list, Upcoming and Bridge, and its dot on the month grid is pink for Personal (Work and untagged events keep the usual cyan dot). Below the month grid, All, Work and Personal buttons filter the grid, day list and Upcoming; untagged events only show under All. Birthdays, holidays and tasks due are not filtered. The Bridge Next Events box is not filtered either.</li><li>Use the arrow buttons to change month and Today to jump back to the current day.</li><li>Click any day to select it. The side panel shows that day's events and tasks due.</li><li>To add an event, press the + button or <kbd>N</kbd>. The window starts on the selected day. Change the date if you like, add an optional time and notes, then press Add Event.</li><li>Cyan dots mark events. An amber square marks tasks due that day.</li><li>Edit opens the event window with every field. Delete needs a second click to confirm.</li><li><b>Repeat</b> in the event window makes an event come back: every X days, every X weeks on the days you tick, every X months (same day of the month, same weekday like the 2nd Tuesday, or the last matching weekday) or every X years. A repeating event shows on every matching day, in Upcoming and on the Bridge, and the day list notes how it repeats. Editing or deleting a repeating event changes the whole series. To stop a repeat, edit the event and set Repeat to Does not repeat.</li><li>Upcoming lists events, birthdays and holidays in the next 30 days. Click one to jump to it.</li><li><b>Holidays</b> show as violet markers and in the day list. The Holidays button under the calendar turns them all on or off. Press <b>Hide</b> on a holiday in the day list to stop showing that one. In Settings, Holidays lets you turn off whole groups (US federal, other well-known days, Christian, Jewish, Islamic, Hindu and Sikh, Lunar New Year) or pick individual holidays. Show Every Holiday Again resets your choices. Jewish holidays are shown on the first full day (they begin at sundown the evening before). Islamic, Hindu and Lunar New Year dates come from moon calculations and can differ by a day where you live. On the Bridge, holidays fill empty spots in Next Events after birthdays.</li><li>Tasks due are shown on the calendar, but you complete them in the Projects tab.</li><li>Holidays have icons: a flag for US federal days, special ones for days like Christmas, Halloween, Easter and Diwali, and a symbol for each religious group.</li><li>People birthdays show as green markers and in the day panel with the age. Use the Birthdays button under the calendar to show or hide them.</li></ul>"},
   {h:"Notes",html:"<ul><li>Notes is the third section of the Projects tab (press Notes at the top of Projects; there is no separate Notes tab any more). Press the + button in the bottom right while Notes is open, or <kbd>N</kbd>, to open the New Note window. Fill in a title, optional tags separated by commas, and the note text, then press Add Note. <kbd>Ctrl</kbd>+<kbd>Enter</kbd> saves from inside the text box.</li><li>Each note in the list has four buttons. <b>Read</b> opens the full text. <b>Edit</b> opens the edit window. <b>Archive</b> moves the note out of the list. <b>Delete</b> asks for a second click within 3 seconds to confirm. Tapping the note itself also opens Read.</li><li>The Read window has Edit, Copy, Export .txt and <b>Delete</b>. Press Delete, then Confirm Delete within 4 seconds, to remove the note and close the window.</li><li>Edit changes are saved only when you press Save Note. Closing the window discards them.</li><li><b>Import</b> reads a .txt, .md, .docx or .pdf file and saves its text as a new plain text note tagged <i>imported</i>. Word files work offline. PDF files load a reader from the internet the first time, so they need a connection. Scanned PDFs that are only pictures have no text to read. Notes are limited to 20,000 characters.</li><li>In the Read window, <b>Copy</b> puts the note (title, tags and text) on your clipboard and <b>Export .txt</b> downloads it as a text file. <b>Export All</b> in Notes downloads every active note in one file.</li><li><b>Search</b> opens a search window. It looks through titles, text and tags. The search shows as a chip next to the button. Press the chip to clear it. To search everything at once, use the magnifying glass at the top or <kbd>/</kbd>.</li><li>Notes are cards side by side, each only as wide as its text needs.</li><li>Click a tag chip to show only notes with that tag. The newest edited note appears first.</li><li><b>Archive</b> is for notes that are no longer relevant. Archived notes disappear from the list and from search. Open Settings, then Archived Notes, to read them or press Unarchive to bring one back. Backups include archived notes.</li></ul>"},
-  {h:"Scribe Data",html:"<ul><li>Press <b>Scribe Data</b> on the Bridge to fill in gaps. The Bridge shows how many details are missing across people and tasks.</li><li>It picks a random person or task and asks about one missing detail: a name part, gender, birthday, phone, email, occupation, religion, street address, city, state, zip, a tag, or a relationship to another person. Tasks without a tag are asked for a tag. Notes are never asked. The gender question has two buttons, Male and Female, and one tap saves it.</li><li>Relationship questions only come up for people who are not linked yet. The question reads 'How is (person) related to (person B)?' where person B is the first person who is not linked yet, chosen for you with no list to change it. Type what person B is to the first person (for example brother or boss). Typing Unknown or Co-worker fills in the same label for the other person. The other side fills in for common labels and you can change it. When the person's gender is set it uses it (a brother of a woman becomes sister, a father of a man becomes son). Otherwise it uses Sibling, Child, Spouse and similar. Both people are updated.</li><li>Tap the answer box to type it, then press Save or Enter. Tag answers autofill from tags that a person or task currently has, so old tags and misspellings nothing uses any more are not offered. A person tag question has Interest, Game and Skill buttons: tap one to save the tag with that type, or press Save to save it with no type.</li><li><b>Skip</b> passes on a question for now. Skipped questions return after you reopen the page or press Ask Skipped Again. <b>Never Ask This</b> turns off that whole question type. Turn types back on in Settings under Scribe Data Questions. <b>Done</b> closes the window.</li></ul>"},
+  {h:"Scribe Data",html:"<ul><li>Press <b>Scribe Data</b> on the Bridge to fill in gaps. The Bridge shows how many details are missing across people and tasks.</li><li>It picks a random person or task and asks about one missing detail: a name part, gender, birthday, phone, email, occupation, religion, street address, city, state, zip, a tag, or a relationship to another person. Tasks without a tag are asked for a tag. Notes are never asked. The gender question has two buttons, Male and Female, and one tap saves it.</li><li><b>I Don\u0027t Know</b> (people questions only) makes a task named like Find out Sam\u0027s job, tagged people, and moves on. Press that task (or its Answer button) in Projects or the Bridge to get the same question. Type the answer and press Save, and the person is updated and the task is deleted. Ticking the task complete also opens the question. If you fill the detail in some other way, the task disappears by itself. Scribe will not ask that question again while the task exists.</li><li><b>N/A</b> (people questions only) means the detail does not apply, such as no occupation or no middle name. Scribe stops asking it for that person for good. If you type a value for that detail later in Edit Person, the N/A is cleared.</li><li>Relationship questions only come up for people who are not linked yet. The question reads 'How is (person) related to (person B)?' where person B is the first person who is not linked yet, chosen for you with no list to change it. Type what person B is to the first person (for example brother or boss). Typing Unknown or Co-worker fills in the same label for the other person. The other side fills in for common labels and you can change it. When the person's gender is set it uses it (a brother of a woman becomes sister, a father of a man becomes son). Otherwise it uses Sibling, Child, Spouse and similar. Both people are updated.</li><li>Tap the answer box to type it, then press Save or Enter. Tag answers autofill from tags that a person or task currently has, so old tags and misspellings nothing uses any more are not offered. A person tag question has Interest, Game and Skill buttons: tap one to save the tag with that type, or press Save to save it with no type.</li><li><b>Skip</b> passes on a question for now. Skipped questions return after you reopen the page or press Ask Skipped Again. <b>Never Ask This</b> turns off that whole question type. Turn types back on in Settings under Scribe Data Questions. <b>Done</b> closes the window.</li></ul>"},
   {h:"People",html:"<ul><li><b>Adding a person:</b> only a first name (or a last name) is needed; every other box is optional and can be filled in later with Edit. The Add Person and Cancel buttons stay at the bottom of the window while you scroll.</li><li><b>See everything about a person:</b> tap a person card to open a window with all their details: gender, birthday and age, phone (tap to call), email (tap to write), occupation, religion, address with a Map link, tags, linked people and notes. Tap a linked person to see their details. Press Edit to change them, or use the Edit button on the card.</li><li><b>No address prompts:</b> text boxes tell Brave and Chrome not to autofill or offer to save addresses. If your browser still shows a prompt, choose Never or turn off Save and fill addresses in its settings.</li><li><b>Birthdays:</b> pick a month and a day, and type the year only if you know it. With a year, the person list shows their age and the Calendar and Bridge say \"turns N\". Without a year, only the name shows. If the day is not valid for the month (such as Feb 30), it is set to the last day of that month; if you choose only a month or only a day, the birthday is left empty.</li><li>Press the + button in the bottom right, or <kbd>N</kbd>, to add a person. Enter a first name, and optionally a middle name, last name, gender (male or female), birthday (month and day, with the year only if you know it), phone, email, occupation, religion, street address, city, state, zip, tags (separated by commas) and notes. A first or last name is required.</li><li>People are shown as cards side by side, each as wide as its text needs. Every person card has an <b>Edit</b> button. It opens the editor in a window with all of that person's details, tags and relationships. Birthday, gender and the Is this you? choice share one row, and short boxes such as state and zip sit beside the city instead of taking a whole row.</li><li>Tags describe skills, interests or games the person plays. Type a tag and press Enter or Add Tag. Choose Interest (star), Game (controller) or Skill (tools) in the list beside the box to give the tag a type and an icon; leave it on No type for a plain tag. Add an existing tag again with a type to change its type. Tags that a person or task currently has are suggested as you type. Click the x on a tag to remove it.</li><li>Relationships link the person to someone else in your list: choose the person, type how they are related (for example brother or boss) and press Add Link. The other person's card shows it as Listed by, so you only enter a link once. Links are the only way to record how people are related; there is no separate Relationship box. Delete a link with its x.</li><li>In the editor window, press Save Person to save and close it. Closing the window another way (Close, Esc or tapping outside) also saves your changes, as long as a first or last name is filled in. Delete in the editor asks for a second click.</li><li>Search looks through names, occupation, address, tags, links and notes. Sort by name (last name, then first) or next birthday.</li><li>Birthday shows how many days remain. People with a birthday also appear on the Calendar.</li><li>Call and Email links appear when a person has a phone or email saved.</li><li><b>Your entry:</b> the first time you open People, and whenever no entry is marked as you, a window asks you to fill one in. Fill In Now opens the form, That Is Me marks someone already in your list, and Not Now asks again next time. Your entry shows a Me tag and sorts like everyone else. To change which entry is you, open your own entry, set Is this you? to No, then mark the other person. The box is hidden on other people while your entry exists. Only one entry can be you.</li><li>Phone numbers add dashes as you type (555-123-4567). A number with letters or a plus sign is kept exactly as typed.</li><li>Religion is free text. Religions you already entered are suggested as you type.</li><li>Delete asks for a second click to confirm.</li></ul>"},
   {h:"News",html:"<ul><li>The News tab opens on Breaking News each time you open it. Choose another topic or search after it opens. It asks for up to 10 headlines, drops those tagged sports, health, environment or entertainment, and asks for one more page if fewer than 5 are left. If you still see fewer than 5, the source did not send more, or the request failed (the reason shows above the list).</li><li>Each headline shows a picture preview when the news source has one. If the picture is missing or fails to load, a topic picture is shown instead. The page shows 5 headlines at most. Sports, health, environment and entertainment news are left out everywhere in IntelDeck; a headline tagged with one of those topics is hidden, but a story that is not tagged can still slip through.</li><li>The News tab (key <kbd>8</kbd>) shows headlines from NewsData.io. The tab opens on Breaking News. Pick a country and a topic (Breaking News, All topics or a single topic), or type words to search for and press Enter, then press Refresh to load now.</li><li>Each topic has an icon, such as a siren for Breaking News.</li><li>Each headline opens the full story in a new tab. Under it you see the source, how long ago it was published and a short summary.</li><li>The last articles for each search are saved on this device. If you are offline, or the free daily limit is used up, you see the saved copy and a note saying why.</li><li>Opening the tab reloads headlines only when the saved ones are over 30 minutes old, to save your free allowance. Refresh always loads new ones.</li><li>The NewsData key is in Settings under Live Prices. It is already filled in; replace it if you get a key of your own.</li></ul>"},
   {h:"Accounting",html:"<ul><li><b>Bill due dates:</b> when you add or edit a bill you can give a Next due date. The bill then shows on the Calendar (orange diamond), in Upcoming and in the Weekly Report on that day every month, year or week, depending on How often. A monthly bill due on the 31st shows on the last day of shorter months. The bill card says when it is due.</li><li>The boxes on this tab are packed edge to edge in columns with small even gaps, and stack on a narrow screen.</li><li>The Accounting tab (key <kbd>7</kbd>) shows your estimated monthly bills and what you owe. Press the + button in the bottom right and choose Rent, Subscription, Utilities, Food, Gas, Entertainment budget, Credit card, Loan, Other (for any bill not listed) or Other debt (money you owe that is not a card or loan).</li><li>A bill is an amount per month, per year or per week. Yearly and weekly amounts are converted to a monthly estimate (weekly is amount times 52 divided by 12). For food and gas, enter your average.</li><li>A credit card or loan takes a balance, the interest rate (APR) and optionally your monthly payment. The interest shown is balance times rate divided by 12, a rough estimate that ignores how the payment changes the balance during the month. Mortgage interest is not counted in Estimated interest per month. It has its own line, Mortgage interest (tax write-off), per month and per year, for homes with a mortgage and an interest rate.</li><li>Mortgages and vehicle loans from the Assets tab appear here automatically, are counted in the totals, and are edited in Assets.</li><li>The totals at the top: estimated per month (bills plus loan and card payments), per year, total owed and estimated interest per month.</li><li>Edit changes an item. Delete asks for a second click.</li></ul>"},
@@ -1489,6 +1509,7 @@ const Data={
   bills:loadList("bills"),
   invest:loadList("invest"),
   tobuy:loadList("tobuy"),
+  checklists:loadList("checklists"),
   nwhist:cleanHist(Store.get("nwhist",[])),
   debts:loadList("debts"),
   save(key){
@@ -1585,7 +1606,7 @@ const TodoUI={filter:Store.get("todoFilter","all"),project:"",sub:Store.get("pro
 if(["all","active","paused","done"].indexOf(TodoUI.filter)<0)TodoUI.filter="all";
 TodoUI.kind=Store.get("todoKind","");
 if(["work","personal"].indexOf(TodoUI.kind)<0)TodoUI.kind="";
-if(["tasks","projects"].indexOf(TodoUI.sub)<0)TodoUI.sub="tasks";
+if(["tasks","projects","checklists"].indexOf(TodoUI.sub)<0)TodoUI.sub="tasks";
 
 const priOpts=sel=>[["high","High"],["med","Medium"],["low","Low"]].map(o=>'<option value="'+o[0]+'"'+(o[0]===sel?" selected":"")+">"+o[1]+"</option>").join("");
 const priRank=p=>({high:0,med:1,low:2})[p]??1;
@@ -1713,6 +1734,11 @@ function nextDueFor(t){
 }
 
 function setTaskDone(t,done){
+  if(t.ask&&done){
+    t.done=false;
+    setTimeout(()=>openAskInfo(t.id),0);
+    return;
+  }
   t.done=done;
   if(done)t.paused=false;
   const am=t.asset&&MAINT_KEYS.indexOf(t.maint)>=0;
@@ -1914,16 +1940,18 @@ function todoRow(t,today){
   const names={high:"HIGH",med:"MED",low:"LOW"};
   return '<div class="todo p-'+pri+(t.done?" done":"")+(st==="paused"?" paused":"")+'" data-id="'+id+'">'+
     '<input type="checkbox" data-act="toggle"'+(t.done?" checked":"")+' aria-label="Mark task complete">'+
-    '<span class="tx">'+ic("task",t.kind)+esc(t.text)+"</span>"+
+    '<span class="tx"'+(t.ask?' data-act="answer" style="cursor:pointer"':"")+'>'+ic("task",t.kind)+esc(t.text)+"</span>"+
     (st==="paused"?'<span class="pri">PAUSED</span>':"")+
     '<span class="pri">'+names[pri]+"</span>"+due+
     (t.done?"":'<button type="button" class="btn mini" data-act="pause">'+(t.paused?"Resume":"Pause")+"</button>")+
+    (t.ask&&!t.done?'<button type="button" class="btn mini" data-act="answer">Answer</button>':"")+
     '<button type="button" class="btn mini" data-act="edit">Edit</button>'+
     '<button type="button" class="btn mini amber" data-act="del">'+(Armed.key==="t:"+t.id?"Sure?":"Delete")+"</button>"+
     chipsFor(t)+"</div>";
 }
 
 function renderTodo(){
+  pruneAsk();
   const list=Data.todos;
   const counts={all:list.length,active:0,paused:0,done:0};
   list.forEach(t=>{counts[taskStatus(t)]++});
@@ -1994,23 +2022,25 @@ function renderProjects(){
 function renderProjNav(){
   const nav=$("projNav");
   if(!nav)return;
-  const c={tasks:Data.todos.length,projects:Data.projects.length,notes:Data.notes.filter(n=>!n.archived).length};
-  nav.innerHTML=[["tasks","Tasks"],["projects","Projects"],["notes","Notes"]].map(x=>'<button type="button" class="chip'+(TodoUI.sub===x[0]?" active":"")+'" data-sub="'+x[0]+'">'+x[1]+" <span>"+c[x[0]]+"</span></button>").join("");
+  const c={tasks:Data.todos.length,projects:Data.projects.length,checklists:Data.checklists.length,notes:Data.notes.filter(n=>!n.archived).length};
+  nav.innerHTML=[["tasks","Tasks"],["projects","Projects"],["checklists","Checklists"],["notes","Notes"]].map(x=>'<button type="button" class="chip'+(TodoUI.sub===x[0]?" active":"")+'" data-sub="'+x[0]+'">'+x[1]+" <span>"+c[x[0]]+"</span></button>").join("");
 }
 
 function refreshProjectsView(){
   if(!$("todoList"))return;
   renderTodo();
   renderProjects();
+  renderChecklists();
   renderProjNav();
 }
 
 function showProjSub(name){
-  if(name!=="projects"&&name!=="notes")name="tasks";
+  if(name!=="projects"&&name!=="notes"&&name!=="checklists")name="tasks";
   TodoUI.sub=name;
   Store.set("projSub",name);
   $("taskPane").classList.toggle("active",name==="tasks");
   $("projPane").classList.toggle("active",name==="projects");
+  $("listPane").classList.toggle("active",name==="checklists");
   $("view-notes").classList.toggle("active",name==="notes");
   if(name==="notes")renderNoteList();
   renderProjNav();
@@ -2022,8 +2052,10 @@ function buildTodo(){
     '<div class="toolbar subnav" id="projNav"></div>'+
     '<div class="sub" id="taskPane"><div class="panel"><h2>Task List</h2><div class="toolbar" id="todoBar"></div><div class="pgrid" id="todoList"></div></div></div>'+
     '<div class="sub" id="projPane"><div class="panel"><h2>Projects <span id="projCount" style="color:var(--dim);letter-spacing:.1em"></span></h2><div class="pgrid" id="projList"></div></div></div>'+
+    '<div class="sub" id="listPane"><div class="panel"><h2>Checklists <span id="clCount" style="color:var(--dim);letter-spacing:.1em"></span></h2><div class="toolbar"><div class="field" style="flex:1"><label for="clQ">Search items</label><input type="search" id="clQ" maxlength="100" placeholder="Search items" autocomplete="off"></div></div><div id="clList"></div></div></div>'+
     '<div class="sub" id="view-notes"></div>';
   buildNotes();
+  bindChecklists();
 
   $("projNav").addEventListener("click",e=>{
     const b=e.target.closest("[data-sub]");
@@ -2077,7 +2109,10 @@ function buildTodo(){
     const t=Data.todos.find(x=>x.id===id);
     if(!t)return;
     const act=b.dataset.act;
-    if(act==="toggle"){
+    if(act==="answer"){
+      Sound.play("click");
+      openAskInfo(id);
+    }else if(act==="toggle"){
       setTaskDone(t,!t.done);
       Data.save("todos");
       Sound.play(t.done?"complete":"click");
@@ -2138,6 +2173,220 @@ function buildTodo(){
 
   refreshProjectsView();
   showProjSub(TodoUI.sub);
+}
+
+
+const CL={q:"",closed:{},undo:null};
+
+function cleanChecklist(c){
+  const cols=[];
+  (Array.isArray(c.cols)?c.cols:[]).forEach(x=>{
+    if(!x||typeof x!=="object"||cols.length>=12)return;
+    const name=str(x.name,40).trim();
+    const id=str(x.id,30).replace(/[^A-Za-z0-9]/g,"");
+    if(!name)return;
+    cols.push({id:id&&!cols.some(y=>y.id===id)?id:uid()+cols.length,name:name});
+  });
+  const rows=uniqueIds((Array.isArray(c.rows)?c.rows:[]).filter(r=>r&&typeof r==="object").slice(0,3000).map(r=>{
+    const checks={};
+    cols.forEach(k=>{if(r.checks&&r.checks[k.id]===true)checks[k.id]=true});
+    return {id:r.id,text:str(r.text,200).trim(),checks:checks};
+  }).filter(r=>r.text));
+  return {id:c.id,name:str(c.name,80).trim(),cols:cols,rows:rows,auto:c.auto===true,created:num(c.created,Date.now())};
+}
+
+const clById=id=>Data.checklists.find(x=>x.id===id);
+const clRowDone=(c,r)=>c.cols.length>0&&c.cols.every(k=>r.checks[k.id]);
+
+function clSplit(text){
+  return String(text||"").split(/\r?\n/).map(l=>l.split("\t")[0].replace(/^\s*(?:[-*\u2022]|\d+[.)])\s+/,"").trim()).filter(Boolean).map(x=>x.slice(0,200));
+}
+
+function clAddRows(c,items){
+  let n=0;
+  items.forEach(t=>{
+    if(c.rows.length>=3000)return;
+    c.rows.push({id:uid(),text:t,checks:{}});
+    n++;
+  });
+  uniqueIds(c.rows);
+  return n;
+}
+
+function clCard(c,q){
+  const rows=q?c.rows.filter(r=>r.text.toLowerCase().indexOf(q)>=0):c.rows;
+  const head='<tr><th class="clname">Item</th>'+c.cols.map(k=>'<th data-kid="'+esc(k.id)+'">'+esc(k.name)+"<small>"+c.rows.filter(r=>r.checks[k.id]).length+"/"+c.rows.length+"</small></th>").join("")+"<th></th></tr>";
+  const body=rows.map(r=>'<tr data-rid="'+esc(r.id)+'"><td class="clname"><button type="button" class="cltx" data-clact="rowedit">'+esc(r.text)+"</button></td>"+
+    c.cols.map(k=>'<td><input type="checkbox" data-clchk="'+esc(k.id)+'"'+(r.checks[k.id]?" checked":"")+' aria-label="'+esc(k.name+": "+r.text)+'"></td>').join("")+
+    '<td><button type="button" class="btn mini amber" data-clact="rowdel" aria-label="Delete row">\u00d7</button></td></tr>').join("");
+  return '<details class="clcard" data-clid="'+esc(c.id)+'"'+(CL.closed[c.id]?"":" open")+"><summary>"+esc(c.name)+' <span class="clmeta">'+c.rows.length+" item"+(c.rows.length===1?"":"s")+(c.auto?" \u00b7 finished rows are removed":"")+"</span></summary>"+
+    '<div class="clacts"><button type="button" class="btn mini" data-clact="addrows">Add Rows</button><button type="button" class="btn mini" data-clact="edit">Edit</button><button type="button" class="btn mini amber" data-clact="del">'+(Armed.key==="cl:"+c.id?"Sure?":"Delete")+"</button></div>"+
+    (c.rows.length?(rows.length?'<div class="cltabwrap"><table class="cltab"><thead>'+head+"</thead><tbody>"+body+"</tbody></table></div>":'<p class="empty">No items match.</p>'):'<p class="empty">No items yet. Use Add Rows and paste a list.</p>')+"</details>";
+}
+
+function renderChecklists(){
+  const box=$("clList");
+  if(!box)return;
+  const q=CL.q.trim().toLowerCase();
+  $("clCount").textContent="("+Data.checklists.length+")";
+  box.innerHTML=(CL.undo?'<div class="clundo"><span>'+esc(CL.undo.msg)+'</span><button type="button" class="btn mini" data-clact="undo">Undo</button></div>':"")+
+    (Data.checklists.length?Data.checklists.map(c=>clCard(c,q)).join(""):'<p class="empty">No checklists yet. Press the + button to make one.</p>');
+}
+
+function clRemove(c,r,msg,restore){
+  const idx=c.rows.indexOf(r);
+  if(idx<0)return;
+  c.rows.splice(idx,1);
+  CL.undo={cid:c.id,row:restore,idx:idx,msg:msg};
+  Data.save("checklists");
+  renderChecklists();
+}
+
+function clUndo(){
+  const u=CL.undo;
+  CL.undo=null;
+  const c=u&&clById(u.cid);
+  if(c){
+    c.rows.splice(Math.min(u.idx,c.rows.length),0,u.row);
+    uniqueIds(c.rows);
+    Data.save("checklists");
+    Sound.play("confirm");
+  }
+  renderChecklists();
+}
+
+function checklistPopupHtml(c){
+  const v=c||{};
+  const cols=c?'<div class="field"><label>Columns</label>'+c.cols.map(k=>'<div class="pair"><input type="text" class="nwClCol" data-kid="'+esc(k.id)+'" maxlength="40" value="'+esc(k.name)+'" aria-label="Column name"><label class="wdchk"><input type="checkbox" class="nwClRm" data-kid="'+esc(k.id)+'"> Remove</label></div>').join("")+"</div>"+
+    '<div class="field"><label for="nwClCols">Add columns (comma separated)</label><input type="text" id="nwClCols" maxlength="400" placeholder="Have receipt, Have case"></div>':
+    '<div class="field"><label for="nwClCols">Columns (comma separated)</label><input type="text" id="nwClCols" maxlength="400" value="Have it, Have manual, Have box"></div>';
+  return '<form class="form" id="nwForm" autocomplete="off">'+
+    '<div class="field"><label for="nwClName">Checklist name</label><input type="text" id="nwClName" maxlength="80" placeholder="Checklist name" value="'+esc(v.name||"")+'"></div>'+cols+
+    '<div class="field"><label class="wdchk"><input type="checkbox" id="nwClAuto"'+(v.auto?" checked":"")+"> Remove a row automatically when all its boxes are checked</label></div>"+
+    (c?"":'<div class="field"><label for="nwClPaste">Paste items (one per line, optional)</label><textarea id="nwClPaste" maxlength="60000" placeholder="Paste a list here" style="min-height:140px"></textarea></div>')+
+    popupActions(c?"Save Checklist":"Add Checklist");
+}
+
+function checklistSave(k){
+  if(k==="clrows"){
+    const c=clById(Popup.id);
+    const items=clSplit($("nwClPaste").value);
+    if(!c||!items.length){Sound.play("error");return}
+    clAddRows(c,items);
+  }else if(k==="clrow"){
+    const c=clById(Popup.id);
+    const r=c&&c.rows.find(x=>x.id===Popup.rid);
+    const t=$("nwClText").value.trim();
+    if(!r||!t){Sound.play("error");$("nwClText").focus();return}
+    r.text=t.slice(0,200);
+  }else{
+    const name=$("nwClName").value.trim();
+    if(!name){Sound.play("error");$("nwClName").focus();return}
+    let c=k==="checklistedit"?clById(Popup.id):null;
+    if(k==="checklistedit"&&!c){closeModal(true);return}
+    if(!c){
+      c={id:uid(),name:name,cols:[],rows:[],auto:false,created:Date.now()};
+      Data.checklists.push(c);
+    }
+    c.name=name.slice(0,80);
+    c.auto=$("nwClAuto").checked;
+    if(k==="checklistedit"){
+      document.querySelectorAll(".nwClCol").forEach(inp=>{
+        const col=c.cols.find(x=>x.id===inp.dataset.kid);
+        const nm=inp.value.trim().slice(0,40);
+        if(col&&nm)col.name=nm;
+      });
+      const rm={};
+      document.querySelectorAll(".nwClRm:checked").forEach(x=>{rm[x.dataset.kid]=true});
+      c.cols=c.cols.filter(x=>!rm[x.id]);
+      c.rows.forEach(r=>{Object.keys(r.checks).forEach(id=>{if(rm[id])delete r.checks[id]})});
+    }
+    String($("nwClCols").value||"").split(",").map(x=>x.trim().slice(0,40)).filter(Boolean).forEach(n=>{
+      if(c.cols.length<12)c.cols.push({id:uid()+c.cols.length,name:n});
+    });
+    if(k==="checklist")clAddRows(c,clSplit($("nwClPaste").value));
+  }
+  CL.undo=null;
+  Data.save("checklists");
+  Sound.play("confirm");
+  closeModal(true);
+  renderChecklists();
+  renderProjNav();
+}
+
+function bindChecklists(){
+  const box=$("clList");
+  $("clQ").addEventListener("input",()=>{
+    CL.q=$("clQ").value;
+    renderChecklists();
+  });
+  box.addEventListener("toggle",e=>{
+    const d=e.target;
+    if(d&&d.dataset&&d.dataset.clid)CL.closed[d.dataset.clid]=!d.open;
+  },true);
+  box.addEventListener("click",e=>{
+    const b=e.target.closest("[data-clact]");
+    if(!b)return;
+    const act=b.dataset.clact;
+    if(act==="undo"){
+      clUndo();
+      return;
+    }
+    const card=b.closest("[data-clid]");
+    const c=card&&clById(card.dataset.clid);
+    if(!c)return;
+    if(act==="addrows"){
+      Sound.play("click");
+      openPopup("clrows",c.id);
+    }else if(act==="edit"){
+      Armed.clear();
+      Sound.play("click");
+      openPopup("checklistedit",c.id);
+    }else if(act==="del"){
+      if(Armed.hit("cl:"+c.id,renderChecklists)){
+        Data.checklists=Data.checklists.filter(x=>x.id!==c.id);
+        Data.save("checklists");
+        CL.undo=null;
+        Sound.play("remove");
+        renderChecklists();
+        renderProjNav();
+      }else{
+        Sound.play("click");
+      }
+    }else{
+      const tr=b.closest("[data-rid]");
+      const r=tr&&c.rows.find(x=>x.id===tr.dataset.rid);
+      if(!r)return;
+      if(act==="rowedit"){
+        Sound.play("click");
+        openPopup("clrow",c.id,r.id);
+      }else if(act==="rowdel"){
+        Sound.play("remove");
+        clRemove(c,r,"Removed \u201c"+r.text+"\u201d.",r);
+      }
+    }
+  });
+  box.addEventListener("change",e=>{
+    const kid=e.target.dataset&&e.target.dataset.clchk;
+    if(!kid)return;
+    const tr=e.target.closest("[data-rid]");
+    const card=e.target.closest("[data-clid]");
+    const c=card&&clById(card.dataset.clid);
+    const r=c&&tr&&c.rows.find(x=>x.id===tr.dataset.rid);
+    if(!r)return;
+    const before=Object.assign({},r.checks);
+    if(e.target.checked)r.checks[kid]=true;
+    else delete r.checks[kid];
+    if(c.auto&&clRowDone(c,r)){
+      Sound.play("complete");
+      clRemove(c,r,"Finished and removed \u201c"+r.text+"\u201d.",{id:r.id,text:r.text,checks:before});
+      return;
+    }
+    Data.save("checklists");
+    Sound.play("click");
+    const th=card.querySelector('th[data-kid="'+kid+'"] small');
+    if(th)th.textContent=c.rows.filter(x=>x.checks[kid]).length+"/"+c.rows.length;
+  });
 }
 
 const CalUI={year:0,month:0,sel:"",kind:Store.get("calKind","")};
@@ -3504,8 +3753,13 @@ function savePerson(loud){
   rememberTags(p.tags);
   p.rels=PersonUI.rels.filter(r=>r.pid!==p.id&&personById(r.pid)).map(r=>({pid:r.pid,label:r.label}));
   PersonUI.rels=p.rels.map(r=>({pid:r.pid,label:r.label}));
+  if(p.na){
+    Object.keys(p.na).forEach(f=>{if(!fieldMissing(p,f))delete p.na[f]});
+    if(!Object.keys(p.na).length)delete p.na;
+  }
   PersonUI.dirty=false;
   Data.save("people");
+  pruneAsk();
   renderPeopleList();
   renderPersonTags();
   renderPersonRels();
@@ -4008,6 +4262,7 @@ function exportPayload(){
       bills:Data.bills,
       invest:Data.invest,
       tobuy:Data.tobuy,
+      checklists:Data.checklists,
       nwhist:Data.nwhist,
       debts:Data.debts,
       settings:{muted:Sound.muted,volume:Sound.vol,todoFilter:TodoUI.filter,personSort:PersonUI.sort,showBirthdays:CalUI.bday,showHolidays:CalUI.hol,holGroups:Hol.groups,holOff:Hol.off,theme:{id:Theme.id,primary:Theme.primary},showExtras:Prefs.extras,pics:Prefs.pics,autoTax:Prefs.autoTax,taxAdded:Store.get("taxAdded",false)===true,bridgeTasks:Prefs.bridgeTasks,bridgeEvents:Prefs.bridgeEvents,slots:Prefs.slots,uiSize:Prefs.uiSize,textSize:Prefs.textSize,uiOpacity:Prefs.uiOpacity}
@@ -4055,8 +4310,12 @@ function validateImport(raw){
     priority:["high","med","low"].indexOf(t.priority)>=0?t.priority:"med",
     due:validDate(t.due)?t.due:"",created:num(t.created,Date.now()),
     rep:cleanRep(t.rep),spawned:str(t.spawned,40),
-    asset:str(t.asset,40),maint:MAINT_KEYS.indexOf(t.maint)>=0?t.maint:"",prev:str(t.prev,20),kind:TASK_KINDS.some(x=>x[0]===t.kind)?t.kind:""
-  })).filter(t=>{
+    asset:str(t.asset,40),maint:MAINT_KEYS.indexOf(t.maint)>=0?t.maint:"",prev:str(t.prev,20),kind:TASK_KINDS.some(x=>x[0]===t.kind)?t.kind:"",
+    ask:t.ask&&typeof t.ask==="object"&&BORED_FIELDS.indexOf(t.ask.field)>=0?{pid:str(t.ask.pid,40),field:t.ask.field}:null
+  })).map(t=>{
+    if(!t.ask)delete t.ask;
+    return t;
+  }).filter(t=>{
     if(t.text.trim())return true;
     skipped.n++;
     return false;
@@ -4089,11 +4348,13 @@ function validateImport(raw){
       relation:str(p.relation,60),phone:str(p.phone,40),email:str(p.email,120),
       birthday:bdayOk(p.birthday)?p.birthday:"",notes:str(p.notes,5000),created:num(p.created,Date.now()),
       job:str(p.job,80),gender:p.gender==="male"||p.gender==="female"?p.gender:"",religion:str(p.religion,60),me:p.me===true,street:str(p.street,200)||(p.city||p.state||p.zip?"":str(p.address,200)),city:str(p.city,60),state:str(p.state,40),zip:str(p.zip,12),tags:cleanTagList(p.tags,20),tagTypes:cleanTagTypes(p.tagTypes,cleanTagList(p.tags,20)),
-      rels:(Array.isArray(p.rels)?p.rels:[]).filter(r=>r&&typeof r==="object").slice(0,50).map(r=>({pid:String(r.pid||""),label:str(r.label,40).trim()}))
+      rels:(Array.isArray(p.rels)?p.rels:[]).filter(r=>r&&typeof r==="object").slice(0,50).map(r=>({pid:String(r.pid||""),label:str(r.label,40).trim()})),
+      na:cleanNa(p.na)
     };
   }).map((p,i,a)=>{
     if(p.me&&a.findIndex(x=>x.me)!==i)p.me=false;
     if(!p.me)delete p.me;
+    if(!Object.keys(p.na).length)delete p.na;
     return p;
   }).filter(p=>{
     if(p.name.trim())return true;
@@ -4141,6 +4402,7 @@ function validateImport(raw){
   const invest=uniqueIds(arr(d.invest).map(cleanInvest).filter(r=>r.name));
   const tobuy=uniqueIds(arr(d.tobuy).map(cleanBuy).filter(x=>x.name));
   const nwhist=cleanHist(d.nwhist);
+  const checklists=uniqueIds(arr(d.checklists).map(cleanChecklist).filter(x=>x.name));
   const bills=uniqueIds(arr(d.bills).map(cleanBill).filter(b=>b.amount!==""));
   const debts=uniqueIds(arr(d.debts).map(cleanDebt).filter(x=>x.name));
   const completed=uniqueIds(arr(d.completed).map(e=>({
@@ -4177,7 +4439,7 @@ function validateImport(raw){
       Video:clampInt(s.slots&&s.slots.Video,1,9,3)
     }
   };
-  return {ok:true,clean:{todos:todos,projects:projects,events:events,notes:notes,people:people,playing:playing,shelved:shelved,completed:completed,assets:assets,bills:bills,debts:debts,invest:invest,tobuy:tobuy,nwhist:nwhist,settings:settings},skipped:skipped.n,exported:typeof obj.exported==="string"?obj.exported:"",from:typeof obj.version==="string"?obj.version:""};
+  return {ok:true,clean:{todos:todos,projects:projects,events:events,notes:notes,people:people,playing:playing,shelved:shelved,completed:completed,assets:assets,bills:bills,debts:debts,invest:invest,tobuy:tobuy,checklists:checklists,nwhist:nwhist,settings:settings},skipped:skipped.n,exported:typeof obj.exported==="string"?obj.exported:"",from:typeof obj.version==="string"?obj.version:""};
 }
 
 function summaryText(c){
@@ -4259,10 +4521,11 @@ function applyImport(c){
   Data.bills=c.bills;
   Data.invest=c.invest;
   Data.tobuy=c.tobuy;
+  Data.checklists=c.checklists||[];
   Data.nwhist=c.nwhist||[];
   Data.debts=c.debts;
   migratePlaying();
-  ["todos","projects","events","notes","people","playing","shelved","completed","assets","bills","debts","invest","tobuy","nwhist"].forEach(k=>Data.save(k));
+  ["todos","projects","events","notes","people","playing","shelved","completed","assets","bills","debts","invest","tobuy","checklists","nwhist"].forEach(k=>Data.save(k));
   applySettings(c.settings);
   refreshAll();
 }
@@ -4282,9 +4545,10 @@ function eraseAll(){
   Data.bills=[];
   Data.invest=[];
   Data.tobuy=[];
+  Data.checklists=[];
   Data.nwhist=[];
   Data.debts=[];
-  ["todos","projects","events","notes","people","playing","shelved","completed","assets","bills","debts","invest","tobuy","nwhist"].forEach(k=>Data.save(k));
+  ["todos","projects","events","notes","people","playing","shelved","completed","assets","bills","debts","invest","tobuy","checklists","nwhist"].forEach(k=>Data.save(k));
   Store.remove("lastExport");
   Store.remove("priceKeys");
   Store.remove("newsKey");
@@ -4396,6 +4660,7 @@ function dataCounts(){
     '<div class="stat"><span>Assets</span><span>'+Data.assets.length+"</span></div>"+
     '<div class="stat"><span>Investments and accounts</span><span>'+Data.invest.length+"</span></div>"+
     '<div class="stat"><span>Assets to buy</span><span>'+Data.tobuy.length+"</span></div>"+
+    '<div class="stat"><span>Checklists</span><span>'+Data.checklists.length+"</span></div>"+
     '<div class="stat"><span>Bills</span><span>'+Data.bills.length+"</span></div>"+
     '<div class="stat"><span>Credit cards and loans</span><span>'+Data.debts.length+"</span></div>"+
     '<div class="stat"><span>Last backup</span><span id="dataLast">'+esc(lastBackupText())+"</span></div>";
@@ -4428,6 +4693,7 @@ function intelCount(){
   Data.debts.forEach(x=>{n+=1+(x.balance!==""?1:0)+(x.rate!==""?1:0)+(x.pay!==""?1:0)});
   Data.assets.forEach(a=>{(a.type==="home"?HOME_FIELDS:VEH_FIELDS).forEach(f=>{n+=String(a[f]||"").trim()?1:0})});
   Data.todos.forEach(t=>{n+=1+(t.tags||[]).length+(t.people||[]).length+(t.project?1:0)});
+  Data.checklists.forEach(c=>{n+=1+c.cols.length+c.rows.length});
   Data.projects.forEach(p=>{n+=1+has(p.deadline)+has(p.notes)+(p.people||[]).length});
   n+=Data.events.length+Data.notes.length+Object.keys(Data.playing).length+Data.shelved.length+Data.completed.length;
   return n;
@@ -6910,6 +7176,12 @@ function closeModal(quiet){
 
 const Bored={skip:{},cur:null};
 
+function cleanNa(v){
+  const o={};
+  if(v&&typeof v==="object"&&!Array.isArray(v))BORED_FIELDS.forEach(f=>{if(v[f]===true)o[f]=true});
+  return o;
+}
+
 const BORED_FIELDS=["first","middle","last","gender","birthday","phone","email","job","religion","street","city","state","zip","tags","rels"];
 
 const SCRIBE_TYPES=[["first","First names"],["middle","Middle names"],["last","Last names"],["gender","Gender"],["birthday","Birthdays"],["phone","Phone numbers"],["email","Emails"],["job","Occupations"],["religion","Religions"],["address","Addresses (street, city, state, zip)"],["tags","Person tags"],["rels","Relationships between people"],["tasktags","Tags for tasks without one"]];
@@ -6964,17 +7236,44 @@ function unlinkedPeople(p){
   return Data.people.filter(q=>q.id!==p.id&&!(p.rels||[]).some(r=>r.pid===q.id)&&!(q.rels||[]).some(r=>r.pid===p.id));
 }
 
+const FIELD_NAMES={first:"first name",middle:"middle name",last:"last name",gender:"gender",birthday:"birthday",phone:"phone number",email:"email",job:"occupation",religion:"religion",street:"street address",city:"city",state:"state",zip:"zip code",tags:"tags",rels:"relationships"};
+
+const naOf=(p,f)=>!!(p.na&&p.na[f]);
+const askOpen=(pid,f)=>Data.todos.some(t=>!t.done&&t.ask&&t.ask.pid===pid&&t.ask.field===f);
+
+function fieldMissing(p,f){
+  if(f==="tags")return !(p.tags&&p.tags.length);
+  if(f==="rels")return unlinkedPeople(p).length>0;
+  return !String(p[f]||"").trim();
+}
+
 function boredMissing(p){
   const out=[];
   BORED_FIELDS.forEach(f=>{
-    if(scribeOff(f))return;
-    let miss;
-    if(f==="tags")miss=!(p.tags&&p.tags.length);
-    else if(f==="rels")miss=unlinkedPeople(p).length>0;
-    else miss=!String(p[f]||"").trim();
-    if(miss&&!Bored.skip[p.id+":"+f])out.push(f);
+    if(scribeOff(f)||naOf(p,f)||askOpen(p.id,f))return;
+    if(fieldMissing(p,f)&&!Bored.skip[p.id+":"+f])out.push(f);
   });
   return out;
+}
+
+function pruneAsk(){
+  const n=Data.todos.length;
+  Data.todos=Data.todos.filter(t=>{
+    if(!t.ask)return true;
+    const p=personById(t.ask.pid);
+    return !!p&&!naOf(p,t.ask.field)&&fieldMissing(p,t.ask.field);
+  });
+  if(Data.todos.length!==n){
+    Data.save("todos");
+    return true;
+  }
+  return false;
+}
+
+function addAskTask(p,f){
+  if(askOpen(p.id,f))return;
+  Data.todos.push({id:uid(),text:"Find out "+personLabel(p)+"'s "+(FIELD_NAMES[f]||f),done:false,paused:false,priority:"med",due:"",created:Date.now(),tags:["people"],people:[p.id],project:"",rep:null,ask:{pid:p.id,field:f}});
+  Data.save("todos");
 }
 
 function boredTasks(){
@@ -7051,6 +7350,7 @@ function boredItem(pick){
 
 function renderBored(){
   syncTagBank();
+  pruneAsk();
   const pick=boredPick();
   Bored.cur=pick;
   if(!pick){
@@ -7070,7 +7370,7 @@ function renderBored(){
   $("modalBody").innerHTML='<p class="bmeta">'+c.n+" detail"+(c.n===1?"":"s")+" missing across "+parts.join(" and ")+"</p>"+
     '<form id="bForm" autocomplete="off"><p class="bq">'+boredQuestion(p,pick.field)+"</p>"+
     '<div class="form">'+boredInput(p,pick.field)+
-    '<div class="row">'+(pick.field==="gender"?"":'<button type="submit" class="btn">Save</button>')+'<button type="button" class="btn amber" data-bored="skip">Skip</button><button type="button" class="btn" data-bored="off">Never Ask This</button><button type="button" class="btn" data-bored="done">Done</button></div></div></form>';
+    '<div class="row">'+(pick.field==="gender"?"":'<button type="submit" class="btn">Save</button>')+'<button type="button" class="btn amber" data-bored="skip">Skip</button>'+(pick.kind==="person"?'<button type="button" class="btn" data-bored="unknown">I Don\'t Know</button><button type="button" class="btn" data-bored="na">N/A</button>':"")+'<button type="button" class="btn" data-bored="off">Never Ask This</button><button type="button" class="btn" data-bored="done">Done</button></div></div></form>';
 }
 
 function boredGender(v){
@@ -7087,33 +7387,17 @@ function boredGender(v){
   renderBored();
 }
 
-function boredSave(ty){
-  const pick=Bored.cur;
-  if(!pick)return;
-  const p=boredItem(pick);
-  if(!p)return;
-  const f=pick.field;
+function boredApply(p,f,ty){
   let v=f==="birthday"?getBday("bAns"):($("bAns").value||"").trim();
   if(!v){
     Sound.play("error");
     $("bAns").focus();
-    return;
+    return false;
   }
   if(f==="phone")v=formatPhone(v);
-  if(f==="tasktags"){
-    const t=cleanTagList(v.split(","),10);
-    if(!t.length){Sound.play("error");return}
-    p.tags=cleanTagList((p.tags||[]).concat(t),10);
-    rememberTags(t);
-    Data.save("todos");
-    Sound.play("confirm");
-    if($("todoList"))refreshProjectsView();
-    renderBored();
-    return;
-  }
   if(f==="tags"){
     const t=cleanTagList(v.split(","),10);
-    if(!t.length){Sound.play("error");return}
+    if(!t.length){Sound.play("error");return false}
     p.tags=cleanTagList((p.tags||[]).concat(t),20);
     if(ty&&TAG_TYPES.some(x=>x[0]===ty)){
       const m=Object.assign({},p.tagTypes);
@@ -7127,25 +7411,48 @@ function boredSave(ty){
     const q=personById(v);
     if(!q||q.id===p.id||unlinkedPeople(p).indexOf(q)<0){
       Sound.play("error");
-      return;
+      return false;
     }
     if(!label){
       Sound.play("error");
       $("bAns2").focus();
-      return;
+      return false;
     }
     p.rels=(p.rels||[]).concat([{pid:q.id,label:label.slice(0,40)}]);
     if(back)q.rels=(q.rels||[]).concat([{pid:p.id,label:back.slice(0,40)}]);
   }else if(f==="gender"){
-    if(GENDERS.indexOf(v)<0){Sound.play("error");return}
+    if(GENDERS.indexOf(v)<0){Sound.play("error");return false}
     p.gender=v;
   }else if(f==="birthday"){
-    if(!bdayOk(v)){Sound.play("error");return}
+    if(!bdayOk(v)){Sound.play("error");return false}
     p.birthday=v;
   }else{
     p[f]=v;
     if(f==="first"||f==="middle"||f==="last")p.name=joinName(p.first,p.middle,p.last);
   }
+  if(p.na)delete p.na[f];
+  return true;
+}
+
+function boredSave(ty){
+  const pick=Bored.cur;
+  if(!pick)return;
+  const p=boredItem(pick);
+  if(!p)return;
+  const f=pick.field;
+  if(f==="tasktags"){
+    const v=($("bAns").value||"").trim();
+    const t=cleanTagList(v.split(","),10);
+    if(!t.length){Sound.play("error");$("bAns").focus();return}
+    p.tags=cleanTagList((p.tags||[]).concat(t),10);
+    rememberTags(t);
+    Data.save("todos");
+    Sound.play("confirm");
+    if($("todoList"))refreshProjectsView();
+    renderBored();
+    return;
+  }
+  if(!boredApply(p,f,ty))return;
   Data.save("people");
   Sound.play("confirm");
   if($("pList")){
@@ -7153,6 +7460,71 @@ function boredSave(ty){
     renderPeopleList();
   }
   renderBored();
+}
+
+function boredNa(){
+  const pick=Bored.cur;
+  const p=pick&&pick.kind==="person"?boredItem(pick):null;
+  if(!p)return;
+  p.na=Object.assign({},p.na);
+  p.na[pick.field]=true;
+  Data.save("people");
+  Sound.play("click");
+  if($("pList")){
+    fillPersonEditor();
+    renderPeopleList();
+  }
+  renderBored();
+}
+
+function boredUnknown(){
+  const pick=Bored.cur;
+  const p=pick&&pick.kind==="person"?boredItem(pick):null;
+  if(!p)return;
+  addAskTask(p,pick.field);
+  Sound.play("confirm");
+  if($("todoList"))refreshProjectsView();
+  renderBored();
+}
+
+function openAskInfo(tid){
+  const t=Data.todos.find(x=>x.id===tid);
+  const p=t&&t.ask?personById(t.ask.pid):null;
+  if(!p||!fieldMissing(p,t.ask.field)){
+    if(t)pruneAsk();
+    refreshProjectsView();
+    return;
+  }
+  Popup.kind="askinfo";
+  Popup.id=tid;
+  Popup.people=[];
+  openModal("Fill In Info",'<form class="form" id="nwForm" autocomplete="off"><p class="bq">'+boredQuestion(p,t.ask.field)+"</p>"+boredInput(p,t.ask.field)+
+    '<div class="row"><button class="btn" type="submit"'+(t.ask.field==="gender"?" hidden":"")+'>Save</button><button class="btn amber" type="button" data-pop="cancel">Cancel</button></div></form>');
+}
+
+function askInfoSave(ty){
+  const t=Data.todos.find(x=>x.id===Popup.id);
+  const p=t&&t.ask?personById(t.ask.pid):null;
+  if(!p){closeModal(true);return}
+  const f=t.ask.field;
+  if(f==="gender"&&GENDERS.indexOf(ty)>=0){
+    p.gender=ty;
+    if(p.na)delete p.na[f];
+  }else if(!boredApply(p,f,f==="tags"?ty:"")){
+    return;
+  }
+  Data.todos=Data.todos.filter(x=>x.id!==t.id);
+  Data.save("people");
+  Data.save("todos");
+  pruneAsk();
+  Sound.play("confirm");
+  closeModal(true);
+  if($("pList")){
+    fillPersonEditor();
+    renderPeopleList();
+  }
+  refreshProjectsView();
+  if(currentTab==="bridge")renderBridge();
 }
 
 function openBored(){
@@ -7164,6 +7536,11 @@ function boredClick(e){
   const b=e.target.closest("[data-bored]");
   if(!b)return;
   const a=b.dataset.bored;
+  if(Popup.kind==="askinfo"&&$("nwForm")){
+    if(a==="gm"||a==="gf")askInfoSave(a==="gm"?"male":"female");
+    else if(a.indexOf("tt-")===0)askInfoSave(a.slice(3));
+    return;
+  }
   if(a==="skip"){
     if(Bored.cur)Bored.skip[Bored.cur.pid+":"+Bored.cur.field]=1;
     Sound.play("click");
@@ -7176,6 +7553,10 @@ function boredClick(e){
     }
     Sound.play("close");
     renderBored();
+  }else if(a==="na"){
+    boredNa();
+  }else if(a==="unknown"){
+    boredUnknown();
   }else if(a.indexOf("tt-")===0){
     boredSave(a.slice(3));
   }else if(a==="gm"||a==="gf"){
@@ -7313,12 +7694,41 @@ function projectPopupHtml(p){
 }
 
 function fabFor(id){
-  if(id==="todo")return TodoUI.sub==="projects"?["project","New project"]:TodoUI.sub==="notes"?["note","New note"]:["task","New task"];
+  if(id==="todo")return TodoUI.sub==="projects"?["project","New project"]:TodoUI.sub==="checklists"?["checklist","New checklist"]:TodoUI.sub==="notes"?["note","New note"]:["task","New task"];
   if(id==="entertainment")return EntUI.sub==="shelved"?["shelvedadd","Add to Shelved"]:EntUI.sub==="completed"?["doneadd","Add to Completed"]:null;
   return FAB[id]||null;
 }
 
 function openPopup(kind,id,extra){
+  if(kind==="checklist"||kind==="checklistedit"){
+    const c=kind==="checklistedit"?clById(id):null;
+    if(kind==="checklistedit"&&!c)return;
+    Popup.kind=kind;
+    Popup.id=id||"";
+    Popup.people=[];
+    openModal(c?"Edit Checklist":"New Checklist",checklistPopupHtml(c));
+    return;
+  }
+  if(kind==="clrows"){
+    const c=clById(id);
+    if(!c)return;
+    Popup.kind=kind;
+    Popup.id=id;
+    Popup.people=[];
+    openModal("Add Rows to "+c.name,'<form class="form" id="nwForm" autocomplete="off"><div class="field"><label for="nwClPaste">Paste items (one per line)</label><textarea id="nwClPaste" maxlength="60000" placeholder="Paste a list here" style="min-height:180px"></textarea></div><p class="hint">Copied spreadsheet columns work too. Only the first column of each line is used.</p>'+popupActions("Add Rows"));
+    return;
+  }
+  if(kind==="clrow"){
+    const c=clById(id);
+    const r=c&&c.rows.find(x=>x.id===extra);
+    if(!r)return;
+    Popup.kind=kind;
+    Popup.id=id;
+    Popup.rid=extra;
+    Popup.people=[];
+    openModal("Edit Row",'<form class="form" id="nwForm" autocomplete="off"><div class="field"><label for="nwClText">Item</label><input type="text" id="nwClText" maxlength="200" value="'+esc(r.text)+'"></div>'+popupActions("Save Row"));
+    return;
+  }
   if(kind==="personedit"){
     if(!personById(id))return;
     commitPerson();
@@ -7560,6 +7970,14 @@ function popupTaskProjectFix(){
 
 function popupSave(){
   const k=Popup.kind;
+  if(k==="checklist"||k==="checklistedit"||k==="clrows"||k==="clrow"){
+    checklistSave(k);
+    return;
+  }
+  if(k==="askinfo"){
+    askInfoSave();
+    return;
+  }
   if(k==="shelvedadd"||k==="doneadd"){
     saveEntPopup(k==="doneadd");
     return;
@@ -8295,7 +8713,7 @@ async function logOut(){
   showLogin("login","You are logged out.","ok");
 }
 
-const DATA_KEYS=["todos","projects","events","notes","people","playing","shelved","completed","assets","bills","debts","invest","tobuy","nwhist"];
+const DATA_KEYS=["todos","projects","events","notes","people","playing","shelved","completed","assets","bills","debts","invest","tobuy","checklists","nwhist"];
 const LOOK_KEYS=["uiSize","textSize","uiOpacity"];
 const Sync={ready:false,busy:false,applying:false,timer:0,retry:0,status:"",kind:"ok",pending:null,lastCheck:0};
 
